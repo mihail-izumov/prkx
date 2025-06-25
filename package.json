@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "deploy": "gh-pages -d .vitepress/dist",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
