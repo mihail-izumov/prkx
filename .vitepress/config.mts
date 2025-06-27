@@ -5,14 +5,17 @@ import pkg from '../package.json' assert { type: 'json' }
 const { version } = pkg
 
 export default defineConfig({
+  title: '',
   lang: 'ru-RU',
   base: '/ModulRosta/',
   description: 'Сайт модуля роста',
-  titleTemplate: 'Custom Suffix',
   themeConfig: {
     sidebar: {
-      '/guide/': { base: '/guide/', items: sidebarGuide() },
-      '/demo/': { base: '/demo/', items: sidebarReference() }
+      '/Чекапы/': { base: '/Чекапы/', items: sidebarCheckup() },
+      '/Система/': { base: '/Система/', items: sidebarSystem() },
+      '/Сравнить/': { base: '/Сравнить/', items: sidebarCompare() },
+      '/Компания/': { base: '/Компания/', items: sidebarCompany() },
+      '/Ресурсы/': { base: '/Ресурсы/', items: sidebarResourses() }
     },
     search: {
       provider: 'local',
@@ -25,7 +28,12 @@ export default defineConfig({
     },
     nav: nav(),
     socialLinks: [
-      { icon: '', link: 'https://app.mplan.sbs' }
+      { icon: 'github', link: 'https://app.mplan.sbs' },
+      {
+       icon: 'github',                     // any existing Lucide icon
+       link: 'https://app.mplan.sbs',
+       ariaLabel: 'login-link'            // used by our CSS selector
+     }
     ],
     footer: {
       message: `
@@ -41,19 +49,34 @@ export default defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
-      text: 'Справа 1 😁',
-      link: '/guide/markdown-examplescopy.md',
-      activeMatch: '/guide/'
+      text: 'Чекапы',
+      link: '/Чекапы/markdown-examplescopy.md',
+      activeMatch: '/Чекапы/'
     },
     {
-      text: 'Демо',
-      link: '/demo/markdown-examplescopy.md',
-      activeMatch: '/demo/'
+      text: 'Система',
+      link: '/Система/markdown-examplescopy.md',
+      activeMatch: '/Система/'
+    },
+    {
+      text: 'Сравнить',
+      link: '/Сравнить/markdown-examplescopy.md',
+      activeMatch: '/Сравнить/'
+    },
+    {
+      text: 'Компания',
+      link: '/Компания/markdown-examplescopy.md',
+      activeMatch: '/Компания/'
+    },
+    {
+      text: 'Ресурсы',
+      link: '/Ресурсы/markdown-examplescopy.md',
+      activeMatch: '/Ресурсы/'
     }
   ]
 }
 
-function sidebarGuide(): DefaultTheme.SidebarItem[] {
+function sidebarCheckup(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: 'Introduction',
@@ -78,7 +101,49 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
   ]
 }
 
-function sidebarReference(): DefaultTheme.SidebarItem[] {
+function sidebarSystem(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Reference',
+      items: [
+        {
+          text: 'Default Theme',
+          items: []
+        }
+      ]
+    }
+  ]
+}
+
+function sidebarCompare(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Reference',
+      items: [
+        {
+          text: 'Default Theme',
+          items: []
+        }
+      ]
+    }
+  ]
+}
+
+function sidebarCompany(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Reference',
+      items: [
+        {
+          text: 'Default Theme',
+          items: []
+        }
+      ]
+    }
+  ]
+}
+
+function sidebarResourses(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: 'Reference',
