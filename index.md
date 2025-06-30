@@ -15,7 +15,7 @@ hero:
 
 features:
   - title: Чекапы для бизнеса
-    details: Глубокая аналитика всего бизнеса. Находим то, что другие упускают.
+    details: Глубокая аналитика всего бизнеса за 5 дней. Находим то, что другие упускают.
     link: /checkups
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
