@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Расти по своим правилам."
-  tagline: Фокусируйтесь на своих целях, новых возможностях и устойчивом росте без стресса и контроля
+  tagline: Фокусируйтесь на своих целях, новых возможностях и устойчивом росте без контроля
   actions:
     - theme: brand
       text: Сделать чекап
@@ -14,8 +14,8 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Чекапы для бизнеса
+    details: Глубокая аналитика всего бизнеса. Находим то, что другие упускают.
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
