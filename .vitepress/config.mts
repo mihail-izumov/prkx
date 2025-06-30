@@ -71,7 +71,7 @@ export default defineConfig({
         content: "30 мин. Демо";
         font-size: 14px;
         color: white;
-        padding: 6px 16px;
+        padding: 6px 12px;
         border: 1px solid var(--vp-c-brand);
         border-radius: 6px;
         background: var(--vp-c-brand);
@@ -83,6 +83,105 @@ export default defineConfig({
       .VPSocialLink[aria-label="login-link"]:hover::after {
         background: var(--vp-c-brand-darker, var(--vp-c-brand));
         transform: translateY(-1px);
+        height: 36px;
+      }
+
+      /* Footer 3-column layout */
+      .VPFooter .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .VPFooter .footer-nav {
+        padding-right: 15px;
+      }
+
+      .VPFooter .footer-nav h4 {
+        color: var(--vp-c-text-1);
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+      }
+
+      .VPFooter .footer-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .VPFooter .footer-nav-links a {
+        color: var(--vp-c-text-2);
+        text-decoration: none;
+        font-weight: 400;
+        transition: color 0.3s ease;
+        padding: 2px 0;
+      }
+
+      .VPFooter .footer-nav-links a:hover {
+        color: var(--vp-c-brand);
+      }
+
+      .VPFooter .footer-info {
+        padding: 0 15px;
+        border-left: 1px solid var(--vp-c-divider);
+        border-right: 1px solid var(--vp-c-divider);
+      }
+
+      .VPFooter .footer-info h4 {
+        color: var(--vp-c-text-1);
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+      }
+
+      .VPFooter .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .VPFooter .footer-links a {
+        color: var(--vp-c-text-2);
+        text-decoration: none;
+        font-weight: 400;
+        transition: color 0.3s ease;
+        padding: 2px 0;
+      }
+
+      .VPFooter .footer-links a:hover {
+        color: var(--vp-c-brand);
+      }
+
+      .VPFooter .footer-contact {
+        padding-left: 15px;
+      }
+
+      .VPFooter .footer-contact h4 {
+        color: var(--vp-c-text-1);
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+      }
+
+      .VPFooter .footer-contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .VPFooter .footer-contact-links a {
+        color: var(--vp-c-text-2);
+        text-decoration: none;
+        font-weight: 400;
+        transition: color 0.3s ease;
+        padding: 2px 0;
+      }
+
+      .VPFooter .footer-contact-links a:hover {
+        color: var(--vp-c-brand);
       }
 
       /* Responsive adjustments */
@@ -98,6 +197,47 @@ export default defineConfig({
           padding: 4px 6px; /* Reduced padding for mobile */
           font-size: 12px; /* Smaller font size for mobile */
           margin: 0 2px; /* Adjusted margin for mobile */
+        }
+
+        .VPFooter .footer-content {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+
+        .VPFooter .footer-info {
+          border-left: none;
+          border-right: none;
+          border-top: 1px solid var(--vp-c-divider);
+          padding: 20px 0 0 0;
+        }
+
+        .VPFooter .footer-nav {
+          padding-right: 0;
+        }
+
+        .VPFooter .footer-contact {
+          padding-left: 0;
+          border-top: 1px solid var(--vp-c-divider);
+          padding-top: 20px;
+        }
+      }
+
+      /* Tablet responsive - 2 columns on medium screens */
+      @media (max-width: 1024px) and (min-width: 769px) {
+        .VPFooter .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .VPFooter .footer-contact {
+          grid-column: 1 / -1;
+          border-top: 1px solid var(--vp-c-divider);
+          border-left: none;
+          padding: 20px 0 0 0;
+          margin-top: 15px;
+        }
+
+        .VPFooter .footer-info {
+          border-right: none;
         }
       }
     `]
@@ -120,6 +260,7 @@ export default defineConfig({
         placeholder: 'Поиск…'
       }
     },
+    // Empty nav array - removes navigation from header
     nav: nav(),
     socialLinks: [
       { icon: 'github', link: '/register', ariaLabel: 'register-link' },
@@ -127,15 +268,43 @@ export default defineConfig({
     ],
     footer: {
       message: `
-        <a href="/terms">Условия использования</a>
-        &nbsp;•&nbsp;
-        <a href="/about/contacts">Контакты</a>
+        <div class="footer-content">
+          <div class="footer-nav">
+            <h4>Навигация</h4>
+            <div class="footer-nav-links">
+              <a href="/Чекапы/markdown-examplescopy.md">Чекапы</a>
+              <a href="/Система/markdown-examplescopy.md">Система</a>
+              <a href="/Сравнить/markdown-examplescopy.md">Сравнить</a>
+              <a href="/Компания/markdown-examplescopy.md">Компания</a>
+              <a href="/Ресурсы/markdown-examplescopy.md">Ресурсы</a>
+            </div>
+          </div>
+          <div class="footer-info">
+            <h4>Информация</h4>
+            <div class="footer-links">
+              <a href="/terms">Условия использования</a>
+              <a href="/about/privacy">Политика конфиденциальности</a>
+              <a href="/about/support">Поддержка</a>
+              <a href="/about/faq">Часто задаваемые вопросы</a>
+            </div>
+          </div>
+          <div class="footer-contact">
+            <h4>Контакты</h4>
+            <div class="footer-contact-links">
+              <a href="/about/contacts">Связаться с нами</a>
+              <a href="mailto:info@modulrosta.ru">info@modulrosta.ru</a>
+              <a href="tel:+78001234567">8 (800) 123-45-67</a>
+              <a href="/about/office">Адрес офиса</a>
+            </div>
+          </div>
+        </div>
       `,
       copyright: '© Модуль Роста® 2010 — 2025'
     }
   }
 })
 
+// Keep the existing nav function for reference if needed later
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
