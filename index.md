@@ -8,10 +8,10 @@ hero:
   tagline: Фокусируйтесь на своих целях, новых возможностях и устойчивом росте без стресса и контроля
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: Сделать чекап
       link: /markdown-examples
     - theme: alt
-      text: API Examples
+      text: 30 мин. Демо
       link: /api-examples
 
 features:
