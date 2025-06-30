@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "Модуль роста"
-  text: "Сайт модуля роста"
-  tagline: My great project tagline
+  name: "Расти по своим правилам."
+  text: "Глубокая аналитика и автоматизация бизнеса"
+  tagline: Фокусируйтесь на своих целях, новых возможностях и устойчивом росте без стресса и контроля
   actions:
     - theme: brand
       text: Markdown Examples
