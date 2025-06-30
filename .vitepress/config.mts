@@ -14,7 +14,7 @@ export default defineConfig({
     },
   },
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/ModulRosta/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['style', {}, `
       .VPNavBarTitle .logo {
         height: 32px !important;
@@ -242,7 +242,7 @@ export default defineConfig({
       }
     `]
   ],
-  base: '/ModulRosta/',
+  base: '/',
   description: '© Модуль Роста® 2010 — 2025',
   themeConfig: {
     logo: '/favicon.svg',
