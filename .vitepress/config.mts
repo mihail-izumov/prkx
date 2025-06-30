@@ -5,11 +5,28 @@ import pkg from '../package.json' assert { type: 'json' }
 const { version } = pkg
 
 export default defineConfig({
-  title: '',
-  lang: 'ru-RU',
+  title: 'Модуль Роста® – Расти по своим правилам',
+  locales: {
+    '/': {
+      lang: 'ru-RU',              // HTML <html lang="ru-RU">
+      title: 'Модуль Роста® – Расти по своим правилам',          // Site title
+      description: 'Расти по своим правилам с Модуль Роста®',
+    },
+  },
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/ModulRosta/favicon.svg' }],
+    ['style', {}, `
+      .VPNavBarTitle .logo {
+        height: 32px !important;
+        width: auto !important;
+      }
+    `]
+  ],
   base: '/ModulRosta/',
   description: '© Модуль Роста® 2010 — 2025',
   themeConfig: {
+    logo: '/favicon.svg',
+    siteTitle: false,
     sidebar: {
       '/Чекапы/': { base: '/Чекапы/', items: sidebarCheckup() },
       '/Система/': { base: '/Система/', items: sidebarSystem() },
@@ -20,9 +37,6 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
-        appId:     'YOUR_ALGOLIA_APP_ID',
-        apiKey:    'YOUR_ALGOLIA_SEARCH_API_KEY',
-        indexName: 'YOUR_INDEX_NAME',
         placeholder: 'Поиск…'
       }
     },
