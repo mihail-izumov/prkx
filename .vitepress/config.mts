@@ -58,6 +58,7 @@ export default defineConfig({
         background: var(--vp-c-bg-alt);
         transition: all 0.3s ease;
         white-space: nowrap;
+        margin: 0 4px; /* Add horizontal margin for spacing */
       }
 
       .VPSocialLink[aria-label="register-link"]:hover::after {
@@ -76,6 +77,7 @@ export default defineConfig({
         background: var(--vp-c-brand);
         transition: all 0.3s ease;
         white-space: nowrap;
+        margin: 0 4px; /* Add horizontal margin for spacing */
       }
 
       .VPSocialLink[aria-label="login-link"]:hover::after {
@@ -87,13 +89,15 @@ export default defineConfig({
       @media (max-width: 768px) {
         .VPNavBarSocialLinks {
           min-width: 160px !important;
-          gap: 8px !important;
+          gap: 16px !important; /* Increased gap for better separation */
+          flex-wrap: wrap; /* Allow wrapping if needed */
         }
 
         .VPSocialLink[aria-label="register-link"]::after,
         .VPSocialLink[aria-label="login-link"]::after {
-          padding: 4px 8px;
-          font-size: 13px;
+          padding: 4px 6px; /* Reduced padding for mobile */
+          font-size: 12px; /* Smaller font size for mobile */
+          margin: 0 2px; /* Adjusted margin for mobile */
         }
       }
     `]
