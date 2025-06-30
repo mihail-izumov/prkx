@@ -4,22 +4,24 @@ layout: home
 
 hero:
   name: "Расти по своим правилам."
-  tagline: Фокусируйтесь на своих целях, новых возможностях и устойчивом росте без контроля
+  tagline: Фокусируйтесь на своих целях, новых возможностях и устойчивом росте без контроля вместе с Модулем Роста®
   actions:
     - theme: brand
       text: Сделать чекап
-      link: /markdown-examples
+      link: /checkups/apply
     - theme: alt
       text: 30 мин. Демо
-      link: /api-examples
+      link: /demo
 
 features:
   - title: Чекапы для бизнеса
     details: Глубокая аналитика всего бизнеса за 5 дней. Находим то, что другие упускают.
     link: /checkups
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Система Роста Бизнеса
+    details: Помогаем строить масштабируемую систему устойчивого роста бизнеса с поддержкой Модуля Роста®.
+    link: /system
+  - title: ИИ-автоматизация бизнеса
+    details: Все, что нужно data-driven бизнесу сегодня, чтобы находить глубокие, точные и практичные решения — за минуты, а не недели.
+    link: /about/technology
 ---
 
