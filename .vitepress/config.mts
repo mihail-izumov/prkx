@@ -8,7 +8,7 @@ export default defineConfig({
   title: '',
   lang: 'ru-RU',
   base: '/ModulRosta/',
-  description: 'Сайт модуля роста',
+  description: '© Модуль Роста® 2010 — 2025',
   themeConfig: {
     sidebar: {
       '/Чекапы/': { base: '/Чекапы/', items: sidebarCheckup() },
@@ -41,7 +41,7 @@ export default defineConfig({
         &nbsp;•&nbsp;
         <a href="/about/contacts">Контакты</a>
       `,
-      copyright: '© 2025 Модуль роста'
+      copyright: '© Модуль Роста® 2010 — 2025'
     }
   }
 })
