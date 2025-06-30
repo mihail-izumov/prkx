@@ -14,7 +14,9 @@ hero:
       link: /demo
 
 features:
-  - title: Чекапы для бизнеса
+  - icon:
+      src: /cool-feature-icon.svg
+    title: Чекапы для бизнеса
     details: Глубокая аналитика всего бизнеса за 5 дней. Находим то, что другие упускают.
     link: /checkups
   - title: Система роста бизнеса
