@@ -20,13 +20,89 @@ export default defineConfig({
         height: 32px !important;
         width: auto !important;
       }
+
+      /* Make social links area bigger and allow proper spacing */
+      .VPNavBarSocialLinks {
+        min-width: 200px !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
+      }
+
+      /* Ensure social links don't wrap */
+      .VPNavBar .social-links {
+        white-space: nowrap !important;
+      }
+
+      /* Hide ALL GitHub icons */
+      .VPSocialLink .vpi-social-github {
+        display: none !important;
+      }
+
+      /* Reset default social link styling */
+      .VPSocialLink {
+        width: auto !important;
+        height: auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* Style the register link */
+      .VPSocialLink[aria-label="register-link"]::after {
+        content: "Войти";
+        font-size: 14px;
+        color: var(--vp-c-text-1);
+        padding: 6px 12px;
+        border: 1px solid var(--vp-c-divider);
+        border-radius: 6px;
+        background: var(--vp-c-bg-alt);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .VPSocialLink[aria-label="register-link"]:hover::after {
+        background: var(--vp-c-bg-soft);
+        border-color: var(--vp-c-brand);
+      }
+
+      /* Style the login link */
+      .VPSocialLink[aria-label="login-link"]::after {
+        content: "30 мин. Демо";
+        font-size: 14px;
+        color: white;
+        padding: 6px 16px;
+        border: 1px solid var(--vp-c-brand);
+        border-radius: 6px;
+        background: var(--vp-c-brand);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .VPSocialLink[aria-label="login-link"]:hover::after {
+        background: var(--vp-c-brand-darker, var(--vp-c-brand));
+        transform: translateY(-1px);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .VPNavBarSocialLinks {
+          min-width: 160px !important;
+          gap: 8px !important;
+        }
+
+        .VPSocialLink[aria-label="register-link"]::after,
+        .VPSocialLink[aria-label="login-link"]::after {
+          padding: 4px 8px;
+          font-size: 13px;
+        }
+      }
     `]
   ],
   base: '/ModulRosta/',
   description: '© Модуль Роста® 2010 — 2025',
   themeConfig: {
     logo: '/favicon.svg',
-    siteTitle: false,
+    siteTitle: "Модуль роста",
     sidebar: {
       '/Чекапы/': { base: '/Чекапы/', items: sidebarCheckup() },
       '/Система/': { base: '/Система/', items: sidebarSystem() },
@@ -42,12 +118,8 @@ export default defineConfig({
     },
     nav: nav(),
     socialLinks: [
-      { icon: 'github', link: 'https://app.mplan.sbs' },
-      {
-       icon: 'github',                     // any existing Lucide icon
-       link: 'https://app.mplan.sbs',
-       ariaLabel: 'login-link'            // used by our CSS selector
-     }
+      { icon: 'github', link: '/register', ariaLabel: 'register-link' },
+      { icon: 'github', link: '/login', ariaLabel: 'login-link' }
     ],
     footer: {
       message: `

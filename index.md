@@ -15,7 +15,7 @@ hero:
 
 features:
   - icon:
-      src: /cool-feature-icon.svg
+      src: public/favicon.svg
     title: Чекапы для бизнеса
     details: Глубокая аналитика всего бизнеса за 5 дней. Находим то, что другие упускают.
     link: /checkups
@@ -26,4 +26,3 @@ features:
     details: Повышаем эффективность бизнеса с решениями Модуля Роста®.
     link: /about/technology
 ---
-
