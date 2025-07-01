@@ -1,6 +1,5 @@
 // .vitepress/config.mts
 import { defineConfig, DefaultTheme } from 'vitepress'
-// ← import the whole JSON, then destructure
 import pkg from '../package.json' assert { type: 'json' }
 const { version } = pkg
 
