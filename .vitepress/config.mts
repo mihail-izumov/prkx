@@ -93,11 +93,12 @@ export default defineConfig({
     logo: '/favicon.svg',
     siteTitle: "Модуль роста",
     sidebar: {
-      '/Чекапы/': { base: '/Чекапы/', items: sidebarCheckup() },
-      '/Система/': { base: '/Система/', items: sidebarSystem() },
-      '/Сравнить/': { base: '/Сравнить/', items: sidebarCompare() },
-      '/Компания/': { base: '/Компания/', items: sidebarCompany() },
-      '/Ресурсы/': { base: '/Ресурсы/', items: sidebarResourses() }
+      '/checkup/': {
+        items: sidebarCheckup()
+      },
+      '/system/': {
+        items: sidebarSystem()
+      },
     },
     search: {
       provider: 'local',
@@ -108,10 +109,10 @@ export default defineConfig({
     // Empty nav array - removes navigation from header
     nav: nav(),
     socialLinks: [
-      { icon: 'github', link: '/register', ariaLabel: 'register-link' },
-      { icon: 'github', link: '/login', ariaLabel: 'login-link' }
+      { icon: 'github', link: 'https://app.mplan.sbs', ariaLabel: 'register-link' },
+      { icon: 'github', link: '/apply', ariaLabel: 'login-link' }
     ],
-    
+
   }
 })
 
@@ -119,29 +120,14 @@ export default defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
-      text: 'Чекапы',
-      link: '/Чекапы/markdown-examplescopy.md',
-      activeMatch: '/Чекапы/'
-    },
-    {
-      text: 'Система',
-      link: '/Система/markdown-examplescopy.md',
-      activeMatch: '/Система/'
-    },
-    {
-      text: 'Сравнить',
-      link: '/Сравнить/markdown-examplescopy.md',
-      activeMatch: '/Сравнить/'
+      text: 'Продукты',
+      link: '/checkup/overview',  // без .md
+      activeMatch: '/checkup/'
     },
     {
       text: 'Компания',
-      link: '/Компания/markdown-examplescopy.md',
-      activeMatch: '/Компания/'
-    },
-    {
-      text: 'Ресурсы',
-      link: '/Ресурсы/markdown-examplescopy.md',
-      activeMatch: '/Ресурсы/'
+      link: '/system/overview',
+      activeMatch: '/system/'
     }
   ]
 }
@@ -149,24 +135,12 @@ function nav(): DefaultTheme.NavItem[] {
 function sidebarCheckup(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Introduction',
+      text: 'Продукты',
       collapsed: false,
-      items: [{ text: 'Yoooo', link: '/markdown-examplescopy.md' }]
-    },
-    {
-      text: 'Writing',
-      collapsed: false,
-      items: []
-    },
-    {
-      text: 'Customization',
-      collapsed: false,
-      items: []
-    },
-    {
-      text: 'Experimental',
-      collapsed: false,
-      items: []
+      items: [
+        { text: 'Бизнес-чекап', link: '/checkup/overview.md'},
+        { text: 'Система роста бизнеса', link: '/system/overview.md' }
+      ]
     },
   ]
 }
@@ -174,12 +148,12 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
 function sidebarSystem(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Reference',
+      text: 'Компания',
       items: [
-        {
-          text: 'Default Theme',
-          items: []
-        }
+      { text: 'О нас', link: '/about/overview.md'},
+      { text: 'Метод', link: '/method/overview.md' },
+      { text: 'Технологии', link: '/technology/overview.md' },
+      { text: 'Клиенты и кейсы', link: '/about/clients' }
       ]
     }
   ]
