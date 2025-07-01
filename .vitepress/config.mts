@@ -12,9 +12,9 @@ export default defineConfig({
     },
   },
   head: [
-  ['link', { rel: 'icon', type: 'image/svg+xml', href: '/ModulRosta/favicon.svg' }],
+  ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
   ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
-    ['style', {}, `
+  ['style', {}, `
       .VPNavBarTitle .logo {
         height: 32px !important;
         width: auto !important;
@@ -241,7 +241,7 @@ export default defineConfig({
       }
     `]
   ],
-  base: '/ModulRosta/',
+  base: '/',
   outDir: '.vitepress/dist',
   description: '© Модуль Роста® 2010 — 2025',
   themeConfig: {
