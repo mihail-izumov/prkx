@@ -1,4 +1,3 @@
-// .vitepress/config.mts
 import { defineConfig, DefaultTheme } from 'vitepress'
 import pkg from '../package.json' assert { type: 'json' }
 const { version } = pkg
@@ -13,7 +12,8 @@ export default defineConfig({
     },
   },
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+  ['link', { rel: 'icon', type: 'image/svg+xml', href: '/ModulRosta/favicon.svg' }],
+  ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     ['style', {}, `
       .VPNavBarTitle .logo {
         height: 32px !important;
@@ -241,7 +241,8 @@ export default defineConfig({
       }
     `]
   ],
-  base: '/',
+  base: '/ModulRosta/',
+  outDir: '.vitepress/dist',
   description: '© Модуль Роста® 2010 — 2025',
   themeConfig: {
     logo: '/favicon.svg',
