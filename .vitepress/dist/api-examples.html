@@ -16,6 +16,77 @@
     <link rel="modulepreload" href="/assets/api-examples.md.DRxSHuyk.lean.js">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .VPNavBarTitle .logo {
+        height: 32px !important;
+        width: auto !important;
+      }
+
+      /* Make social links area bigger and allow proper spacing */
+      .VPNavBarSocialLinks {
+        min-width: 200px !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
+      }
+
+      /* Ensure social links don't wrap */
+      .VPNavBar .social-links {
+        white-space: nowrap !important;
+      }
+
+      /* Hide ALL GitHub icons */
+      .VPSocialLink .vpi-social-github {
+        display: none !important;
+      }
+
+      /* Reset default social link styling */
+      .VPSocialLink {
+        width: auto !important;
+        height: auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* Style the register link */
+      .VPSocialLink[aria-label="register-link"]::after {
+        content: "Войти";
+        font-size: 14px;
+        color: var(--vp-c-text-1);
+        padding: 6px 12px;
+        border: 1px solid var(--vp-c-divider);
+        border-radius: 6px;
+        background: var(--vp-c-bg-alt);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        margin: 0 4px; /* Add horizontal margin for spacing */
+      }
+
+      .VPSocialLink[aria-label="register-link"]:hover::after {
+        background: var(--vp-c-bg-soft);
+        border-color: var(--vp-c-brand);
+      }
+
+      /* Style the login link */
+      .VPSocialLink[aria-label="login-link"]::after {
+        content: "30 мин. Демо";
+        font-size: 14px;
+        color: white;
+        padding: 6px 12px;
+        border: 1px solid var(--vp-c-brand);
+        border-radius: 6px;
+        background: var(--vp-c-brand);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        margin: 0 4px; /* Add horizontal margin for spacing */
+      }
+
+      .VPSocialLink[aria-label="login-link"]:hover::after {
+        background: var(--vp-c-brand-darker, var(--vp-c-brand));
+        transform: translateY(-1px);
+        height: 36px;
+      }
+    </style>
     <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
     <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
   </head>
@@ -170,11 +241,7 @@
       &quot;link&quot;: &quot;/login&quot;,
       &quot;ariaLabel&quot;: &quot;login-link&quot;
     }
-  ],
-  &quot;footer&quot;: {
-    &quot;message&quot;: &quot;Модуль Роста® – Расти по своим правилам&quot;,
-    &quot;copyright&quot;: &quot;© Модуль Роста® 2010 — 2025&quot;
-  }
+  ]
 }</pre><h3 id="page-data" tabindex="-1">Page Data <a class="header-anchor" href="#page-data" aria-label="Permalink to &quot;Page Data&quot;">​</a></h3><pre>{
   &quot;title&quot;: &quot;Runtime API Examples&quot;,
   &quot;description&quot;: &quot;&quot;,
@@ -186,8 +253,8 @@
   &quot;filePath&quot;: &quot;api-examples.md&quot;
 }</pre><h3 id="page-frontmatter" tabindex="-1">Page Frontmatter <a class="header-anchor" href="#page-frontmatter" aria-label="Permalink to &quot;Page Frontmatter&quot;">​</a></h3><pre>{
   &quot;outline&quot;: &quot;deep&quot;
-}</pre><h2 id="more" tabindex="-1">More <a class="header-anchor" href="#more" aria-label="Permalink to &quot;More&quot;">​</a></h2><p>Check out the documentation for the <a href="https://vitepress.dev/reference/runtime-api#usedata" target="_blank" rel="noreferrer">full list of runtime APIs</a>.</p></div></div></main><footer class="VPDocFooter" data-v-e6f2a212 data-v-1bcd8184><!--[--><!--]--><!----><!----></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><footer class="VPFooter" data-v-d8b57b2d data-v-566314d4><div class="container" data-v-566314d4><p class="message" data-v-566314d4>Модуль Роста® – Расти по своим правилам</p><p class="copyright" data-v-566314d4>© Модуль Роста® 2010 — 2025</p></div></footer><!--[--><footer class="custom-footer"><div class="footer-content"><div class="footer-nav"><h4>Навигация</h4><div class="footer-nav-links"><a href="/Чекапы/markdown-examplescopy.md">Чекапы</a><a href="/Система/markdown-examplescopy.md">Система</a><a href="/Сравнить/markdown-examplescopy.md">Сравнить</a><a href="/Компания/markdown-examplescopy.md">Компания</a><a href="/Ресурсы/markdown-examplescopy.md">Ресурсы</a></div></div><div class="footer-info"><h4>Информация</h4><div class="footer-links"><a href="/terms">Условия использования</a><a href="/about/privacy">Политика конфиденциальности</a><a href="/about/support">Поддержка</a><a href="/about/faq">Часто задаваемые вопросы</a></div></div><div class="footer-contact"><h4>Контакты</h4><div class="footer-contact-links"><a href="/about/contacts">Связаться с нами</a><a href="mailto:info@modulrosta.ru">info@modulrosta.ru</a><a href="tel:+78001234567">8 (800) 123-45-67</a><a href="/about/office">Адрес офиса</a></div></div></div><div class="footer-copyright"> © Модуль Роста® 2010 — 2025 </div></footer><!--]--></div></div>
-    <script>window.__VP_HASH_MAP__=JSON.parse("{\"api-examples.md\":\"DRxSHuyk\",\"index.md\":\"B-gGe2oK\",\"markdown-examples.md\":\"BwQHRr3O\",\"компания_markdown-examplescopy.md\":\"DDhc1Hjj\",\"ресурсы_markdown-examplescopy.md\":\"BA_2w-Uz\",\"система_markdown-examplescopy.md\":\"CEK_nIWu\",\"сравнить_markdown-examplescopy.md\":\"MvdU3yKG\",\"чекапы_markdown-examplescopy.md\":\"BpYnxuwC\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"© Модуль Роста® 2010 — 2025\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"logo\":\"/favicon.svg\",\"siteTitle\":\"Модуль роста\",\"sidebar\":{\"/Чекапы/\":{\"base\":\"/Чекапы/\",\"items\":[{\"text\":\"Introduction\",\"collapsed\":false,\"items\":[{\"text\":\"Yoooo\",\"link\":\"/markdown-examplescopy.md\"}]},{\"text\":\"Writing\",\"collapsed\":false,\"items\":[]},{\"text\":\"Customization\",\"collapsed\":false,\"items\":[]},{\"text\":\"Experimental\",\"collapsed\":false,\"items\":[]}]},\"/Система/\":{\"base\":\"/Система/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]},\"/Сравнить/\":{\"base\":\"/Сравнить/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]},\"/Компания/\":{\"base\":\"/Компания/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]},\"/Ресурсы/\":{\"base\":\"/Ресурсы/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]}},\"search\":{\"provider\":\"local\",\"options\":{\"placeholder\":\"Поиск…\"}},\"nav\":[{\"text\":\"Чекапы\",\"link\":\"/Чекапы/markdown-examplescopy.md\",\"activeMatch\":\"/Чекапы/\"},{\"text\":\"Система\",\"link\":\"/Система/markdown-examplescopy.md\",\"activeMatch\":\"/Система/\"},{\"text\":\"Сравнить\",\"link\":\"/Сравнить/markdown-examplescopy.md\",\"activeMatch\":\"/Сравнить/\"},{\"text\":\"Компания\",\"link\":\"/Компания/markdown-examplescopy.md\",\"activeMatch\":\"/Компания/\"},{\"text\":\"Ресурсы\",\"link\":\"/Ресурсы/markdown-examplescopy.md\",\"activeMatch\":\"/Ресурсы/\"}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"/register\",\"ariaLabel\":\"register-link\"},{\"icon\":\"github\",\"link\":\"/login\",\"ariaLabel\":\"login-link\"}],\"footer\":{\"message\":\"Модуль Роста® – Расти по своим правилам\",\"copyright\":\"© Модуль Роста® 2010 — 2025\"}},\"locales\":{\"/\":{\"lang\":\"ru-RU\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"Расти по своим правилам с Модуль Роста®\"}},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+}</pre><h2 id="more" tabindex="-1">More <a class="header-anchor" href="#more" aria-label="Permalink to &quot;More&quot;">​</a></h2><p>Check out the documentation for the <a href="https://vitepress.dev/reference/runtime-api#usedata" target="_blank" rel="noreferrer">full list of runtime APIs</a>.</p></div></div></main><footer class="VPDocFooter" data-v-e6f2a212 data-v-1bcd8184><!--[--><!--]--><!----><!----></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><footer class="custom-footer"><div class="footer-content"><div class="footer-nav"><h4>Навигация</h4><div class="footer-nav-links"><a href="/Чекапы/markdown-examplescopy.md">Чекапы</a><a href="/Система/markdown-examplescopy.md">Система</a><a href="/Сравнить/markdown-examplescopy.md">Сравнить</a><a href="/Компания/markdown-examplescopy.md">Компания</a><a href="/Ресурсы/markdown-examplescopy.md">Ресурсы</a></div></div><div class="footer-info"><h4>Информация</h4><div class="footer-links"><a href="/terms">Условия использования</a><a href="/about/privacy">Политика конфиденциальности</a><a href="/about/support">Поддержка</a><a href="/about/faq">Часто задаваемые вопросы</a></div></div><div class="footer-contact"><h4>Контакты</h4><div class="footer-contact-links"><a href="/about/contacts">Связаться с нами</a><a href="mailto:info@modulrosta.ru">info@modulrosta.ru</a><a href="tel:+78001234567">8 (800) 123-45-67</a><a href="/about/office">Адрес офиса</a></div></div></div><div class="footer-copyright"> © Модуль Роста® 2010 — 2025 </div></footer><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"api-examples.md\":\"DRxSHuyk\",\"index.md\":\"B-gGe2oK\",\"markdown-examples.md\":\"BwQHRr3O\",\"компания_markdown-examplescopy.md\":\"DDhc1Hjj\",\"ресурсы_markdown-examplescopy.md\":\"BA_2w-Uz\",\"система_markdown-examplescopy.md\":\"CEK_nIWu\",\"сравнить_markdown-examplescopy.md\":\"MvdU3yKG\",\"чекапы_markdown-examplescopy.md\":\"BpYnxuwC\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"© Модуль Роста® 2010 — 2025\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"logo\":\"/favicon.svg\",\"siteTitle\":\"Модуль роста\",\"sidebar\":{\"/Чекапы/\":{\"base\":\"/Чекапы/\",\"items\":[{\"text\":\"Introduction\",\"collapsed\":false,\"items\":[{\"text\":\"Yoooo\",\"link\":\"/markdown-examplescopy.md\"}]},{\"text\":\"Writing\",\"collapsed\":false,\"items\":[]},{\"text\":\"Customization\",\"collapsed\":false,\"items\":[]},{\"text\":\"Experimental\",\"collapsed\":false,\"items\":[]}]},\"/Система/\":{\"base\":\"/Система/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]},\"/Сравнить/\":{\"base\":\"/Сравнить/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]},\"/Компания/\":{\"base\":\"/Компания/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]},\"/Ресурсы/\":{\"base\":\"/Ресурсы/\",\"items\":[{\"text\":\"Reference\",\"items\":[{\"text\":\"Default Theme\",\"items\":[]}]}]}},\"search\":{\"provider\":\"local\",\"options\":{\"placeholder\":\"Поиск…\"}},\"nav\":[{\"text\":\"Чекапы\",\"link\":\"/Чекапы/markdown-examplescopy.md\",\"activeMatch\":\"/Чекапы/\"},{\"text\":\"Система\",\"link\":\"/Система/markdown-examplescopy.md\",\"activeMatch\":\"/Система/\"},{\"text\":\"Сравнить\",\"link\":\"/Сравнить/markdown-examplescopy.md\",\"activeMatch\":\"/Сравнить/\"},{\"text\":\"Компания\",\"link\":\"/Компания/markdown-examplescopy.md\",\"activeMatch\":\"/Компания/\"},{\"text\":\"Ресурсы\",\"link\":\"/Ресурсы/markdown-examplescopy.md\",\"activeMatch\":\"/Ресурсы/\"}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"/register\",\"ariaLabel\":\"register-link\"},{\"icon\":\"github\",\"link\":\"/login\",\"ariaLabel\":\"login-link\"}]},\"locales\":{\"/\":{\"lang\":\"ru-RU\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"Расти по своим правилам с Модуль Роста®\"}},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
     
   </body>
 </html>

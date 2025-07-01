@@ -13,8 +13,78 @@ export default defineConfig({
   },
   head: [
   ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-  ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }]
+  ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+  ['style', {}, `
+      .VPNavBarTitle .logo {
+        height: 32px !important;
+        width: auto !important;
+      }
 
+      /* Make social links area bigger and allow proper spacing */
+      .VPNavBarSocialLinks {
+        min-width: 200px !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
+      }
+
+      /* Ensure social links don't wrap */
+      .VPNavBar .social-links {
+        white-space: nowrap !important;
+      }
+
+      /* Hide ALL GitHub icons */
+      .VPSocialLink .vpi-social-github {
+        display: none !important;
+      }
+
+      /* Reset default social link styling */
+      .VPSocialLink {
+        width: auto !important;
+        height: auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* Style the register link */
+      .VPSocialLink[aria-label="register-link"]::after {
+        content: "Войти";
+        font-size: 14px;
+        color: var(--vp-c-text-1);
+        padding: 6px 12px;
+        border: 1px solid var(--vp-c-divider);
+        border-radius: 6px;
+        background: var(--vp-c-bg-alt);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        margin: 0 4px; /* Add horizontal margin for spacing */
+      }
+
+      .VPSocialLink[aria-label="register-link"]:hover::after {
+        background: var(--vp-c-bg-soft);
+        border-color: var(--vp-c-brand);
+      }
+
+      /* Style the login link */
+      .VPSocialLink[aria-label="login-link"]::after {
+        content: "30 мин. Демо";
+        font-size: 14px;
+        color: white;
+        padding: 6px 12px;
+        border: 1px solid var(--vp-c-brand);
+        border-radius: 6px;
+        background: var(--vp-c-brand);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        margin: 0 4px; /* Add horizontal margin for spacing */
+      }
+
+      .VPSocialLink[aria-label="login-link"]:hover::after {
+        background: var(--vp-c-brand-darker, var(--vp-c-brand));
+        transform: translateY(-1px);
+        height: 36px;
+      }
+    `]
   ],
   base: '/',
   outDir: '.vitepress/dist',
@@ -41,10 +111,7 @@ export default defineConfig({
       { icon: 'github', link: '/register', ariaLabel: 'register-link' },
       { icon: 'github', link: '/login', ariaLabel: 'login-link' }
     ],
-    footer: {
-      message: 'Модуль Роста® – Расти по своим правилам',
-      copyright: '© Модуль Роста® 2010 — 2025'
-    }
+    
   }
 })
 
