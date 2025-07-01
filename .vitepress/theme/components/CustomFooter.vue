@@ -2,33 +2,37 @@
   <footer class="custom-footer">
     <div class="footer-content">
       <div class="footer-nav">
-        <h4>Навигация</h4>
+        <h4>Компания</h4>
         <div class="footer-nav-links">
-          <a href="/Чекапы/markdown-examplescopy.md">Чекапы</a>
-          <a href="/Система/markdown-examplescopy.md">Система</a>
-          <a href="/Сравнить/markdown-examplescopy.md">Сравнить</a>
-          <a href="/Компания/markdown-examplescopy.md">Компания</a>
-          <a href="/Ресурсы/markdown-examplescopy.md">Ресурсы</a>
+          <a href="/about/overview">О нас</a>
+          <a href="/about/mission">Мы, Растём</a>
+          <a href="/about/clients">Клиенты</a>
+          <a href="/about/contacts">Контакт</a>
         </div>
       </div>
       <div class="footer-info">
-        <h4>Информация</h4>
+        <h4>Технология</h4>
         <div class="footer-links">
-          <a href="/terms">Условия использования</a>
-          <a href="/about/privacy">Политика конфиденциальности</a>
-          <a href="/about/support">Поддержка</a>
-          <a href="/about/faq">Часто задаваемые вопросы</a>
+          <a href="/technology/overview">Обзор</a>
+          <a href="/technology/analytics-360">Глубокая бизнес-аналитика</a>
+          <a href="/technology/wordpower">Речевая аналитика</a>
+          <a href="/technology/anna">ИИ-ассистент продаж</a>
+          <a href="/technology/radar">Радар</a>
         </div>
       </div>
       <div class="footer-contact">
-        <h4>Контакты</h4>
+        <h4>Ресурсы</h4>
         <div class="footer-contact-links">
-          <a href="/about/contacts">Связаться с нами</a>
-          <a href="mailto:info@modulrosta.ru">info@modulrosta.ru</a>
-          <a href="tel:+78001234567">8 (800) 123-45-67</a>
-          <a href="/about/office">Адрес офиса</a>
+          <a href="/journal">Журнал</a>
+          <a href="/journal/contents/cases">Кейсы</a>
+          <a href="t.me/runscale">Телеграм-канал</a>
+          <a href="https://kto1.mave.digital">Подкаст</a>
         </div>
       </div>
+    </div>
+    <div class="footer-additional-links">
+      <a href="/support">Поддержка</a>
+      <a href="/terms">Условия использования</a>
     </div>
     <div class="footer-copyright">
       © Модуль Роста® 2010 — 2025

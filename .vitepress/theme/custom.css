@@ -156,3 +156,21 @@
     border-right: none;
   }
 }
+.footer-additional-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 20px;
+}
+
+.footer-additional-links a {
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-additional-links a:hover {
+  color: var(--vp-c-brand);
+}
