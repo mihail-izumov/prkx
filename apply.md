@@ -24,11 +24,15 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   
   <div class="form-group checkbox-group">
     <input type="checkbox" id="consent" name="consent" required>
-    <label for="consent">Я согласен(а) на обработку персональных данных</label>
+    <label for="consent">
+      Нажимая на кнопку, вы соглашаетесь с 
+      <a href="/terms/policy" target="_blank" class="policy-link">политикой конфиденциальности</a>, 
+      <a href="/terms/privacy" target="_blank" class="policy-link">согласием на обработку персональных данных</a>
+    </label>
   </div>
   
   <button type="submit" class="submit-btn" disabled>
-    Отправить
+    Отправить →
   </button>
 </form>
 
@@ -63,13 +67,24 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 .checkbox-group {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   margin-bottom: 20px;
 }
 
 .checkbox-group input {
+  margin-top: 3px;
   width: auto;
+}
+
+.checkbox-group label {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.policy-link {
+  color: #4CAF50;
+  text-decoration: underline;
 }
 
 .submit-btn {
@@ -161,6 +176,8 @@ export default {
           _subject: 'Новая заявка с сайта'
         };
         
+        // Очищаем форму сразу
+        form.reset();
         successMessage.style.display = 'flex';
         submitBtn.disabled = true;
         
@@ -173,11 +190,7 @@ export default {
           body: JSON.stringify(formData)
         })
         .then(response => {
-          if (response.ok) {
-            form.reset();
-          } else {
-            throw new Error('Ошибка сервера');
-          }
+          if (!response.ok) throw new Error('Ошибка сервера');
         })
         .catch(error => {
           console.error('Error:', error);
@@ -185,10 +198,11 @@ export default {
           window.location.href = `mailto:theorchestramanco@gmail.com?subject=Заявка&body=${mailtoBody}`;
         })
         .finally(() => {
+          // Скрываем сообщение через 15 секунд
           setTimeout(() => {
             successMessage.style.display = 'none';
             checkFormValidity();
-          }, 5000);
+          }, 15000);
         });
       });
       
