@@ -64,7 +64,7 @@ export default defineConfig({
       footer.innerHTML = createFooterContent();
       if (window.location.pathname !== '/') {
         footer.style.position = 'relative';
-        footer.style.bottom = '125px';    // регулируйте величину
+        footer.style.bottom = '85px';    // регулируйте величину
         footer.style.zIndex = '10';   // регулируйте величину по вкусу
         footer.style.marginBottom = '-125px';
       } else {
