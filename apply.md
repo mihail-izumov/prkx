@@ -33,7 +33,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 </form>
 
 <div id="successMessage" class="success-message" style="display: none;">
-  ✅ Заявка успешно отправлена. Скоро свяжемся.
+  ✓ Заявка успешно отправлена. Скоро свяжемся.
 </div>
 
 <style>
@@ -96,12 +96,21 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 .success-message {
   margin-top: 15px;
-  padding: 10px;
-  background-color: #e6f7e6;
-  border: 1px solid #a5d6a7;
-  border-radius: 4px;
-  color: #2e7d32;
-  font-weight: bold;
+  color: white; /* Белый текст */
+  font-weight: normal; /* Нежирный */
+  font-size: 16px;
+  background: none; /* Убрали фон */
+  border: none; /* Убрали обводку */
+  padding: 0; /* Убрали отступы */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.success-message::before {
+  content: "✓";
+  color: #4CAF50; /* Зеленая галочка */
+  font-size: 18px;
 }
 </style>
 
@@ -152,7 +161,7 @@ export default {
         const data = Object.fromEntries(formData.entries());
         
         // Показываем сообщение сразу
-        successMessage.style.display = 'block';
+        successMessage.style.display = 'flex';
         form.reset();
         submitBtn.disabled = true;
         
