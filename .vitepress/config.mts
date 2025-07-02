@@ -48,9 +48,9 @@ export default defineConfig({
         html += '<a href="' + link.href + '">' + link.text + '</a>';
       });
       html += '</div></div>';
-      html += '<div style="margin-top: 40px; text-align: center;">';
+      html += '<div style="margin-top: 24px; text-align: center;">';
       html += '<div style="color: white; font-size: 14px;">Расти по своим правилам</div>';
-      html += '<div style="color: var(--vp-c-text-2); margin-top: 2px; font-size: 14px; text-align: center;">© Модуль Роста® 2010 — 2025</div>';
+      html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© Модуль Роста® 2010 — 2025</div>';
       return html;
     }
 
@@ -62,6 +62,7 @@ export default defineConfig({
         document.body.appendChild(footer);
       }
       footer.innerHTML = createFooterContent();
+      footer.style.paddingBottom = '30px';
     }
 
     function updateApplyLinkTarget() {
