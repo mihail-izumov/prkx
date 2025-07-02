@@ -85,7 +85,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   transition: opacity 0.3s;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   opacity: 0.9;
 }
 
@@ -112,53 +112,58 @@ if (typeof window !== 'undefined') {
     const successMessage = document.getElementById('successMessage');
     const submitBtn = form.querySelector('.submit-btn');
     const inputs = form.querySelectorAll('input[required]');
-    const checkbox = form.querySelector('input[type="checkbox"]');
+    const checkbox = document.getElementById('consent');
 
+    // Проверка валидности всей формы
     function checkFormValidity() {
-      let allValid = true;
+      let isFormValid = true;
       
       inputs.forEach(input => {
-        if (!input.value.trim()) {
-          allValid = false;
+        if (input.type === 'checkbox') {
+          if (!input.checked) isFormValid = false;
+        } else {
+          if (!input.value.trim()) isFormValid = false;
         }
       });
       
-      if (!checkbox.checked) {
-        allValid = false;
-      }
-      
-      submitBtn.disabled = !allValid;
+      submitBtn.disabled = !isFormValid;
     }
 
-    // Проверяем форму при каждом изменении
+    // Проверка при каждом изменении
     inputs.forEach(input => {
       input.addEventListener('input', checkFormValidity);
     });
     
     checkbox.addEventListener('change', checkFormValidity);
 
+    // Инициализация проверки при загрузке
+    checkFormValidity();
+
     if (form && successMessage) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Собираем данные формы
-        const formData = new FormData(form);
-        const data = {
-          name: formData.get('name'),
-          phone: formData.get('phone'),
-          email: formData.get('email')
+        // Сбор данных формы
+        const formData = {
+          name: form.querySelector('#name').value,
+          phone: form.querySelector('#phone').value,
+          email: form.querySelector('#email').value,
+          consent: checkbox.checked
         };
         
-        // Отправка на email через FormSubmit.co
+        // Отправка данных через FormSubmit
         fetch('https://formsubmit.co/ajax/theorchestramanco@gmail.com', {
           method: 'POST',
-          headers: {
+          headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify(formData)
         })
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
         .then(data => {
           successMessage.style.display = 'block';
           form.reset();
