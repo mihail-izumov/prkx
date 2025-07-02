@@ -29,7 +29,7 @@ export default defineConfig({
     (function() {
     function createFooterContent() {
       const links = [
-        { text: 'Журнал', href: '/journal' },
+        { text: 'Журнал', href: '/journal/contents/cases' },
         { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
         { text: 'Поддержка', href: '/support' },
         { text: 'Условия использования', href: '/terms' },
@@ -429,10 +429,12 @@ function sidebarSystem(): DefaultTheme.SidebarItem[] {
 function sidebarJournal(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Система роста бизнеса',
+      text: 'Журнал',
       collapsed: false,
       items: [
-        { text: 'Обзор', link: '/system/overview' }
+        { text: 'Кейсы', link: '/journal/contents/cases' },
+        { text: 'Статьи', link: '/journal/contents/articles' },
+        { text: 'Экспертиза', link: '/journal/contents/expertise' }
       ]
     }
   ]
