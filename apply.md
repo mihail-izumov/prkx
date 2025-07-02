@@ -2,35 +2,7 @@
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
-## Syntax Highlighting
-
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
+<script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src="https://forms.yandex.ru/u/6864f06b84227c484c9d0ca7?iframe=1" frameborder="0" name="ya-form-6864f06b84227c484c9d0ca7" width="650"></iframe>
 
 ## Custom Containers
 
