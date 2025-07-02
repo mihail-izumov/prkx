@@ -6,7 +6,6 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 ## Custom Containers
 
-```html
 <form id="myForm" class="custom-form">
   <div class="form-group">
     <label for="name">Имя:</label>
@@ -213,6 +212,5 @@ document.addEventListener('DOMContentLoaded', function() {
   validateForm();
 });
 </script>
-```
 
 Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
