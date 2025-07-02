@@ -62,6 +62,11 @@ export default defineConfig({
         document.body.appendChild(footer);
       }
       footer.innerHTML = createFooterContent();
+      if (window.location.pathname !== '/') {
+        footer.style.marginTop = '-125px';  // регулируйте величину по вкусу
+      } else {
+        footer.style.marginTop = '';       // сбрасываем, чтобы на главной всё было стандартно
+      }
       footer.style.paddingBottom = '30px';
     }
 
