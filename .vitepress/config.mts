@@ -11,9 +11,72 @@ export default defineConfig({
       description: 'Расти по своим правилам с Модуль Роста®',
     },
   },
+
+  // Добавляем хук для обработки данных страницы
+  transformPageData(pageData) {
+    return pageData
+  },
+
+  // Добавляем buildEnd хук для модификации HTML после сборки
+  buildEnd(siteConfig) {
+    // Этот хук выполняется после сборки
+  },
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    ['script', {}, `
+      // Агрессивный подход - заменяем footer после полной загрузки
+      (function() {
+        function replaceFooter() {
+          const footer = document.querySelector('.VPFooter .message');
+          if (footer && footer.textContent.includes('Журнал')) {
+            const links = [
+              { text: 'Журнал', href: '/journal' },
+              { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
+              { text: 'Поддержка', href: '/support' },
+              { text: 'Условия использования', href: '/terms' },
+              { text: 'Контакт', href: '/about/contacts' }
+            ];
+
+            let html = '<div class="custom-footer-links"><div class="footer-row">';
+            links.slice(0, 3).forEach((link, i) => {
+              if (i > 0) html += '<span class="dot-separator">•</span>';
+              html += '<a href="' + link.href + '"' + (link.target ? ' target="' + link.target + '" rel="noopener noreferrer"' : '') + '>' + link.text + '</a>';
+            });
+            html += '</div><div class="footer-row">';
+            links.slice(3).forEach((link, i) => {
+              if (i > 0) html += '<span class="dot-separator">•</span>';
+              html += '<a href="' + link.href + '">' + link.text + '</a>';
+            });
+            html += '</div></div>';
+
+            footer.innerHTML = html;
+          }
+        }
+
+        // Множественные попытки
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', replaceFooter);
+        } else {
+          replaceFooter();
+        }
+
+        window.addEventListener('load', replaceFooter);
+        setTimeout(replaceFooter, 1000);
+        setTimeout(replaceFooter, 2000);
+
+        // Для SPA
+        let lastUrl = location.href;
+        new MutationObserver(() => {
+          const url = location.href;
+          if (url !== lastUrl) {
+            lastUrl = url;
+            setTimeout(replaceFooter, 100);
+          }
+        }).observe(document, { subtree: true, childList: true });
+      })();
+    `],
     ['style', {}, `
       .VPNavBarTitle .logo {
         height: 32px !important;
@@ -84,7 +147,47 @@ export default defineConfig({
         transform: translateY(-1px);
       }
 
-      
+      /* Custom footer styles */
+      .custom-footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        align-items: center;
+      }
+
+      .footer-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .footer-row a {
+        color: var(--vp-c-text-2);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-row a:hover {
+        color: var(--vp-c-brand);
+      }
+
+      .dot-separator {
+        color: var(--vp-c-text-3);
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        .footer-row {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .dot-separator {
+          display: none;
+        }
+      }
     `]
   ],
   base: '/',
@@ -129,24 +232,9 @@ export default defineConfig({
       { icon: 'github', link: '/apply', ariaLabel: 'apply-link' }
     ],
 
-    // Footer configuration
+    // Footer configuration - простой текст для production
     footer: {
-      message: `
-        <div class="custom-footer-links">
-          <div class="footer-row">
-            <a href="/journal">Журнал</a>
-            <span class="dot-separator">•</span>
-            <a href="https://t.me/runscale" target="_blank" rel="noopener noreferrer">Телеграм-канал</a>
-            <span class="dot-separator">•</span>
-            <a href="/support">Поддержка</a>
-          </div>
-          <div class="footer-row">
-            <a href="/terms">Условия использования</a>
-            <span class="dot-separator">•</span>
-            <a href="/about/contacts">Контакт</a>
-          </div>
-        </div>
-      `,
+      message: 'Журнал  •  Телеграм-канал  •  Поддержка  •  Условия использования  •  Контакт',
       copyright: '© Модуль Роста® 2010 — 2025'
     },
   }
