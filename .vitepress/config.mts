@@ -280,7 +280,8 @@ function nav(): DefaultTheme.NavItem[] {
       text: 'Продукты',
       items: [
         { text: 'Бизнес-чекап', link: '/checkup/overview' },
-        { text: 'Система роста бизнеса', link: '/system/overview' }
+        { text: 'Система роста бизнеса', link: '/system/overview' },
+        { text: 'ИИ-автоматизация', link: '/ai' }
       ]
     },
     {
