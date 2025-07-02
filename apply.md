@@ -14,7 +14,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   
   <div class="form-group">
     <label for="phone">Телефон:</label>
-    <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+7 (XXX) XXX-XX-XX">
+    <input type="tel" id="phone" name="phone" class="form-input" required>
   </div>
   
   <div class="form-group">
@@ -23,7 +23,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   </div>
   
   <div class="form-group checkbox-group">
-    <input type="checkbox" id="consent" name="consent" required checked>
+    <input type="checkbox" id="consent" name="consent" required>
     <label for="consent">Я согласен(а) на обработку персональных данных</label>
   </div>
   
@@ -33,13 +33,13 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 </form>
 
 <div id="successMessage" class="success-message" style="display: none;">
-  ✓ Заявка успешно отправлена. Скоро свяжемся.
+  ✅ Заявка успешно отправлена. Скоро свяжемся.
 </div>
 
 <style>
 .custom-form {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0;
   padding: 20px;
   background-color: #000000;
   border-radius: 5px;
@@ -53,34 +53,39 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 .form-input {
   width: 100%;
   padding: 10px;
+  box-sizing: border-box;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  background-color: #111;
-  color: #ffffff;
   font-size: 16px;
-  box-sizing: border-box;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .checkbox-group {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 20px 0;
+  margin-bottom: 20px;
+}
+
+.checkbox-group input {
+  width: auto;
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 12px;
-  background: white;
-  color: black;
-  font-weight: bold;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
   transition: opacity 0.3s;
 }
 
-.submit-btn:hover:not(:disabled) {
+.submit-btn:hover {
   opacity: 0.9;
 }
 
@@ -90,101 +95,98 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 }
 
 .success-message {
-  display: none;
   margin-top: 15px;
-  color: white;
-  font-weight: normal;
-  font-size: 16px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.success-message::before {
-  content: "✓";
-  color: #4CAF50;
-  font-size: 18px;
+  padding: 10px;
+  background-color: #e6f7e6;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  color: #2e7d32;
+  font-weight: bold;
 }
 </style>
 
 <script>
-if (typeof window !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('myForm');
-    if (!form) return;
-
-    const successMessage = document.getElementById('successMessage');
-    const submitBtn = form.querySelector('.submit-btn');
-    const requiredInputs = form.querySelectorAll('input[required]');
-    const checkbox = document.getElementById('consent');
-
-    // Проверка валидности формы
-    function checkFormValidity() {
-      let allValid = true;
+// Используем export default для совместимости с VitePress
+export default {
+  mounted() {
+    this.initForm();
+  },
+  methods: {
+    initForm() {
+      const form = document.getElementById('myForm');
+      if (!form) return;
       
-      requiredInputs.forEach(input => {
-        if (!input.value.trim()) allValid = false;
-      });
+      const successMessage = document.getElementById('successMessage');
+      const submitBtn = form.querySelector('.submit-btn');
+      const requiredInputs = form.querySelectorAll('input[required]');
+      const checkbox = form.querySelector('input[type="checkbox"]');
       
-      if (!checkbox.checked) allValid = false;
-      
-      submitBtn.disabled = !allValid;
-    }
-
-    // Назначаем обработчики событий
-    requiredInputs.forEach(input => {
-      input.addEventListener('input', checkFormValidity);
-    });
-    
-    checkbox.addEventListener('change', checkFormValidity);
-
-    // Обработка отправки формы
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Показываем сообщение только после валидации
-      if (submitBtn.disabled) return;
-      
-      // Скрываем форму
-      form.style.display = 'none';
-      
-      // Показываем сообщение
-      successMessage.style.display = 'flex';
-      
-      // Собираем данные
-      const formData = {
-        name: form.name.value,
-        phone: form.phone.value,
-        email: form.email.value,
-        consent: checkbox.checked ? 'Да' : 'Нет'
+      // Функция проверки валидности формы
+      const checkFormValidity = () => {
+        let allValid = true;
+        
+        requiredInputs.forEach(input => {
+          if (!input.value.trim()) allValid = false;
+        });
+        
+        if (checkbox && !checkbox.checked) allValid = false;
+        
+        submitBtn.disabled = !allValid;
       };
-
-      // Отправка данных
-      fetch('https://formsubmit.co/ajax/baf883ec9b4c490d575eb60b7a4266d4', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .catch(error => {
-        console.error('Ошибка отправки:', error);
-      })
-      .finally(() => {
-        // Через 5 секунд сбрасываем форму
-        setTimeout(() => {
-          form.reset();
-          form.style.display = 'block';
-          successMessage.style.display = 'none';
-          submitBtn.disabled = true;
-        }, 5000);
+      
+      // Проверяем форму при каждом изменении
+      requiredInputs.forEach(input => {
+        input.addEventListener('input', checkFormValidity);
       });
-    });
-
-    // Инициализация проверки
-    checkFormValidity();
-  });
+      
+      if (checkbox) {
+        checkbox.addEventListener('change', checkFormValidity);
+      }
+      
+      // Обработка отправки формы
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Собираем данные формы
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Показываем сообщение сразу
+        successMessage.style.display = 'block';
+        form.reset();
+        submitBtn.disabled = true;
+        
+        // Отправка на email через FormSubmit.co
+        fetch('https://formsubmit.co/ajax/theorchestramanco@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Network error');
+          return response.json();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Резервная отправка через mailto
+          const mailtoBody = `Имя: ${data.name}%0AТелефон: ${data.phone}%0AEmail: ${data.email}%0AСогласие: ${data.consent ? 'Да' : 'Нет'}`;
+          window.location.href = `mailto:theorchestramanco@gmail.com?subject=Заявка&body=${mailtoBody}`;
+        })
+        .finally(() => {
+          // Скрываем сообщение через 5 секунд
+          setTimeout(() => {
+            successMessage.style.display = 'none';
+          }, 5000);
+        });
+      });
+      
+      // Инициализируем проверку
+      checkFormValidity();
+    }
+  }
 }
 </script>
 
