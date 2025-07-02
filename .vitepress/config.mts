@@ -63,11 +63,17 @@ export default defineConfig({
       }
       footer.innerHTML = createFooterContent();
       if (window.location.pathname !== '/') {
-        footer.style.marginTop = '-125px';  // регулируйте величину по вкусу
+        footer.style.position = 'relative';
+        footer.style.bottom = '125px';    // регулируйте величину
+        footer.style.zIndex = '10';   // регулируйте величину по вкусу
+        footer.style.marginBottom = '-125px';
       } else {
-        footer.style.marginTop = '';       // сбрасываем, чтобы на главной всё было стандартно
+        footer.style.position = '';
+        footer.style.bottom = '';
+        footer.style.zIndex = '';       // сбрасываем, чтобы на главной всё было стандартно
+        footer.style.paddingBottom = '30px';
       }
-      footer.style.paddingBottom = '30px';
+
     }
 
     function updateApplyLinkTarget() {
