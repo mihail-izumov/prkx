@@ -6,47 +6,63 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 ## Custom Containers
 
-<div id="yandex-form-container" class="custom-form">
+<div class="custom-form">
   <iframe 
-    src="https://forms.yandex.ru/cloud/ВАШ_ID_ФОРМЫ/?iframe=1" 
+    src="https://forms.yandex.ru/cloud/ВАШ_ID_ФОРМЫ/?embedded=true" 
     frameborder="0" 
-    style="width:100%;height:500px;border:none;"
-    class="yandex-form-iframe">
+    name="yandex-form"
+    style="width:100%;height:600px;border:none;background:transparent;"
+    loading="lazy">
   </iframe>
 </div>
 
 <style>
 .custom-form {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   background-color: #f5f5f5;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.yandex-form-iframe {
-  background: transparent;
-  min-height: 500px;
+/* Для мобильных устройств */
+@media (max-width: 600px) {
+  .custom-form {
+    padding: 15px;
+    margin: 10px;
+  }
 }
 </style>
 
 <script>
-// Обернем код в проверку на выполнение в браузере
 if (typeof window !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', function() {
-    // Код для отслеживания отправки формы (если нужно)
-    window.addEventListener('message', function(e) {
-      if (e.data.type === 'yandex-form-submit') {
-        console.log('Форма отправлена');
-      }
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    // Проверка загрузки iframe (опционально)
+    const iframe = document.querySelector('iframe[name="yandex-form"]');
     
-    // Дополнительные настройки iframe при необходимости
-    const iframe = document.querySelector('.yandex-form-iframe');
     iframe.onload = function() {
-      // Можно добавить обработку загрузки iframe
+      console.log('Форма Яндекс загружена');
+      // Здесь можно добавить обработку успешной загрузки
     };
+    
+    // Резервный вариант на случай проблем
+    setTimeout(() => {
+      if (!iframe.contentDocument || 
+          iframe.contentDocument.body.innerHTML === '') {
+        console.warn('Форма не загрузилась, показываем ссылку');
+        iframe.style.display = 'none';
+        const link = document.createElement('a');
+        link.href = 'https://forms.yandex.ru/cloud/ВАШ_ID_ФОРМЫ/';
+        link.textContent = 'Открыть форму на Яндекс.Формах';
+        link.style.display = 'block';
+        link.style.textAlign = 'center';
+        link.style.padding = '20px';
+        link.style.color = '#4CAF50';
+        link.style.fontWeight = 'bold';
+        iframe.parentNode.appendChild(link);
+      }
+    }, 5000);
   });
 }
 </script>
