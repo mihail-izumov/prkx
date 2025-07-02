@@ -26,31 +26,42 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     ['script', {}, `
-  (function() {
+    (function() {
+    function createFooterContent() {
+      const links = [
+        { text: 'Журнал', href: '/journal' },
+        { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
+        { text: 'Поддержка', href: '/support' },
+        { text: 'Условия использования', href: '/terms' },
+        { text: 'Контакт', href: '/about/contacts' }
+      ];
+
+      let html = '<hr style="border: 0; border-top: 1px solid var(--vp-c-divider); margin: 24px 0;">';
+      html += '<div class="custom-footer-links"><div class="footer-row">';
+      links.slice(0, 3).forEach((link, i) => {
+        if (i > 0) html += '<span class="dot-separator">•</span>';
+        html += '<a href="' + link.href + '"' + (link.target ? ' target="' + link.target + '" rel="noopener noreferrer"' : '') + '>' + link.text + '</a>';
+      });
+      html += '</div><div class="footer-row">';
+      links.slice(3).forEach((link, i) => {
+        if (i > 0) html += '<span class="dot-separator">•</span>';
+        html += '<a href="' + link.href + '">' + link.text + '</a>';
+      });
+      html += '</div></div>';
+      html += '<div style="margin-top: 40px; text-align: center;">';
+      html += '<div style="color: white; font-size: 14px;">Расти по своим правилам</div>';
+      html += '<div style="color: var(--vp-c-text-2); margin-top: 2px; font-size: 14px; text-align: center;">© Модуль Роста® 2010 — 2025</div>';
+      return html;
+    }
+
     function replaceFooter() {
-      const footer = document.querySelector('.VPFooter .message');
-      if (footer && footer.textContent.includes('Журнал')) {
-        const links = [
-          { text: 'Журнал', href: '/journal' },
-          { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
-          { text: 'Поддержка', href: '/support' },
-          { text: 'Условия использования', href: '/terms' },
-          { text: 'Контакт', href: '/about/contacts' }
-        ];
-        let html = '<div class="custom-footer-links"><div class="footer-row">';
-        links.slice(0, 3).forEach((link, i) => {
-          if (i > 0) html += '<span class="dot-separator">•</span>';
-          html += '<a href="' + link.href + '"' + (link.target ? ' target="' + link.target + '" rel="noopener noreferrer"' : '') + '>' + link.text + '</a>';
-        });
-        html += '</div><div class="footer-row">';
-        links.slice(3).forEach((link, i) => {
-          if (i > 0) html += '<span class="dot-separator">•</span>';
-          html += '<a href="' + link.href + '">' + link.text + '</a>';
-        });
-        html += '</div></div>';
-        html += '<div style="color: white; margin-top: 32px; margin-bottom: 0px; font-size: 14px;">Расти по своим правилам</div>';
-        footer.innerHTML = html;
+      let footer = document.querySelector('.VPFooter');
+      if (!footer) {
+        footer = document.createElement('footer');
+        footer.className = 'VPFooter';
+        document.body.appendChild(footer);
       }
+      footer.innerHTML = createFooterContent();
     }
 
     function updateApplyLinkTarget() {
@@ -288,10 +299,10 @@ export default defineConfig({
     ],
 
     // Footer configuration - простой текст для production
-    footer: {
-      message: 'Журнал  •  Телеграм-канал  •  Поддержка  •  Условия использования  •  Контакт',
-      copyright: '© Модуль Роста® 2010 — 2025'
-    },
+    //footer: {
+    //  message: 'Журнал  •  Телеграм-канал  •  Поддержка  •  Условия использования  •  Контакт',
+    //  copyright: '© Модуль Роста® 2010 — 2025'
+    //},
   }
 })
 
