@@ -78,116 +78,149 @@ export default defineConfig({
       })();
     `],
     ['style', {}, `
-      .VPNavBarTitle .logo {
-        height: 32px !important;
-        width: auto !important;
-      }
+    .VPNavBarTitle .logo {
+  height: 32px !important;
+  width: auto !important;
+}
 
-      /* Make social links area bigger and allow proper spacing */
-      .VPNavBarSocialLinks {
-        min-width: 280px !important;
-        justify-content: flex-end !important;
-        gap: 12px !important;
-      }
+/* Make social links area bigger and allow proper spacing */
+.VPNavBarSocialLinks {
+  min-width: 280px !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+}
 
-      /* Ensure social links don't wrap */
-      .VPNavBar .social-links {
-        white-space: nowrap !important;
-      }
+/* Ensure social links don't wrap */
+.VPNavBar .social-links {
+  white-space: nowrap !important;
+}
 
-      /* Hide ALL GitHub icons */
-      .VPSocialLink .vpi-social-github {
-        display: none !important;
-      }
+/* Hide ALL GitHub icons */
+.VPSocialLink .vpi-social-github {
+  display: none !important;
+}
 
-      /* Reset default social link styling */
-      .VPSocialLink {
-        width: auto !important;
-        height: auto !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
+/* Reset default social link styling */
+.VPSocialLink {
+  width: auto !important;
+  height: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 
-      /* Style the Войти link (transparent button) */
-      .VPSocialLink[aria-label="login-link"]::after {
-        content: "Войти";
-        font-size: 14px;
-        color: var(--vp-c-text-1);
-        padding: 6px 12px;
-        border: 1px solid var(--vp-c-divider);
-        border-radius: 6px;
-        background: transparent;
-        transition: all 0.3s ease;
-        white-space: nowrap;
-        margin: 0 4px;
-      }
+/* Style the Войти link (transparent button) */
+.VPSocialLink[aria-label="login-link"]::after {
+  content: "Войти";
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  padding: 6px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  margin: 0 4px;
+}
 
-      .VPSocialLink[aria-label="login-link"]:hover::after {
-        background: var(--vp-c-bg-soft);
-        border-color: var(--vp-c-brand);
-      }
+.VPSocialLink[aria-label="login-link"]:hover::after {
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-brand);
+}
 
-      /* Style the Расти с планом link (full button) */
-      .VPSocialLink[aria-label="apply-link"]::after {
-        content: "Расти с планом";
-        font-size: 14px;
-        color: white;
-        padding: 6px 12px;
-        border: 1px solid var(--vp-c-brand);
-        border-radius: 6px;
-        background: var(--vp-c-brand);
-        transition: all 0.3s ease;
-        white-space: nowrap;
-        margin: 0 4px;
-      }
+/* Style the Расти с планом link (full button) */
+.VPSocialLink[aria-label="apply-link"]::after {
+  content: "Расти с планом";
+  font-size: 14px;
+  color: white;
+  padding: 6px 12px;
+  border: 1px solid var(--vp-c-brand);
+  border-radius: 6px;
+  background: var(--vp-c-brand);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  margin: 0 4px;
+}
 
-      .VPSocialLink[aria-label="apply-link"]:hover::after {
-        background: var(--vp-c-brand-darker, var(--vp-c-brand));
-        transform: translateY(-1px);
-      }
+.VPSocialLink[aria-label="apply-link"]:hover::after {
+  background: var(--vp-c-brand-darker, var(--vp-c-brand));
+  transform: translateY(-1px);
+}
 
-      /* Custom footer styles */
-      .custom-footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
-        align-items: center;
-      }
+/* Custom footer styles */
+.custom-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
 
-      .footer-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+.footer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-      .footer-row a {
-        color: var(--vp-c-text-2);
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
+.footer-row a {
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-      .footer-row a:hover {
-        color: var(--vp-c-brand);
-      }
+.footer-row a:hover {
+  color: var(--vp-c-brand);
+}
 
-      .dot-separator {
-        color: var(--vp-c-text-3);
-        font-weight: bold;
-      }
+.dot-separator {
+  color: var(--vp-c-text-3);
+  font-weight: bold;
+}
 
-      @media (max-width: 768px) {
-        .footer-row {
-          flex-direction: column;
-          gap: 8px;
-        }
+/* Увеличенный отступ между ссылками и копирайтом */
+.VPFooter .copyright {
+  margin-top: 32px !important;
+}
 
-        .dot-separator {
-          display: none;
-        }
-      }
+@media (max-width: 768px) {
+  /* Кнопки занимают всю ширину на мобилках и в разных строках */
+  .VPNavBarSocialLinks {
+    width: 100% !important;
+    min-width: 100% !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .VPSocialLink {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .VPSocialLink[aria-label="login-link"]::after,
+  .VPSocialLink[aria-label="apply-link"]::after {
+    width: 100% !important;
+    display: block !important;
+    text-align: center;
+    padding: 10px 12px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Вертикальное расположение ссылок в футере */
+  .footer-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dot-separator {
+    display: none;
+  }
+}
     `]
   ],
   base: '/',
