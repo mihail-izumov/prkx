@@ -6,144 +6,80 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 ## Custom Containers
 
-<form id="myForm" class="custom-form">
-  <div class="form-group">
-    <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" class="form-input">
-  </div>
-  
-  <div class="form-group">
-    <label for="phone">Телефон:</label>
-    <input type="tel" id="phone" name="phone" class="form-input" placeholder="+79123456789">
-  </div>
-  
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" class="form-input">
-  </div>
-  
-  <div class="form-group checkbox-group">
-    <input type="checkbox" id="consent" name="consent" checked>
-    <label for="consent">Согласен на обработку данных</label>
-  </div>
-  
-  <button type="submit" class="submit-btn">
-    Отправить
-  </button>
-</form>
-
-<div id="successMessage" class="success-message">
-  ✅ Заявка успешно отправлена. Скоро свяжемся.
+<div id="yandex-form-container" class="custom-form">
+  <iframe 
+    src="https://forms.yandex.ru/cloud/ВАШ_ID_ФОРМЫ/?iframe=1" 
+    frameborder="0" 
+    style="width:100%;height:500px;border:none;"
+    class="yandex-form-iframe">
+  </iframe>
 </div>
 
 <style>
+/* Ваши стили с небольшими адаптациями */
 .custom-form {
   max-width: 500px;
-  margin: 0;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #000000;
+  background-color: #f5f5f5;
   border-radius: 5px;
-  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.form-group {
+.yandex-form-iframe {
+  background: transparent;
+}
+
+/* Стилизация элементов внутри iframe (работает не всегда) */
+.yandex-form-iframe .form-group {
   margin-bottom: 15px;
 }
 
-.form-input {
+.yandex-form-iframe .form-input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #cccccc;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: #111111;
-  color: #ffffff;
+  font-size: 16px;
 }
 
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 15px;
-}
-
-.submit-btn {
-  background-color: #ffffff;
-  color: #000000;
+.yandex-form-iframe .submit-btn {
+  background-color: #4CAF50;
+  color: white;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   width: 100%;
-  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-.success-message {
-  display: none;
+.yandex-form-iframe .submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Для сообщения об успешной отправке */
+.yandex-form-iframe .success-message {
   margin-top: 15px;
   padding: 10px;
-  background-color: #e8f5e9;
+  background-color: #e6f7e6;
   border: 1px solid #a5d6a7;
   border-radius: 4px;
   color: #2e7d32;
   font-weight: bold;
+  text-align: center;
 }
 </style>
 
 <script>
-if (typeof window !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('myForm');
-    const successMessage = document.getElementById('successMessage');
-    
-    // Функция для показа сообщения
-    function showSuccess() {
-      successMessage.style.display = 'block';
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-      }, 5000);
-    }
-    
-    // Отправка через EmailJS
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // 1. Собираем данные
-      const formData = {
-        name: this.name.value,
-        phone: this.phone.value,
-        email: this.email.value,
-        consent: this.consent.checked ? 'Да' : 'Нет',
-        date: new Date().toLocaleString()
-      };
-      
-      // 2. Вариант A: Отправка через EmailJS (требует настройки)
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
-        .then(() => {
-          showSuccess();
-          form.reset();
-        }, (err) => {
-          console.error('Ошибка:', err);
-          // 3. Вариант B: Резервная отправка через Formspree
-          backupSubmit(formData);
-        });
-      
-      // 4. Показываем сообщение в любом случае
-      showSuccess();
-    });
-    
-    // Резервный метод отправки
-    function backupSubmit(data) {
-      fetch('https://formspree.io/f/theorchestramanco@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }).catch(e => console.error(e));
-    }
-  });
-}
+// Для отслеживания отправки формы (если нужно)
+window.addEventListener('message', function(e) {
+  if (e.data.type === 'yandex-form-submit') {
+    console.log('Форма отправлена');
+    // Здесь можно добавить свои действия после отправки
+  }
+});
 </script>
 
 Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
