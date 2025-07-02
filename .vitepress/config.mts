@@ -64,23 +64,42 @@ export default defineConfig({
       footer.innerHTML = createFooterContent();
       if (window.location.pathname !== '/') {
         footer.style.position = 'relative';
-        footer.style.bottom = '85px';    // регулируйте величину
-        footer.style.zIndex = '10';   // регулируйте величину по вкусу
-        footer.style.marginBottom = '-125px';
+        footer.style.bottom = '70px';    // уменьшили отступ с 85px до 40px
+        footer.style.zIndex = '10';
+        footer.style.marginBottom = '-70px';  // уменьшили с -125px до -60px
       } else {
         footer.style.position = '';
         footer.style.bottom = '';
-        footer.style.zIndex = '';       // сбрасываем, чтобы на главной всё было стандартно
+        footer.style.zIndex = '';
         footer.style.paddingBottom = '30px';
       }
 
     }
 
     function updateApplyLinkTarget() {
-      const applyLink = document.querySelector('.VPSocialLink[aria-label="apply-link"]');
-      if (applyLink) {
+      const applyLinks = document.querySelectorAll('.VPSocialLink[aria-label="apply-link"]');
+      applyLinks.forEach(applyLink => {
+        applyLink.href = '/apply';
         applyLink.setAttribute('target', '_self');
-      }
+        applyLink.removeAttribute('rel');
+
+        // Создаем новую ссылку для замены
+        const newLink = document.createElement('a');
+        newLink.href = '/apply';
+        newLink.className = applyLink.className;
+        newLink.setAttribute('aria-label', 'apply-link');
+        newLink.setAttribute('target', '_self');
+
+        // Копируем все атрибуты кроме href и target
+        Array.from(applyLink.attributes).forEach(attr => {
+          if (attr.name !== 'href' && attr.name !== 'target' && attr.name !== 'rel') {
+            newLink.setAttribute(attr.name, attr.value);
+          }
+        });
+
+        // Заменяем элемент
+        applyLink.parentNode.replaceChild(newLink, applyLink);
+      });
     }
 
     if (document.readyState === 'loading') {
@@ -300,7 +319,24 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
-        placeholder: 'Поиск…'
+        placeholder: 'Поиск…',
+        translations: {
+          button: {
+            buttonText: 'Поиск',
+            buttonAriaLabel: 'Поиск'
+          },
+          modal: {
+            displayDetails: 'Показать подробные результаты',
+            resetButtonTitle: 'Сбросить поиск',
+            backButtonTitle: 'Закрыть поиск',
+            noResultsText: 'Результаты не найдены для',
+            footer: {
+              selectText: 'выбрать',
+              navigateText: 'навигация',
+              closeText: 'закрыть'
+            }
+          }
+        }
       }
     },
 
@@ -310,7 +346,7 @@ export default defineConfig({
     // Social links (header buttons)
     socialLinks: [
       { icon: 'github', link: 'https://app.mplan.sbs', ariaLabel: 'login-link' },
-      { icon: 'github', link: '/apply', ariaLabel: 'apply-link' }
+      { icon: 'github', link: '/apply', ariaLabel: 'apply-link', target: '_self'  }
     ],
 
     // Footer configuration - простой текст для production
