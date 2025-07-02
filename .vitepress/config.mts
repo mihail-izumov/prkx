@@ -26,58 +26,76 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     ['script', {}, `
-      // Агрессивный подход - заменяем footer после полной загрузки
-      (function() {
-        function replaceFooter() {
-          const footer = document.querySelector('.VPFooter .message');
-          if (footer && footer.textContent.includes('Журнал')) {
-            const links = [
-              { text: 'Журнал', href: '/journal' },
-              { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
-              { text: 'Поддержка', href: '/support' },
-              { text: 'Условия использования', href: '/terms' },
-              { text: 'Контакт', href: '/about/contacts' }
-            ];
+  (function() {
+    function replaceFooter() {
+      const footer = document.querySelector('.VPFooter .message');
+      if (footer && footer.textContent.includes('Журнал')) {
+        const links = [
+          { text: 'Журнал', href: '/journal' },
+          { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
+          { text: 'Поддержка', href: '/support' },
+          { text: 'Условия использования', href: '/terms' },
+          { text: 'Контакт', href: '/about/contacts' }
+        ];
+        let html = '<div class="custom-footer-links"><div class="footer-row">';
+        links.slice(0, 3).forEach((link, i) => {
+          if (i > 0) html += '<span class="dot-separator">•</span>';
+          html += '<a href="' + link.href + '"' + (link.target ? ' target="' + link.target + '" rel="noopener noreferrer"' : '') + '>' + link.text + '</a>';
+        });
+        html += '</div><div class="footer-row">';
+        links.slice(3).forEach((link, i) => {
+          if (i > 0) html += '<span class="dot-separator">•</span>';
+          html += '<a href="' + link.href + '">' + link.text + '</a>';
+        });
+        html += '</div></div>';
+        html += '<div style="color: white; margin-top: 32px; margin-bottom: 0px; font-size: 14px;">Расти по своим правилам</div>';
+        footer.innerHTML = html;
+      }
+    }
 
-            let html = '<div class="custom-footer-links"><div class="footer-row">';
-            links.slice(0, 3).forEach((link, i) => {
-              if (i > 0) html += '<span class="dot-separator">•</span>';
-              html += '<a href="' + link.href + '"' + (link.target ? ' target="' + link.target + '" rel="noopener noreferrer"' : '') + '>' + link.text + '</a>';
-            });
-            html += '</div><div class="footer-row">';
-            links.slice(3).forEach((link, i) => {
-              if (i > 0) html += '<span class="dot-separator">•</span>';
-              html += '<a href="' + link.href + '">' + link.text + '</a>';
-            });
-            html += '</div></div>';
-html += '<div style="color: white; margin-top: 32px; margin-bottom: 0px; font-size: 14px;">Расти по своим правилам</div>';
+    function updateApplyLinkTarget() {
+      const applyLink = document.querySelector('.VPSocialLink[aria-label="apply-link"]');
+      if (applyLink) {
+        applyLink.setAttribute('target', '_self');
+      }
+    }
 
-footer.innerHTML = html;
-          }
-        }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        replaceFooter();
+        updateApplyLinkTarget();
+      });
+    } else {
+      replaceFooter();
+      updateApplyLinkTarget();
+    }
 
-        // Множественные попытки
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', replaceFooter);
-        } else {
+    window.addEventListener('load', () => {
+      replaceFooter();
+      updateApplyLinkTarget();
+    });
+    setTimeout(() => {
+      replaceFooter();
+      updateApplyLinkTarget();
+    }, 1000);
+    setTimeout(() => {
+      replaceFooter();
+      updateApplyLinkTarget();
+    }, 2000);
+
+    let lastUrl = location.href;
+    new MutationObserver(() => {
+      const url = location.href;
+      if (url !== lastUrl) {
+        lastUrl = url;
+        setTimeout(() => {
           replaceFooter();
-        }
-
-        window.addEventListener('load', replaceFooter);
-        setTimeout(replaceFooter, 1000);
-        setTimeout(replaceFooter, 2000);
-
-        // Для SPA
-        let lastUrl = location.href;
-        new MutationObserver(() => {
-          const url = location.href;
-          if (url !== lastUrl) {
-            lastUrl = url;
-            setTimeout(replaceFooter, 100);
-          }
-        }).observe(document, { subtree: true, childList: true });
-      })();
-    `],
+          updateApplyLinkTarget();
+        }, 100);
+      }
+    }).observe(document, { subtree: true, childList: true });
+  })();
+`],
     ['style', {}, `
     :root {
   --vp-c-brand-1: #2e6b5e;
