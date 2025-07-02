@@ -50,8 +50,9 @@ export default defineConfig({
               html += '<a href="' + link.href + '">' + link.text + '</a>';
             });
             html += '</div></div>';
+html += '<div style="color: white; margin-top: 16px; margin-bottom: 8px; font-size: 14px;">Расти по своим правилам</div>';
 
-            footer.innerHTML = html;
+footer.innerHTML = html;
           }
         }
 
@@ -182,7 +183,7 @@ export default defineConfig({
 }
 
 .VPFooter .copyright {
-  margin-top: 32px !important;
+  margin-top: 8px !important;
 }
 
 /* Мобильные стили */
