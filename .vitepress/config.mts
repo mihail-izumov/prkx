@@ -291,6 +291,9 @@ export default defineConfig({
       },
       '/system/': {
         items: sidebarSystem()
+      },
+      '/journal/': {
+        items: sidebarJournal()
       }
     },
 
@@ -326,7 +329,7 @@ function nav(): DefaultTheme.NavItem[] {
       items: [
         { text: 'Бизнес-чекап', link: '/checkup/overview' },
         { text: 'Система роста бизнеса', link: '/system/overview' },
-        { text: 'ИИ-автоматизация', link: '/ai' }
+        { text: 'ИИ-автоматизация', link: '/ai/ai' }
       ]
     },
     {
@@ -345,12 +348,13 @@ function nav(): DefaultTheme.NavItem[] {
 function sidebarAbout(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'О компании',
+      text: 'Компания',
       collapsed: false,
       items: [
         { text: 'О нас', link: '/about/overview' },
-        { text: 'Клиенты и кейсы', link: '/about/clients' },
-        { text: 'Контакты', link: '/about/contacts' }
+        { text: 'Мы, Растем', link: '/about/mission' },
+        { text: 'Клиенты', link: '/about/clients' },
+        { text: 'Контакт', link: '/about/contacts' }
       ]
     }
   ]
@@ -363,7 +367,11 @@ function sidebarMethod(): DefaultTheme.SidebarItem[] {
       text: 'Метод',
       collapsed: false,
       items: [
-        { text: 'Методология', link: '/method/overview' }
+        { text: 'Обзор', link: '/method/overview' },
+        { text: '3 принципа здоровой аналитики', link: '/method/different' },
+        { text: 'Метод эффективной трансформации', link: '/method/transform' },
+        { text: 'Фрейм-менеджмент', link: '/method/frames' },
+        { text: 'Сравнить', link: '/method/pro-et-contra' }
       ]
     }
   ]
@@ -376,7 +384,13 @@ function sidebarTechnology(): DefaultTheme.SidebarItem[] {
       text: 'Технологии',
       collapsed: false,
       items: [
-        { text: 'Обзор', link: '/technology/overview' }
+        { text: 'Обзор', link: '/technology/overview' },
+        { text: 'Живая база знаний', link: '/technology/datahub' },
+        { text: 'Глубокая бизнес-аналитика', link: '/technology/analytics-360' },
+        { text: 'Речевая аналитика', link: '/technology/wordpower' },
+        { text: 'Дистанционные стратегические сессии', link: '/technology/vision-now' },
+        { text: 'ИИ-ассистент продаж', link: '/technology/anna' },
+        { text: 'Радар', link: '/technology/radar' }
       ]
     }
   ]
@@ -389,7 +403,10 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
       text: 'Бизнес-чекап',
       collapsed: false,
       items: [
-        { text: 'Обзор', link: '/checkup/overview' }
+        { text: 'Обзор', link: '/checkup/overview' },
+        { text: 'Подготовительный чекап', link: '/checkup/go-no-go' },
+        { text: 'Глубокий чекап', link: '/checkup/deep' },
+        { text: 'Платите за движение', link: '/checkup/pay-as-you-go' }
       ]
     }
   ]
@@ -397,6 +414,19 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
 
 // Sidebar for System section
 function sidebarSystem(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Система роста бизнеса',
+      collapsed: false,
+      items: [
+        { text: 'Обзор', link: '/system/overview' },
+        { text: '12-нед. интенсив', link: '/system/12-weeks' }
+      ]
+    }
+  ]
+}
+
+function sidebarJournal(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: 'Система роста бизнеса',
