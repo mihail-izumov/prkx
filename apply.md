@@ -9,28 +9,22 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 <form id="myForm" class="custom-form">
   <div class="form-group">
     <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" class="form-input" required minlength="2">
-    <div class="error-message" id="name-error"></div>
+    <input type="text" id="name" name="name" class="form-input" required>
   </div>
   
   <div class="form-group">
     <label for="phone">Телефон:</label>
-    <input type="tel" id="phone" name="phone" class="form-input" 
-           pattern="^(\+7|8)\d{10}$" required
-           placeholder="+79123456789 или 89123456789">
-    <div class="error-message" id="phone-error"></div>
+    <input type="tel" id="phone" name="phone" class="form-input" required>
   </div>
   
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" class="form-input" required>
-    <div class="error-message" id="email-error"></div>
   </div>
   
   <div class="form-group checkbox-group">
     <input type="checkbox" id="consent" name="consent" required>
     <label for="consent">Я согласен(а) на обработку персональных данных</label>
-    <div class="error-message" id="consent-error"></div>
   </div>
   
   <button type="submit" class="submit-btn" disabled>
@@ -38,12 +32,11 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   </button>
 </form>
 
-<div id="successMessage" class="success-message">
+<div id="successMessage" class="success-message" style="display: none;">
   ✅ Заявка успешно отправлена. Скоро свяжемся.
 </div>
 
 <style>
-/* Ваши стили остаются без изменений */
 .custom-form {
   max-width: 500px;
   margin: 0;
@@ -52,78 +45,135 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   border-radius: 5px;
   color: #ffffff;
 }
-/* ... остальные стили ... */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+.submit-btn {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.success-message {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e6f7e6;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  color: #2e7d32;
+  font-weight: bold;
+}
 </style>
 
 <script>
-// Оборачиваем код в проверку на выполнение в браузере
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('myForm');
-    if (!form) return;
-    
-    const submitBtn = form.querySelector('.submit-btn');
     const successMessage = document.getElementById('successMessage');
-    
-    // Функция валидации
-    function validateForm() {
-      let isValid = true;
+    const submitBtn = form.querySelector('.submit-btn');
+    const inputs = form.querySelectorAll('input[required]');
+    const checkbox = form.querySelector('input[type="checkbox"]');
+
+    function checkFormValidity() {
+      let allValid = true;
       
-      // Проверка имени
-      const name = document.getElementById('name');
-      if (name.value.trim().length < 2) {
-        isValid = false;
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          allValid = false;
+        }
+      });
+      
+      if (!checkbox.checked) {
+        allValid = false;
       }
       
-      // Проверка телефона
-      const phone = document.getElementById('phone');
-      if (!/^(\+7|8)\d{10}$/.test(phone.value)) {
-        isValid = false;
-      }
-      
-      // Проверка email
-      const email = document.getElementById('email');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        isValid = false;
-      }
-      
-      // Проверка согласия
-      const consent = document.getElementById('consent');
-      if (!consent.checked) {
-        isValid = false;
-      }
-      
-      submitBtn.disabled = !isValid;
-      return isValid;
+      submitBtn.disabled = !allValid;
     }
-    
-    // Обработчики событий
-    form.querySelectorAll('input').forEach(input => {
-      input.addEventListener('input', validateForm);
+
+    // Проверяем форму при каждом изменении
+    inputs.forEach(input => {
+      input.addEventListener('input', checkFormValidity);
     });
     
-    document.getElementById('consent').addEventListener('change', validateForm);
-    
-    // Обработка телефона
-    document.getElementById('phone').addEventListener('input', function(e) {
-      this.value = this.value.replace(/[^0-9+]/g, '');
-      validateForm();
-    });
-    
-    // Отправка формы
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      if (validateForm()) {
-        successMessage.style.display = 'block';
-        form.reset();
-        submitBtn.disabled = true;
+    checkbox.addEventListener('change', checkFormValidity);
+
+    if (form && successMessage) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        setTimeout(() => {
-          successMessage.style.display = 'none';
-        }, 5000);
-      }
-    });
+        // Собираем данные формы
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email')
+        };
+        
+        // Отправка на email через FormSubmit.co
+        fetch('https://formsubmit.co/ajax/theorchestramanco@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+          successMessage.style.display = 'block';
+          form.reset();
+          submitBtn.disabled = true;
+          
+          setTimeout(() => {
+            successMessage.style.display = 'none';
+          }, 5000);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
+        });
+      });
+    }
   });
 }
 </script>
