@@ -113,88 +113,77 @@ export default {
   },
   methods: {
     initForm() {
-      // Проверка выполнения в браузере
-      if (typeof document === 'undefined') return;
-      
       const form = document.getElementById('myForm');
       if (!form) return;
       
       const successMessage = document.getElementById('successMessage');
       const submitBtn = form.querySelector('.submit-btn');
-      const requiredInputs = Array.from(form.querySelectorAll('input[required]'));
-      const checkbox = document.getElementById('consent');
+      const requiredInputs = form.querySelectorAll('input[required]');
+      const checkbox = form.querySelector('input[type="checkbox"]');
       
       // Функция проверки валидности формы
       const checkFormValidity = () => {
-        const nameValid = document.getElementById('name').value.trim() !== '';
-        const phoneValid = document.getElementById('phone').value.trim() !== '';
-        const emailValid = document.getElementById('email').value.trim() !== '';
-        const consentValid = checkbox.checked;
+        let allValid = true;
         
-        submitBtn.disabled = !(nameValid && phoneValid && emailValid && consentValid);
+        requiredInputs.forEach(input => {
+          if (!input.value.trim()) allValid = false;
+        });
+        
+        if (checkbox && !checkbox.checked) allValid = false;
+        
+        submitBtn.disabled = !allValid;
       };
       
-      // Назначение обработчиков событий
+      // Проверяем форму при каждом изменении
       requiredInputs.forEach(input => {
         input.addEventListener('input', checkFormValidity);
       });
       
-      checkbox.addEventListener('change', checkFormValidity);
+      if (checkbox) {
+        checkbox.addEventListener('change', checkFormValidity);
+      }
       
       // Обработка отправки формы
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Проверка перед отправкой
-        if (submitBtn.disabled) return;
+        // Собираем данные формы
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
         
-        // Сбор данных формы
-        const formData = {
-          name: form.name.value,
-          phone: form.phone.value,
-          email: form.email.value,
-          consent: checkbox.checked ? 'Да' : 'Нет',
-          _subject: 'Новая заявка с сайта'
-        };
-        
-        // 1. Показать сообщение об отправке
+        // Показываем сообщение сразу
         successMessage.style.display = 'block';
+        form.reset();
         submitBtn.disabled = true;
         
-        // 2. Отправка через FormSubmit.co (с использованием токена)
-        fetch('https://formsubmit.co/ajax/ВАШ_ТОКЕН', {
+        // Отправка через Formspree
+        fetch('https://formspree.io/f/mdkzjopz', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
           },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(data)
         })
         .then(response => {
-          if (response.ok) {
-            // Успешная отправка
-            form.reset();
-          } else {
-            throw new Error('Ошибка сервера');
-          }
+          if (!response.ok) throw new Error('Ошибка сети');
+          return response.json();
         })
         .catch(error => {
-          console.error('FormSubmit error:', error);
-          
-          // 3. Резервная отправка через mailto
-          const mailtoBody = `Имя: ${formData.name}%0AТелефон: ${formData.phone}%0AEmail: ${formData.email}%0AСогласие: ${formData.consent}`;
+          console.error('Error:', error);
+          // Резервная отправка через mailto
+          const mailtoBody = `Имя: ${data.name}%0AТелефон: ${data.phone}%0AEmail: ${data.email}%0AСогласие: ${data.consent ? 'Да' : 'Нет'}`;
           window.location.href = `mailto:theorchestramanco@gmail.com?subject=Заявка&body=${mailtoBody}`;
         })
         .finally(() => {
-          // 4. Скрыть сообщение через 5 секунд
+          // Скрываем сообщение через 5 секунд
           setTimeout(() => {
             successMessage.style.display = 'none';
-            checkFormValidity(); // Перепроверить состояние формы
           }, 5000);
         });
       });
       
-      // Инициализация проверки
+      // Инициализируем проверку
       checkFormValidity();
     }
   }
