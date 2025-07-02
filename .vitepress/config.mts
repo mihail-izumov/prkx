@@ -78,29 +78,26 @@ export default defineConfig({
       })();
     `],
     ['style', {}, `
-    .VPNavBarTitle .logo {
+    /* Логотип */
+.VPNavBarTitle .logo {
   height: 32px !important;
   width: auto !important;
 }
 
-/* Make social links area bigger and allow proper spacing */
+/* Контейнер социальных ссылок - добавляем правильный отступ слева */
 .VPNavBarSocialLinks {
   min-width: 280px !important;
   justify-content: flex-end !important;
-  gap: 12px !important;
+  gap: 20px !important;
+  margin-left: 0px !important; /* Уменьшенный отступ от переключателя темы */
 }
 
-/* Ensure social links don't wrap */
-.VPNavBar .social-links {
-  white-space: nowrap !important;
-}
-
-/* Hide ALL GitHub icons */
+/* Убираем все иконки GitHub */
 .VPSocialLink .vpi-social-github {
   display: none !important;
 }
 
-/* Reset default social link styling */
+/* Базовые стили для социальных ссылок */
 .VPSocialLink {
   width: auto !important;
   height: auto !important;
@@ -109,7 +106,7 @@ export default defineConfig({
   justify-content: center !important;
 }
 
-/* Style the Войти link (transparent button) */
+/* Кнопка "Войти" (прозрачная) */
 .VPSocialLink[aria-label="login-link"]::after {
   content: "Войти";
   font-size: 14px;
@@ -128,7 +125,7 @@ export default defineConfig({
   border-color: var(--vp-c-brand);
 }
 
-/* Style the Расти с планом link (full button) */
+/* Кнопка "Расти с планом" (заполненная) */
 .VPSocialLink[aria-label="apply-link"]::after {
   content: "Расти с планом";
   font-size: 14px;
@@ -147,7 +144,7 @@ export default defineConfig({
   transform: translateY(-1px);
 }
 
-/* Custom footer styles */
+/* Стили для футера */
 .custom-footer-links {
   display: flex;
   flex-direction: column;
@@ -178,13 +175,12 @@ export default defineConfig({
   font-weight: bold;
 }
 
-/* Увеличенный отступ между ссылками и копирайтом */
 .VPFooter .copyright {
   margin-top: 32px !important;
 }
 
+/* Мобильные стили */
 @media (max-width: 768px) {
-  /* Кнопки занимают всю ширину на мобилках и в разных строках */
   .VPNavBarSocialLinks {
     width: 100% !important;
     min-width: 100% !important;
@@ -192,6 +188,7 @@ export default defineConfig({
     gap: 8px !important;
     padding: 0 16px !important;
     box-sizing: border-box !important;
+    margin-left: 8 !important;
   }
 
   .VPSocialLink {
@@ -207,11 +204,11 @@ export default defineConfig({
     display: block !important;
     text-align: center;
     padding: 10px 12px !important;
-    margin: 0 !important;
+    margin: 10 !important;
     box-sizing: border-box !important;
   }
 
-  /* Вертикальное расположение ссылок в футере */
+  /* Футер на мобильных */
   .footer-row {
     flex-direction: column;
     gap: 8px;
