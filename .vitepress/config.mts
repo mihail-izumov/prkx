@@ -84,64 +84,7 @@ export default defineConfig({
         transform: translateY(-1px);
       }
 
-      /* Footer styles */
-      .VPDocFooter {
-        display: none !important;
-      }
-
-      .custom-footer-links {
-        text-align: center !important;
-        padding: 40px 20px 20px !important;
-        border-top: 1px solid var(--vp-c-divider) !important;
-        margin-top: 40px !important;
-      }
-
-      .footer-row {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-bottom: 16px !important;
-        flex-wrap: wrap !important;
-      }
-
-      .footer-row a {
-        color: var(--vp-c-text-2) !important;
-        text-decoration: none !important;
-        font-size: 14px !important;
-        transition: color 0.3s ease !important;
-        white-space: nowrap !important;
-      }
-
-      .footer-row a:hover {
-        color: var(--vp-c-brand) !important;
-      }
-
-      .dot-separator {
-        color: var(--vp-c-text-3) !important;
-        margin: 0 16px !important;
-        font-size: 14px !important;
-        user-select: none !important;
-      }
-
-      .footer-copyright {
-        margin-top: 32px !important;
-        padding-top: 20px !important;
-        border-top: 1px solid var(--vp-c-divider-light) !important;
-        color: var(--vp-c-text-3) !important;
-        font-size: 12px !important;
-        text-align: center !important;
-      }
-
-      @media (max-width: 768px) {
-        .footer-row {
-          flex-direction: column !important;
-          gap: 12px !important;
-        }
-
-        .dot-separator {
-          display: none !important;
-        }
-      }
+      
     `]
   ],
   base: '/',
