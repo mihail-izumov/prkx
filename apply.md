@@ -6,33 +6,28 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 ## Custom Containers
 
-<form id="myForm" class="custom-form">
+<form id="myForm" class="custom-form" onsubmit="return false">
   <div class="form-group">
     <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" class="form-input" required>
+    <input type="text" id="name" name="name" class="form-input">
   </div>
   
   <div class="form-group">
     <label for="phone">Телефон:</label>
-    <input type="tel" id="phone" name="phone" class="form-input" required>
+    <input type="tel" id="phone" name="phone" class="form-input">
   </div>
   
   <div class="form-group">
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" class="form-input" required>
+    <input type="email" id="email" name="email" class="form-input">
   </div>
   
-  <div class="form-group checkbox-group">
-    <input type="checkbox" id="consent" name="consent" required>
-    <label for="consent">Я согласен(а) на обработку персональных данных</label>
-  </div>
-  
-  <button type="submit" class="submit-btn" disabled>
+  <button type="submit" class="submit-btn">
     Отправить
   </button>
 </form>
 
-<div id="successMessage" class="success-message" style="display: none;">
+<div id="successMessage" class="success-message">
   ✅ Заявка успешно отправлена. Скоро свяжемся.
 </div>
 
@@ -53,127 +48,70 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 .form-input {
   width: 100%;
   padding: 10px;
-  box-sizing: border-box;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  font-size: 16px;
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.checkbox-group input {
-  width: auto;
+  background-color: #111;
+  color: white;
 }
 
 .submit-btn {
-  background-color: #ffffff;
-  color: #000000;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+  background: white;
+  color: black;
+  padding: 12px;
   width: 100%;
   font-weight: bold;
-  transition: opacity 0.3s;
-}
-
-.submit-btn:hover {
-  opacity: 0.9;
-}
-
-.submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  border: none;
+  cursor: pointer;
 }
 
 .success-message {
+  display: none;
   margin-top: 15px;
   padding: 10px;
-  background-color: #e6f7e6;
-  border: 1px solid #a5d6a7;
-  border-radius: 4px;
+  background: #e8f5e9;
   color: #2e7d32;
-  font-weight: bold;
+  border-radius: 4px;
 }
 </style>
 
 <script>
 if (typeof window !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('myForm');
-    const successMessage = document.getElementById('successMessage');
-    const submitBtn = form.querySelector('.submit-btn');
-    const inputs = form.querySelectorAll('input[required]');
-    const checkbox = form.querySelector('input[type="checkbox"]');
-
-    function checkFormValidity() {
-      let allValid = true;
-      
-      inputs.forEach(input => {
-        if (!input.value.trim()) {
-          allValid = false;
-        }
-      });
-      
-      if (!checkbox.checked) {
-        allValid = false;
-      }
-      
-      submitBtn.disabled = !allValid;
-    }
-
-    // Проверяем форму при каждом изменении
-    inputs.forEach(input => {
-      input.addEventListener('input', checkFormValidity);
-    });
+    const success = document.getElementById('successMessage');
     
-    checkbox.addEventListener('change', checkFormValidity);
-
-    if (form && successMessage) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Собираем данные формы
-        const formData = new FormData(form);
-        const data = {
-          name: formData.get('name'),
-          phone: formData.get('phone'),
-          email: formData.get('email')
-        };
-        
-        // Отправка на email через FormSubmit.co
-        fetch('https://formsubmit.co/ajax/theorchestramanco@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-          successMessage.style.display = 'block';
-          form.reset();
-          submitBtn.disabled = true;
-          
-          setTimeout(() => {
-            successMessage.style.display = 'none';
-          }, 5000);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
-        });
-      });
-    }
+    form.addEventListener('submit', () => {
+      // Собираем данные без валидации
+      const data = {
+        name: form.name.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        date: new Date().toLocaleString()
+      };
+      
+      // Отправляем письмо (варианты):
+      
+      // 1. Через mailto (просто откроет почтовый клиент)
+      const mailto = `mailto:theorchestramanco@gmail.com?subject=Заявка&body=${
+        encodeURIComponent(JSON.stringify(data, null, 2))
+      }`;
+      window.location.href = mailto;
+      
+      // 2. Через FormSubmit (работает без сервера)
+      fetch('https://formsubmit.co/ajax/theorchestramanco@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(e => console.error(e));
+      
+      // Показываем сообщение
+      success.style.display = 'block';
+      form.reset();
+      
+      setTimeout(() => {
+        success.style.display = 'none';
+      }, 5000);
+    });
   });
 }
 </script>
