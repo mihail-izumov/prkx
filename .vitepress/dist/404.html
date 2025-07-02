@@ -6,10 +6,10 @@
     <title>404 | Модуль Роста® – Расти по своим правилам</title>
     <meta name="description" content="Not Found">
     <meta name="generator" content="VitePress v1.6.3">
-    <link rel="preload stylesheet" href="/assets/style.BbqoEmWC.css" as="style">
+    <link rel="preload stylesheet" href="/assets/style.qp7qGaqN.css" as="style">
     <link rel="preload stylesheet" href="/vp-icons.css" as="style">
     
-    <script type="module" src="/assets/app.CiJC3QsC.js"></script>
+    <script type="module" src="/assets/app.DTDpzpzG.js"></script>
     <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
 
       /* Make social links area bigger and allow proper spacing */
       .VPNavBarSocialLinks {
-        min-width: 200px !important;
+        min-width: 280px !important;
         justify-content: flex-end !important;
         gap: 12px !important;
       }
@@ -45,28 +45,28 @@
         justify-content: center !important;
       }
 
-      /* Style the register link */
-      .VPSocialLink[aria-label="register-link"]::after {
+      /* Style the Войти link (transparent button) */
+      .VPSocialLink[aria-label="login-link"]::after {
         content: "Войти";
         font-size: 14px;
         color: var(--vp-c-text-1);
         padding: 6px 12px;
         border: 1px solid var(--vp-c-divider);
         border-radius: 6px;
-        background: var(--vp-c-bg-alt);
+        background: transparent;
         transition: all 0.3s ease;
         white-space: nowrap;
-        margin: 0 4px; /* Add horizontal margin for spacing */
+        margin: 0 4px;
       }
 
-      .VPSocialLink[aria-label="register-link"]:hover::after {
+      .VPSocialLink[aria-label="login-link"]:hover::after {
         background: var(--vp-c-bg-soft);
         border-color: var(--vp-c-brand);
       }
 
-      /* Style the login link */
-      .VPSocialLink[aria-label="login-link"]::after {
-        content: "30 мин. Демо";
+      /* Style the Расти с планом link (full button) */
+      .VPSocialLink[aria-label="apply-link"]::after {
+        content: "Расти с планом";
         font-size: 14px;
         color: white;
         padding: 6px 12px;
@@ -75,13 +75,71 @@
         background: var(--vp-c-brand);
         transition: all 0.3s ease;
         white-space: nowrap;
-        margin: 0 4px; /* Add horizontal margin for spacing */
+        margin: 0 4px;
       }
 
-      .VPSocialLink[aria-label="login-link"]:hover::after {
+      .VPSocialLink[aria-label="apply-link"]:hover::after {
         background: var(--vp-c-brand-darker, var(--vp-c-brand));
         transform: translateY(-1px);
-        height: 36px;
+      }
+
+      /* Footer styles */
+      .VPDocFooter {
+        display: none !important;
+      }
+
+      .custom-footer-links {
+        text-align: center !important;
+        padding: 40px 20px 20px !important;
+        border-top: 1px solid var(--vp-c-divider) !important;
+        margin-top: 40px !important;
+      }
+
+      .footer-row {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 16px !important;
+        flex-wrap: wrap !important;
+      }
+
+      .footer-row a {
+        color: var(--vp-c-text-2) !important;
+        text-decoration: none !important;
+        font-size: 14px !important;
+        transition: color 0.3s ease !important;
+        white-space: nowrap !important;
+      }
+
+      .footer-row a:hover {
+        color: var(--vp-c-brand) !important;
+      }
+
+      .dot-separator {
+        color: var(--vp-c-text-3) !important;
+        margin: 0 16px !important;
+        font-size: 14px !important;
+        user-select: none !important;
+      }
+
+      .footer-copyright {
+        margin-top: 32px !important;
+        padding-top: 20px !important;
+        border-top: 1px solid var(--vp-c-divider-light) !important;
+        color: var(--vp-c-text-3) !important;
+        font-size: 12px !important;
+        text-align: center !important;
+      }
+
+      @media (max-width: 768px) {
+        .footer-row {
+          flex-direction: column !important;
+          gap: 12px !important;
+        }
+
+        .dot-separator {
+          display: none !important;
+        }
       }
     </style>
     <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
@@ -89,7 +147,7 @@
   </head>
   <body>
     <div id="app"></div>
-    <script>window.__VP_HASH_MAP__=JSON.parse("{\"about_clients.md\":\"BFXw4tAz\",\"about_contacts.md\":\"CrR2khbW\",\"about_mission.md\":\"BXz9zV5k\",\"about_overview.md\":\"D6IJj5P5\",\"api-examples.md\":\"DRxSHuyk\",\"apply.md\":\"Cy_xFRXn\",\"checkup_overview.md\":\"CyT5F9XT\",\"index.md\":\"B-gGe2oK\",\"journal_contents_cases.md\":\"DiiSS1_k\",\"markdown-examples.md\":\"BwQHRr3O\",\"method_overview.md\":\"C1j2aM0b\",\"support.md\":\"B8vVbu0G\",\"system_overview.md\":\"DH6DMFmG\",\"technology_analytics-360.md\":\"DCVD7_xe\",\"technology_anna.md\":\"D1eVy4PF\",\"technology_overview.md\":\"DfHEJ4FP\",\"technology_radar.md\":\"DMhEZsYn\",\"technology_wordpower.md\":\"NpqPRPNE\",\"terms.md\":\"CHlbqL-k\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"© Модуль Роста® 2010 — 2025\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"logo\":\"/favicon.svg\",\"siteTitle\":\"Модуль роста\",\"sidebar\":{\"/checkup/\":{\"items\":[{\"text\":\"Продукты\",\"collapsed\":false,\"items\":[{\"text\":\"Бизнес-чекап\",\"link\":\"/checkup/overview.md\"},{\"text\":\"Система роста бизнеса\",\"link\":\"/system/overview.md\"}]}]},\"/system/\":{\"items\":[{\"text\":\"Компания\",\"items\":[{\"text\":\"О нас\",\"link\":\"/about/overview.md\"},{\"text\":\"Метод\",\"link\":\"/method/overview.md\"},{\"text\":\"Технологии\",\"link\":\"/technology/overview.md\"},{\"text\":\"Клиенты и кейсы\",\"link\":\"/about/clients\"}]}]}},\"search\":{\"provider\":\"local\",\"options\":{\"placeholder\":\"Поиск…\"}},\"nav\":[{\"text\":\"Продукты\",\"link\":\"/checkup/overview\",\"activeMatch\":\"/checkup/\"},{\"text\":\"Компания\",\"link\":\"/system/overview\",\"activeMatch\":\"/system/\"}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://app.mplan.sbs\",\"ariaLabel\":\"register-link\"},{\"icon\":\"github\",\"link\":\"/apply\",\"ariaLabel\":\"login-link\"}]},\"locales\":{\"/\":{\"lang\":\"ru-RU\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"Расти по своим правилам с Модуль Роста®\"}},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"about_clients.md\":\"BNjvoeEY\",\"about_contacts.md\":\"Cf5xUhNU\",\"about_mission.md\":\"BJI97jqs\",\"about_overview.md\":\"DH8zlhsW\",\"api-examples.md\":\"CIH0cBfI\",\"apply.md\":\"DWt6E-Gm\",\"checkup_overview.md\":\"BbCj_PHq\",\"index.md\":\"BXPuPDP-\",\"journal_contents_cases.md\":\"BrKlsU6a\",\"markdown-examples.md\":\"Dt9wdWSd\",\"method_overview.md\":\"Bj1W12Fj\",\"support.md\":\"Bo7FlS6G\",\"system_overview.md\":\"PDeCQ5h4\",\"technology_analytics-360.md\":\"CakMGCNX\",\"technology_anna.md\":\"Dt4jeB1K\",\"technology_overview.md\":\"yqqZxTdc\",\"technology_radar.md\":\"mddImGk9\",\"technology_wordpower.md\":\"eHL9oT9G\",\"terms.md\":\"B5MHBsIc\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"© Модуль Роста® 2010 — 2025\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"logo\":\"/favicon.svg\",\"siteTitle\":\"Модуль роста\",\"sidebar\":{\"/about/\":{\"items\":[{\"text\":\"О компании\",\"collapsed\":false,\"items\":[{\"text\":\"О нас\",\"link\":\"/about/overview\"},{\"text\":\"Клиенты и кейсы\",\"link\":\"/about/clients\"},{\"text\":\"Контакты\",\"link\":\"/about/contacts\"}]}]},\"/method/\":{\"items\":[{\"text\":\"Метод\",\"collapsed\":false,\"items\":[{\"text\":\"Методология\",\"link\":\"/method/overview\"}]}]},\"/technology/\":{\"items\":[{\"text\":\"Технологии\",\"collapsed\":false,\"items\":[{\"text\":\"Обзор\",\"link\":\"/technology/overview\"}]}]},\"/checkup/\":{\"items\":[{\"text\":\"Бизнес-чекап\",\"collapsed\":false,\"items\":[{\"text\":\"Обзор\",\"link\":\"/checkup/overview\"}]}]},\"/system/\":{\"items\":[{\"text\":\"Система роста бизнеса\",\"collapsed\":false,\"items\":[{\"text\":\"Обзор\",\"link\":\"/system/overview\"}]}]}},\"search\":{\"provider\":\"local\",\"options\":{\"placeholder\":\"Поиск…\"}},\"nav\":[{\"text\":\"Продукты\",\"items\":[{\"text\":\"Бизнес-чекап\",\"link\":\"/checkup/overview\"},{\"text\":\"Система роста бизнеса\",\"link\":\"/system/overview\"}]},{\"text\":\"Компания\",\"items\":[{\"text\":\"О нас\",\"link\":\"/about/overview\"},{\"text\":\"Метод\",\"link\":\"/method/overview\"},{\"text\":\"Технологии\",\"link\":\"/technology/overview\"},{\"text\":\"Клиенты и кейсы\",\"link\":\"/about/clients\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://app.mplan.sbs\",\"ariaLabel\":\"login-link\"},{\"icon\":\"github\",\"link\":\"/apply\",\"ariaLabel\":\"apply-link\"}],\"footer\":{\"message\":\"\\n        <div class=\\\"custom-footer-links\\\">\\n          <div class=\\\"footer-row\\\">\\n            <a href=\\\"/journal\\\">Журнал</a>\\n            <span class=\\\"dot-separator\\\">•</span>\\n            <a href=\\\"https://t.me/runscale\\\" target=\\\"_blank\\\" rel=\\\"noopener noreferrer\\\">Телеграм-канал</a>\\n            <span class=\\\"dot-separator\\\">•</span>\\n            <a href=\\\"/support\\\">Поддержка</a>\\n          </div>\\n          <div class=\\\"footer-row\\\">\\n            <a href=\\\"/terms\\\">Условия использования</a>\\n            <span class=\\\"dot-separator\\\">•</span>\\n            <a href=\\\"/about/contacts\\\">Контакт</a>\\n          </div>\\n        </div>\\n      \",\"copyright\":\"© Модуль Роста® 2010 — 2025\"}},\"locales\":{\"/\":{\"lang\":\"ru-RU\",\"title\":\"Модуль Роста® – Расти по своим правилам\",\"description\":\"Расти по своим правилам с Модуль Роста®\"}},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
     
   </body>
 </html>
