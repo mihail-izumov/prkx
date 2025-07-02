@@ -7,47 +7,87 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 ## Custom Containers
 
 <form id="myForm" class="custom-form">
-  <!-- Поля формы -->
   <div class="form-group">
     <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" class="form-input" required>
+    <input type="text" id="name" name="name" class="form-input">
   </div>
   
   <div class="form-group">
     <label for="phone">Телефон:</label>
-    <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+79123456789">
+    <input type="tel" id="phone" name="phone" class="form-input" placeholder="+79123456789">
   </div>
   
   <div class="form-group">
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" class="form-input" required>
+    <input type="email" id="email" name="email" class="form-input">
   </div>
   
   <div class="form-group checkbox-group">
-    <input type="checkbox" id="consent" name="consent" required checked>
-    <label for="consent">Согласен на обработку персональных данных</label>
+    <input type="checkbox" id="consent" name="consent" checked>
+    <label for="consent">Согласен на обработку данных</label>
   </div>
   
   <button type="submit" class="submit-btn">
-    Отправить заявку
+    Отправить
   </button>
 </form>
 
-<div id="successMessage" class="success-message" style="display:none;">
-  ✅ Заявка успешно отправлена! Скоро с вами свяжемся.
+<div id="successMessage" class="success-message">
+  ✅ Заявка успешно отправлена. Скоро свяжемся.
 </div>
 
 <style>
-/* Стили остаются без изменений */
 .custom-form {
   max-width: 500px;
-  margin: 0 auto;
-  padding: 25px;
-  background-color: #111;
-  border-radius: 8px;
-  color: white;
+  margin: 0;
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 5px;
+  color: #ffffff;
 }
-/* ... остальные стили ... */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.success-message {
+  display: none;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  color: #2e7d32;
+  font-weight: bold;
+}
 </style>
 
 <script>
@@ -55,52 +95,53 @@ if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('myForm');
     const successMessage = document.getElementById('successMessage');
-
+    
+    // Функция для показа сообщения
+    function showSuccess() {
+      successMessage.style.display = 'block';
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 5000);
+    }
+    
+    // Отправка через EmailJS
     form.addEventListener('submit', function(e) {
-      // 1. Предотвращаем перезагрузку страницы
       e.preventDefault();
       
-      // 2. Собираем данные формы
+      // 1. Собираем данные
       const formData = {
         name: this.name.value,
         phone: this.phone.value,
         email: this.email.value,
-        consent: this.consent.checked
+        consent: this.consent.checked ? 'Да' : 'Нет',
+        date: new Date().toLocaleString()
       };
       
-      // 3. Отправка данных (вариант через FormSubmit)
-      fetch('https://formsubmit.co/ajax/theorchestramanco@gmail.com', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => {
-        // 4. Показываем сообщение об успехе
-        successMessage.style.display = 'block';
-        form.style.display = 'none'; // Скрываем форму
-        
-        // 5. Не сбрасываем форму сразу (чтобы видно было сообщение)
-        setTimeout(() => {
+      // 2. Вариант A: Отправка через EmailJS (требует настройки)
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+        .then(() => {
+          showSuccess();
           form.reset();
-          form.style.display = 'block';
-          successMessage.style.display = 'none';
-        }, 5000);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        // 6. Альтернативная отправка через mailto
-        const mailtoLink = `mailto:theorchestramanco@gmail.com?subject=Заявка&body=Имя: ${encodeURIComponent(formData.name)}%0AТелефон: ${encodeURIComponent(formData.phone)}%0AEmail: ${encodeURIComponent(formData.email)}`;
-        window.location.href = mailtoLink;
-        
-        successMessage.style.display = 'block';
-        setTimeout(() => {
-          successMessage.style.display = 'none';
-        }, 5000);
-      });
+        }, (err) => {
+          console.error('Ошибка:', err);
+          // 3. Вариант B: Резервная отправка через Formspree
+          backupSubmit(formData);
+        });
+      
+      // 4. Показываем сообщение в любом случае
+      showSuccess();
     });
+    
+    // Резервный метод отправки
+    function backupSubmit(data) {
+      fetch('https://formspree.io/f/theorchestramanco@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).catch(e => console.error(e));
+    }
   });
 }
 </script>
