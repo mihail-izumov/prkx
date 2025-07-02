@@ -36,7 +36,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   max-width: 500px;
   margin: 0;
   padding: 20px;
-  background-color: #f5f5f5; /* Светло-серый фон */
+  background-color: #f5f5f5;
   border-radius: 5px;
 }
 
@@ -90,22 +90,29 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 </style>
 
 <script>
-document.getElementById('myForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // Остановка стандартной отправки
-  
-  // Здесь можно добавить AJAX-запрос на сервер
-  
-  // Показываем сообщение об успехе
-  document.getElementById('successMessage').style.display = 'block';
-  
-  // Очищаем форму (опционально)
-  this.reset();
-  
-  // Можно добавить setTimeout для скрытия сообщения через несколько секунд
-  setTimeout(() => {
-    document.getElementById('successMessage').style.display = 'none';
-  }, 5000);
-});
+// Проверяем, что код выполняется в браузере (а не при SSR)
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('myForm');
+    const successMessage = document.getElementById('successMessage');
+
+    if (form && successMessage) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Здесь можно добавить fetch-запрос на сервер
+        // Пример: fetch('/api/submit', { method: 'POST', body: new FormData(form) })
+        
+        successMessage.style.display = 'block';
+        form.reset();
+        
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 5000);
+      });
+    }
+  });
+}
 </script>
 
 Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
