@@ -13,8 +13,9 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   </div>
   
   <div class="form-group">
-    <label for="phone">Телефон:</label>
-    <input type="tel" id="phone" name="phone" class="form-input" required>
+    <label for="phone">Телефон (формат: +7XXX... или 8XXX...):</label>
+    <input type="tel" id="phone" name="phone" class="form-input" required pattern="^(\+7|8)\d{10}$">
+    <small class="hint">Пример: +79161234567 или 89161234567</small>
   </div>
   
   <div class="form-group">
@@ -59,6 +60,17 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   font-size: 16px;
   background-color: #000000;
   color: #ffffff;
+}
+
+.form-input:invalid {
+  border-color: #ff4444;
+}
+
+.hint {
+  display: block;
+  margin-top: 5px;
+  color: #aaaaaa;
+  font-size: 0.8em;
 }
 
 .checkbox-group {
@@ -111,74 +123,59 @@ if (typeof window !== 'undefined') {
     const form = document.getElementById('myForm');
     const successMessage = document.getElementById('successMessage');
     const submitBtn = form.querySelector('.submit-btn');
-    const inputs = form.querySelectorAll('input[required]');
-    const checkbox = document.getElementById('consent');
+    const phoneInput = document.getElementById('phone');
+    
+    // Валидация телефона в реальном времени
+    phoneInput.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9+]/g, '');
+      if (this.value.startsWith('9') && this.value.length === 10) {
+        this.value = '+7' + this.value;
+      }
+    });
 
-    // Проверка валидности всей формы
+    // Проверка всей формы
     function checkFormValidity() {
-      let isFormValid = true;
+      const isPhoneValid = /^(\+7|8)\d{10}$/.test(phoneInput.value);
+      const isEmailValid = document.getElementById('email').checkValidity();
+      const isNameValid = document.getElementById('name').value.trim() !== '';
+      const isConsentChecked = document.getElementById('consent').checked;
       
-      inputs.forEach(input => {
-        if (input.type === 'checkbox') {
-          if (!input.checked) isFormValid = false;
-        } else {
-          if (!input.value.trim()) isFormValid = false;
-        }
-      });
-      
-      submitBtn.disabled = !isFormValid;
+      submitBtn.disabled = !(isPhoneValid && isEmailValid && isNameValid && isConsentChecked);
     }
 
-    // Проверка при каждом изменении
-    inputs.forEach(input => {
+    // Слушаем изменения во всех полях
+    form.querySelectorAll('input').forEach(input => {
       input.addEventListener('input', checkFormValidity);
     });
+
+    // Отправка формы через mailto
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const phone = encodeURIComponent(document.getElementById('phone').value);
+      const email = encodeURIComponent(document.getElementById('email').value);
+      
+      const subject = encodeURIComponent('Новая заявка с сайта');
+      const body = encodeURIComponent(
+        `Имя: ${name}\nТелефон: ${phone}\nEmail: ${email}\n\nДата: ${new Date().toLocaleString()}`
+      );
+      
+      // Открываем почтовый клиент
+      window.location.href = `mailto:theorchestramanco@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Показываем сообщение об успехе
+      successMessage.style.display = 'block';
+      form.reset();
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 5000);
+    });
     
-    checkbox.addEventListener('change', checkFormValidity);
-
-    // Инициализация проверки при загрузке
+    // Первоначальная проверка
     checkFormValidity();
-
-    if (form && successMessage) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Сбор данных формы
-        const formData = {
-          name: form.querySelector('#name').value,
-          phone: form.querySelector('#phone').value,
-          email: form.querySelector('#email').value,
-          consent: checkbox.checked
-        };
-        
-        // Отправка данных через FormSubmit
-        fetch('https://formsubmit.co/ajax/theorchestramanco@gmail.com', {
-          method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(response => {
-          if (!response.ok) throw new Error('Network response was not ok');
-          return response.json();
-        })
-        .then(data => {
-          successMessage.style.display = 'block';
-          form.reset();
-          submitBtn.disabled = true;
-          
-          setTimeout(() => {
-            successMessage.style.display = 'none';
-          }, 5000);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
-        });
-      });
-    }
   });
 }
 </script>
