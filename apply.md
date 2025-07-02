@@ -6,52 +6,20 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 ## Custom Containers
 
-**Input**
-
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
+<form action="/submit-form" method="post">
+  <div style="margin-bottom: 15px;">
+    <label for="field1" style="display: block; margin-bottom: 5px;">Поле 1:</label>
+    <input type="text" id="field1" name="field1" style="width: 100%; padding: 8px; box-sizing: border-box;">
+  </div>
+  
+  <div style="margin-bottom: 15px;">
+    <label for="field2" style="display: block; margin-bottom: 5px;">Поле 2:</label>
+    <input type="text" id="field2" name="field2" style="width: 100%; padding: 8px; box-sizing: border-box;">
+  </div>
+  
+  <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer;">
+    Отправить
+  </button>
+</form>
 
 Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
