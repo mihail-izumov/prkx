@@ -2,24 +2,110 @@
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
-<script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src="https://forms.yandex.ru/u/6864f06b84227c484c9d0ca7?iframe=1" frameborder="0" name="ya-form-6864f06b84227c484c9d0ca7" width="650"></iframe>
+123
 
 ## Custom Containers
 
-<form action="/submit-form" method="post">
-  <div style="margin-bottom: 15px;">
-    <label for="field1" style="display: block; margin-bottom: 5px;">Поле 1:</label>
-    <input type="text" id="field1" name="field1" style="width: 100%; padding: 8px; box-sizing: border-box;">
+<form id="myForm" class="custom-form">
+  <div class="form-group">
+    <label for="field1">Имя:</label>
+    <input type="text" id="field1" name="name" class="form-input" required>
   </div>
   
-  <div style="margin-bottom: 15px;">
-    <label for="field2" style="display: block; margin-bottom: 5px;">Поле 2:</label>
-    <input type="text" id="field2" name="field2" style="width: 100%; padding: 8px; box-sizing: border-box;">
+  <div class="form-group">
+    <label for="field2">Телефон или Email:</label>
+    <input type="text" id="field2" name="contact" class="form-input" required>
   </div>
   
-  <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer;">
+  <div class="form-group checkbox-group">
+    <input type="checkbox" id="consent" name="consent" required>
+    <label for="consent">Я согласен(а) на обработку персональных данных</label>
+  </div>
+  
+  <button type="submit" class="submit-btn">
     Отправить
   </button>
 </form>
+
+<div id="successMessage" class="success-message" style="display: none;">
+  ✅ Заявка успешно отправлена!
+</div>
+
+<style>
+.custom-form {
+  max-width: 500px;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5; /* Светло-серый фон */
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+.success-message {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e6f7e6;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  color: #2e7d32;
+  font-weight: bold;
+}
+</style>
+
+<script>
+document.getElementById('myForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Остановка стандартной отправки
+  
+  // Здесь можно добавить AJAX-запрос на сервер
+  
+  // Показываем сообщение об успехе
+  document.getElementById('successMessage').style.display = 'block';
+  
+  // Очищаем форму (опционально)
+  this.reset();
+  
+  // Можно добавить setTimeout для скрытия сообщения через несколько секунд
+  setTimeout(() => {
+    document.getElementById('successMessage').style.display = 'none';
+  }, 5000);
+});
+</script>
 
 Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
