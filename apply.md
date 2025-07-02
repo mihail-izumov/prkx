@@ -58,6 +58,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
   background-color: #111;
   color: #ffffff;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .checkbox-group {
@@ -108,43 +109,49 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 <script>
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
+    // Получаем элементы формы
     const form = document.getElementById('myForm');
     const successMessage = document.getElementById('successMessage');
     const submitBtn = form.querySelector('.submit-btn');
-    const inputs = form.querySelectorAll('input[required]');
-    const checkbox = document.getElementById('consent');
-
-    // Проверка валидности формы
-    function checkFormValidity() {
-      let isValid = true;
-      inputs.forEach(input => {
-        if (!input.value.trim()) isValid = false;
-      });
-      if (!checkbox.checked) isValid = false;
-      submitBtn.disabled = !isValid;
-    }
-
-    // Слушаем изменения в полях
-    inputs.forEach(input => input.addEventListener('input', checkFormValidity));
-    checkbox.addEventListener('change', checkFormValidity);
-
-    // Отправка формы
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const emailInput = document.getElementById('email');
+    const consentCheckbox = document.getElementById('consent');
+    
+    // Функция проверки валидности формы
+    const checkFormValidity = () => {
+      // Проверяем заполнение всех обязательных полей
+      const isNameValid = nameInput.value.trim() !== '';
+      const isPhoneValid = phoneInput.value.trim() !== '';
+      const isEmailValid = emailInput.value.trim() !== '';
+      const isConsentValid = consentCheckbox.checked;
+      
+      // Активируем кнопку только если все условия выполнены
+      submitBtn.disabled = !(isNameValid && isPhoneValid && isEmailValid && isConsentValid);
+    };
+    
+    // Назначаем обработчики событий
+    nameInput.addEventListener('input', checkFormValidity);
+    phoneInput.addEventListener('input', checkFormValidity);
+    emailInput.addEventListener('input', checkFormValidity);
+    consentCheckbox.addEventListener('change', checkFormValidity);
+    
+    // Обработка отправки формы
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      // 1. Показываем сообщение
+      // Показываем сообщение об успехе
       successMessage.style.display = 'flex';
       
-      // 2. Собираем данные
+      // Собираем данные формы
       const formData = {
-        name: form.name.value,
-        phone: form.phone.value,
-        email: form.email.value,
-        consent: checkbox.checked ? 'Да' : 'Нет',
-        date: new Date().toLocaleString()
+        name: nameInput.value,
+        phone: phoneInput.value,
+        email: emailInput.value,
+        consent: consentCheckbox.checked ? 'Да' : 'Нет'
       };
-
-      // 3. Отправка через FormSubmit (с защитным токеном)
+      
+      // Отправка данных через FormSubmit
       fetch('https://formsubmit.co/ajax/baf883ec9b4c490d575eb60b7a4266d4', {
         method: 'POST',
         headers: { 
@@ -153,21 +160,24 @@ if (typeof window !== 'undefined') {
         },
         body: JSON.stringify(formData)
       })
-      .then(response => response.ok ? response.json() : Promise.reject())
       .catch(() => {
-        // 4. Резервная отправка через mailto
+        // Резервная отправка через mailto
         const body = `Имя: ${formData.name}\nТелефон: ${formData.phone}\nEmail: ${formData.email}`;
         window.location.href = `mailto:theorchestramanco@gmail.com?subject=Заявка&body=${encodeURIComponent(body)}`;
       })
       .finally(() => {
+        // Сбрасываем форму и блокируем кнопку
         form.reset();
+        submitBtn.disabled = true;
+        
+        // Скрываем сообщение через 5 секунд
         setTimeout(() => {
           successMessage.style.display = 'none';
         }, 5000);
       });
     });
-
-    // Инициализация проверки
+    
+    // Инициализируем проверку при загрузке
     checkFormValidity();
   });
 }
