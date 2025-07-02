@@ -78,6 +78,12 @@ export default defineConfig({
       })();
     `],
     ['style', {}, `
+    :root {
+  --vp-c-brand-1: #2e6b5e;
+  --vp-c-brand-2: #3a7d6e;
+  --vp-c-brand-3: #2e6b5e;
+  --vp-c-brand-soft: rgba(46, 107, 94, 0.14);
+}
     /* Логотип */
 .VPNavBarTitle .logo {
   height: 32px !important;
@@ -225,7 +231,7 @@ export default defineConfig({
   description: '© Модуль Роста® 2010 — 2025',
   themeConfig: {
     logo: '/favicon.svg',
-    siteTitle: "Модуль роста",
+    siteTitle: "Модуль Роста",
 
     // Sidebar configuration для связанных страниц
     sidebar: {
