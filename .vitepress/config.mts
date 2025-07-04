@@ -289,7 +289,7 @@ export default defineConfig({
   ],
   base: '/',
   outDir: '.vitepress/dist',
-  description: '© Модуль Роста® 2010 — 2025',
+  description: 'Эксперты по системному росту бизнеса. Помогаем владельцам компаний находить скрытые резервы прибыли через data-driven подход и глубокую диагностику процессов.',
   themeConfig: {
     logo: '/favicon.svg',
     siteTitle: "Модуль Роста",
