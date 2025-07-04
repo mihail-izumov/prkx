@@ -2,10 +2,8 @@
 ## Заявка на диагностическую сессию
 <br>
 
-::: 123
-В этом квартале осталось <Badge type="info" text="2 места" />
-<Badge type="info" text="7 компаний" /> уже в листе ожидания на следующий период. <br>
-:::
+> В этом квартале осталось <Badge type="info" text="2 места" />
+> <Badge type="info" text="7 компаний" /> уже в листе ожидания на следующий период. <br>
 
 <form id="myForm" class="custom-form">
   <div class="form-group">
