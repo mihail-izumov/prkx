@@ -442,7 +442,8 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
         { text: 'Обзор', link: '/checkup/overview' },
         { text: 'Подготовительный чекап', link: '/checkup/go-no-go' },
         { text: 'Глубокий чекап', link: '/checkup/deep' },
-        { text: 'Платите за движение', link: '/checkup/pay-as-you-go' }
+        { text: 'Платите за движение', link: '/checkup/pay-as-you-go' },
+        { text: 'Чек-лист готовности', link: '/checkup/checklist' }
       ]
     }
   ]
