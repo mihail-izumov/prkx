@@ -16,14 +16,14 @@ hero:
 features:
   - title: Бизнес-чекап
     details: Глубокая ИИ-аналитика за 20 дней. Находим то, что другие упускают.
-    link: /checkup
+    link: /checkup/overview
     linkText: Детали чекапа
   - title: Система роста бизнеса
-    details: 12 нед. непрерывный мониторинг по DMAIC, 90 мин. трекинг-сессии каждую неделю
-    link: /system
+    details: 12 нед. непрерывный мониторинг по DMAIC, 90 мин. трекинг-сессии каждую неделю.
+    link: /system/overview
     linkText: Как строим
   - title: ИИ-автоматизация бизнеса
     details: Повышаем эффективность бизнеса с решениями Модуля Роста®.
-    link: /about/technology
+    link: /technology/overview
     linkText: Технология роста
 ---
