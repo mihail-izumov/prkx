@@ -1,5 +1,7 @@
 import { defineConfig, DefaultTheme } from 'vitepress'
 import pkg from '../package.json' assert { type: 'json' }
+import taskLists from 'markdown-it-task-lists' // Добавленный импорт
+
 const { version } = pkg
 
 export default defineConfig({
@@ -20,6 +22,13 @@ export default defineConfig({
   // Добавляем buildEnd хук для модификации HTML после сборки
   buildEnd(siteConfig) {
     // Этот хук выполняется после сборки
+  },
+
+  // Добавляем конфигурацию Markdown для поддержки чекбоксов
+  markdown: {
+    config: (md) => {
+      md.use(taskLists)
+    }
   },
 
   head: [
@@ -209,6 +218,15 @@ export default defineConfig({
 .VPSocialLink[aria-label="apply-link"]:hover::after {
   background: var(--vp-c-brand-darker, var(--vp-c-brand));
   transform: translateY(-1px);
+}
+
+/* Стили для чекбоксов */
+.task-list-item {
+  list-style-type: none !important;
+}
+.task-list-item input[type="checkbox"] {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
 }
 
 /* Стили для футера */
