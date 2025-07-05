@@ -1,6 +1,6 @@
 import { defineConfig, DefaultTheme } from 'vitepress'
 import pkg from '../package.json' assert { type: 'json' }
-import taskLists from 'markdown-it-task-lists' // Добавленный импорт
+import taskLists from 'markdown-it-task-lists' // Добавленный импорт 2
 
 const { version } = pkg
 
