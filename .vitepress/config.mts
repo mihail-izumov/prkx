@@ -194,7 +194,7 @@ export default defineConfig({
 
 /* Кнопка "Расти с планом" (заполненная) */
 .VPSocialLink[aria-label="apply-link"]::after {
-  content: "Расти с планом";
+  content: "Получить ответ";
   font-size: 14px;
   color: white;
   padding: 6px 12px;
@@ -439,6 +439,7 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
       collapsed: false,
       items: [
         { text: 'Обзор', link: '/checkup/overview' },
+        { text: 'Детали чекапа', link: '/checkup/specs' },
         { text: 'Глубокий чекап', link: '/checkup/deep' },
         { text: 'Платите за движение', link: '/checkup/pay-as-you-go' },
         { text: 'Чек-лист готовности', link: '/checkup/checklist' }
