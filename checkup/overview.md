@@ -65,28 +65,24 @@ _Подготовительный чекап (5 дней) → глубокий �
 ---
 [Детали чекапа →](/checkup/specs)
 
-<span class="custom-button-wrapper">
-  [Детали чекапа →](/checkup/specs)
-</span>
+<div class="specs-button">
+  <a href="/checkup/specs">Детали чекапа →</a>
+</div>
 
 <style>
-.custom-button-wrapper a {
+.custom-button a {
   display: inline-block;
   padding: 8px 16px;
   background-color: #42b983;
   color: white !important;
   text-decoration: none !important;
   border-radius: 4px;
+  font-family: inherit;
+  border: none;
   cursor: pointer;
-  font-weight: normal;
-  /* Новые свойства для изоляции */
-  border: 1px solid transparent;
-  transition: background-color 0.2s;
+  transition: background 0.2s;
 }
-
-.custom-button-wrapper a:hover {
+.custom-button a:hover {
   background-color: #33a06f;
-  color: white !important;
-  text-decoration: none !important;
 }
 </style>
