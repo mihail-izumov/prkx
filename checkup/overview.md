@@ -70,7 +70,7 @@ _Подготовительный чекап (5 дней) → глубокий �
 </div>
 
 <style>
-.custom-button a {
+.specs-button a {
   display: inline-block;
   padding: 8px 16px;
   background-color: #42b983;
@@ -81,8 +81,14 @@ _Подготовительный чекап (5 дней) → глубокий �
   border: none;
   cursor: pointer;
   transition: background 0.2s;
+  /* Новые важные свойства */
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 1.5;
 }
-.custom-button a:hover {
+
+.specs-button a:hover {
   background-color: #33a06f;
+  transform: translateY(-1px); /* Эффект нажатия */
 }
 </style>
