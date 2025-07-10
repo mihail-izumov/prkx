@@ -445,13 +445,17 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
       ]
     },
 {
-      text: 'Другой раздел',
+      text: 'Подготовка к чекапу',
       collapsed: false,
       items: [
-        { text: 'Обзор', link: '/checkup/overview' },
-        { text: 'Глубокий чекап', link: '/checkup/deep' },
-        { text: 'Платите за движение', link: '/checkup/pay-as-you-go' },
-        { text: 'Чек-лист готовности', link: '/checkup/checklist' }
+        { text: 'Скрытые проблемы, которые блокируют рост', link: '/checkup/prep/01-hidden-problems-blocking-growth' },
+        { text: 'Почему мы запрашиваем готовые отчёты, а не доступы к системам', link: '/checkup/prep/02-why-we-request-ready-reports-not-system-access' },
+        { text: 'Системная диагностика бизнеса против разовых решений', link: '/checkup/prep/03-system-diagnostics-vs-one-time-solutions' },
+        { text: 'Чекап как основа для принятия решений на данных', link: '/checkup/prep/04-checkup-for-data-driven-decisions' },
+        { text: 'ИИ-аналитика RAG: надёжная база для управленческих решений', link: '/checkup/prep/05-ai-analytics-rag-management' },
+        { text: 'Десять разделов диагностики: структура анализа бизнеса', link: '/checkup/prep/06-10-diagnostic-sections' },
+        { text: 'Три принципа надёжной аналитики для точных решений', link: '/checkup/prep/07-three-reliable-analytics-principles' },
+        { text: 'Аналитика как инструмент прозрачного управления', link: '/checkup/prep/08-analytics-transparent-management' }
       ]
     }
   ]
