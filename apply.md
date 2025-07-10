@@ -31,6 +31,9 @@
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" class="form-input" required>
+    <div class="email-hint" style="font-style: italic; color: #808080; margin-top: 5px; font-size: 0.9em;">
+      Укажите ФИО ответственного за проект и мы свяжемся для согласования 90-минутной сессии
+    </div>
   </div>
   
   <div class="form-group checkbox-group">
@@ -43,7 +46,7 @@
   </div>
   
   <button type="submit" class="submit-btn" disabled>
-    Отправить →
+    Получить ответ →
   </button>
 </form>
 
@@ -223,8 +226,10 @@ export default {
 }
 </script>
 
-> _Звонки не принимаем._
-> _Только письменные заявки с развёрнутыми ответами._
+> _Звонки не принимаем. Только письменные заявки._
+
+_**Расти по своим правилам**_
+_Михаил из Модуля Роста_
 
 ### Процесс подачи заявки
 1. **Отправить заявку**
@@ -376,6 +381,3 @@ export default {
 
 > После получения заявки – отправим форму подтверждения.
 > Звонки не принимаем. Только письменные заявки с развёрнутыми ответами.
-
-_**Расти по своим правилам**_
-_Михаил из Модуля Роста_
