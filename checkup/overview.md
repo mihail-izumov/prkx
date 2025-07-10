@@ -30,14 +30,14 @@
 
 Восемь публикаций — ваша карта подготовки к работе с нами. Изучите их, чтобы понять, как мы работаем, и приходите на чекап готовыми к быстрым изменениям:
 
-[1 - Скрытые проблемы, которые блокируют рост](/checkup/prep/01-hidden-problems-blocking-growth) <br>
-[2 - Почему мы запрашиваем готовые отчёты, а не доступы к системам](/checkup/prep/02-why-we-request-ready-reports-not-system-access) <br>
-[3 - Системная диагностика бизнеса против разовых решений](/checkup/prep/03-system-diagnostics-vs-one-time-solutions) <br>
-[4 - Чекап как основа для принятия решений на данных](/checkup/prep/04-checkup-for-data-driven-decisions) <br>
-[5 - ИИ-аналитика RAG: надёжная база для управленческих решений](/checkup/prep/05-ai-analytics-rag-management) <br>
-[6 - Десять разделов диагностики: структура анализа бизнеса](/checkup/prep/06-10-diagnostic-sections) <br>
-[7 - Три принципа надёжной аналитики для точных решений](/checkup/prep/07-three-reliable-analytics-principles) <br>
-[8 - Аналитика как инструмент прозрачного управления](/checkup/prep/08-analytics-transparent-management) <br>
+[1 - Внутренние процессы, которые съедают результаты](/checkup/prep/01-hidden-problems-blocking-growth) <br>
+[2 - Почему мы просим готовые отчёты, а не доступы к системам](/checkup/prep/02-why-we-request-ready-reports-not-system-access) <br>
+[3 - Почему важно смотреть на весь бизнес, а не на «локальные боли»](/checkup/prep/03-system-diagnostics-vs-one-time-solutions) <br>
+[4 - Чекап как первый шаг к фрейм-менеджменту](/checkup/prep/04-checkup-for-data-driven-decisions) <br>
+[5 - ИИ-аналитика в модели RAG: как живая база знаний меняет подход](/checkup/prep/05-ai-analytics-rag-management) <br>
+[6 - Десять разделов аналитики: анатомия бизнеса](/checkup/prep/06-10-diagnostic-sections) <br>
+[7 - Три принципа здоровой аналитики на практике](/checkup/prep/07-three-reliable-analytics-principles) <br>
+[8 - Как превратить аналитику в ресурс роста – Итоги серии](/checkup/prep/08-analytics-transparent-management) <br>
 
 Результат изучения: понимание нашей методологии точности и готовность к быстрым изменениям.
 
