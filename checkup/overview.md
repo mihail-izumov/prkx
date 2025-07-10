@@ -102,3 +102,34 @@ _Подготовительный чекап (5 дней) → глубокий �
   transform: translateY(-1px); /* Эффект нажатия */
 }
 </style>
+
+---
+<div class="button-link-container">
+  <div class="specs-button">
+    <a href="/apply">Получить ответ →</a>
+  </div>
+  <a href="/checkup/specs" class="text-link">Детали чекапа</a>
+</div>
+
+<style>
+.button-link-container {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Расстояние между элементами */
+  margin: 1rem 0;
+}
+
+.specs-button a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #42b983;
+  color: white !important;
+  text-decoration: none !important;
+  border-radius: 4px;
+}
+
+.text-link {
+  color: var(--vp-c-brand); /* Используем переменные VitePress */
+  text-decoration: underline !important;
+}
+</style>
