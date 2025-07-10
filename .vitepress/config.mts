@@ -455,7 +455,7 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
         { text: '3 - Почему важно смотреть на весь бизнес, а не на «локальные проблемы»', link: '/checkup/prep/03-system-diagnostics-vs-one-time-solutions' },
         { text: '4 - Чекап как первый шаг к фрейм-менеджменту', link: '/checkup/prep/04-checkup-for-data-driven-decisions' },
         { text: '5 - ИИ-аналитика в модели RAG: как живая база знаний меняет подход', link: '/checkup/prep/05-ai-analytics-rag-management' },
-        { text: '6 - Десять разделов диагностики: структура анализа бизнеса', link: '/checkup/prep/06-10-diagnostic-sections' },
+        { text: '6 - 10 разделов аналитики: анатомия вашего бизнеса', link: '/checkup/prep/06-10-diagnostic-sections' },
         { text: '7 - Три принципа надёжной аналитики для точных решений', link: '/checkup/prep/07-three-reliable-analytics-principles' },
         { text: '8 - Аналитика как инструмент прозрачного управления', link: '/checkup/prep/08-analytics-transparent-management' }
       ]
