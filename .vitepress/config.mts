@@ -453,7 +453,7 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
         { text: '1 - Скрытые проблемы, которые блокируют рост', link: '/checkup/prep/01-hidden-problems-blocking-growth' },
         { text: '2 - Почему мы запрашиваем готовые отчёты, а не доступы к системам', link: '/checkup/prep/02-why-we-request-ready-reports-not-system-access' },
         { text: '3 - Почему важно смотреть на весь бизнес, а не на «локальные проблемы»', link: '/checkup/prep/03-system-diagnostics-vs-one-time-solutions' },
-        { text: '4 - Чекап как основа для принятия решений на данных', link: '/checkup/prep/04-checkup-for-data-driven-decisions' },
+        { text: '4 - Чекап как первый шаг к фрейм-менеджменту', link: '/checkup/prep/04-checkup-for-data-driven-decisions' },
         { text: '5 - ИИ-аналитика RAG: надёжная база для управленческих решений', link: '/checkup/prep/05-ai-analytics-rag-management' },
         { text: '6 - Десять разделов диагностики: структура анализа бизнеса', link: '/checkup/prep/06-10-diagnostic-sections' },
         { text: '7 - Три принципа надёжной аналитики для точных решений', link: '/checkup/prep/07-three-reliable-analytics-principles' },
