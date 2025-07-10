@@ -448,6 +448,7 @@ function sidebarCheckup(): DefaultTheme.SidebarItem[] {
       text: 'Подготовка к чекапу',
       collapsed: false,
       items: [
+        { text: 'Обзор', link: '/checkup/prep/overview' },        
         { text: 'Скрытые проблемы, которые блокируют рост', link: '/checkup/prep/01-hidden-problems-blocking-growth' },
         { text: 'Почему мы запрашиваем готовые отчёты, а не доступы к системам', link: '/checkup/prep/02-why-we-request-ready-reports-not-system-access' },
         { text: 'Системная диагностика бизнеса против разовых решений', link: '/checkup/prep/03-system-diagnostics-vs-one-time-solutions' },
