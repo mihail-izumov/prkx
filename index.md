@@ -4,14 +4,14 @@ layout: home
 
 hero:
   name: "Расти по своим правилам."
-  tagline: Фокусируйтесь на своих целях и устойчивом росте бизнеса вместе с Модулем Роста®.
+  tagline: Прозрачные процессы и чёткая система фрейм-менеджмента для уверенных управленческих решений.
   actions:
     - theme: brand
-      text: Расти с планом
+      text: Получить ответ
       link: /apply
     - theme: alt
-      text: Метод
-      link: /method/overview
+      text: Старт за 5 дней
+      link: /checkup/prep/overview
 
 features:
   - title: Бизнес-чекап
