@@ -7,11 +7,11 @@ hero:
   tagline: Находим то, что другие упускают.
   actions:
     - theme: brand
+      text: Радар
+      link: /radar/overview
+    - theme: alt
       text: Получить ответ
       link: /apply
-    - theme: alt
-      text: Старт за 5 дней
-      link: /checkup/prep/overview
 
 features:
   - title: Чекап
