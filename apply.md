@@ -61,7 +61,7 @@
   <!-- Пояснение к программе рекомендаций -->
   <div class="form-hint">
     Если вы укажете контакт партнера, после оплаты вашей сессии мы от вашего имени порекомендуем ему анализ системой «Радар».
-    <a href="/recommendation-rules" target="_blank" class="policy-link">Подробнее о программе</a>
+    <a href="/radar/invite" target="_blank" class="policy-link">Программа профессиональных рекомендаций</a>
   </div>
 </form>
 
