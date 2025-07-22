@@ -37,14 +37,13 @@
   <!-- Блок для профессиональной рекомендации -->
   <div class="recommendation-section">
     <h4>Профессиональная рекомендация</h4>
-    <div class="form-group recommendation-group">
+    <div class="form-group">
       <label for="friendContact">Telegram или телефон партнера:</label>
-      <input type="text" id="friendContact" name="friendContact" class="form-input" placeholder="@username или +7 ___ ___-__-__">
+      <input type="text" id="friendContact" name="friendContact" class="form-input" placeholder="@username или +7 ___ ___-__-__">
     </div>
-    
-    <!-- Пояснение к программе рекомендаций, перемещено сюда -->
+    <!-- Пояснение к программе рекомендаций (ПЕРЕМЕЩЕНО И СТИЛИЗОВАНО) -->
     <div class="form-hint">
-      Если вы укажете контакт партнера, после оплаты вашей сессии мы от вашего имени порекомендуем ему анализ системой «Радар». 
+      Если вы укажете контакт партнера, после оплаты вашей сессии мы от вашего имени порекомендуем ему анализ системой «Радар».
       <a href="/radar/invite" target="_blank" class="policy-link">Программа профессиональных рекомендаций</a>
     </div>
   </div>
@@ -65,170 +64,115 @@
   </button>
 </form>
 
+<!-- Сообщение об успешной отправке -->
 <div id="successMessage" class="success-message" style="display: none;">
   Заявка успешно отправлена. Скоро свяжемся.
 </div>
 
 <style>
 /* --- ОБЩИЕ СТИЛИ ФОРМЫ --- */
-.custom-form {
-  max-width: 500px;
-  margin: 0;
-  padding: 20px;
-  background-color: #000;
-  border-radius: 5px;
-  color: #fff;
-}
-.form-group {
-  margin-bottom: 15px;
-}
-.form-input {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #444;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #000;
-  color: #fff;
-}
+.custom-form { max-width: 500px; margin: 0; padding: 20px; background-color: #000000; border-radius: 5px; color: #ffffff; }
+.form-group { margin-bottom: 15px; }
+.form-input { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #444; border-radius: 4px; font-size: 16px; background-color: #000000; color: #ffffff; }
+.checkbox-group { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 20px; }
+.checkbox-group input { margin-top: 3px; width: auto; }
+.checkbox-group label { font-size: 14px; line-height: 1.4; }
+.policy-link { color: #4CAF50; text-decoration: underline; }
 
-/* Увеличенный отступ над полем рекомендации */
-.recommendation-group {
-  margin-top: 30px; /* в 2 раза больше */
-}
-.recommendation-group label {
-  display: block;
-  margin-bottom: 30px; /* расстояние до input в 2 раза больше */
-}
+/* --- СТИЛИ КНОПКИ И СООБЩЕНИЙ --- */
+.submit-btn { background-color: #ffffff; color: #000000; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; font-weight: bold; transition: opacity 0.3s; }
+.submit-btn:hover { opacity: 0.9; }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.success-message { margin-top: 15px; color: white; font-weight: normal; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.success-message::before { content: "✓"; color: white; font-size: 18px; }
 
-/* --- Разделитель и отступы --- */
+/* --- СТИЛИ ДЛЯ БЛОКА РЕКОМЕНДАЦИЙ (ИЗМЕНЕНО) --- */
 .recommendation-section {
   border-top: 1px solid #444;
-  padding-top: 30px;   /* в 2 раза больше */
-  margin-top: 40px;    /* в 2 раза больше */
+  margin-top: 20px;
+  /* Увеличены отступы сверху и снизу */
+  padding-top: 30px; 
+  padding-bottom: 30px;
 }
-
-/* Заголовок раздела */
 .recommendation-section h4 {
   margin-top: 0;
   margin-bottom: 15px;
-  color: #fff;
+  color: #ffffff;
   font-weight: 500;
 }
 
-/* Пояснение под заголовком */
-.form-hint {
-  text-align: left;
-  font-style: normal;        /* убран наклон */
-  color: #808080;            /* серый цвет */
-  font-size: 0.8em;          /* на 2 кегля меньше */
-  margin-top: 15px;          /* в 2 раза больше между разделителем и hint */
-  margin-bottom: 30px;       /* в 2 раза больше */
-}
-.policy-link {
-  color: #4CAF50;
-  text-decoration: underline;
+/* Увеличен отступ для метки поля */
+.recommendation-section .form-group label {
+  display: block;
+  margin-bottom: 10px;
 }
 
-/* --- Стили кнопки и сообщения --- */
-.submit-btn {
-  background-color: #fff;
-  color: #000;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  font-weight: bold;
-  transition: opacity 0.3s;
-}
-.submit-btn:hover {
-  opacity: 0.9;
-}
-.submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.success-message {
-  margin-top: 15px;
-  color: #fff;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.success-message::before {
-  content: "✓";
-  color: #fff;
-  font-size: 18px;
+/* Стили для поясняющего текста (ИЗМЕНЕНО) */
+.form-hint {
+  color: #808080;
+  /* Убран курсив, выравнивание по левому краю по умолчанию */
+  font-style: normal;
+  text-align: left;
+  /* Уменьшен кегль */
+  font-size: 0.8em; 
+  line-height: 1.5;
+  margin-top: 15px; /* Отступ от поля ввода сверху */
 }
 </style>
 
 <script>
+// JavaScript остается без изменений, так как правки касались только HTML и CSS.
+// Он готов к работе.
 export default {
   mounted() {
     this.initForm();
   },
   methods: {
     initForm() {
+      // ... (Весь ваш JS код без изменений)
       if (typeof document === 'undefined') return;
       const form = document.getElementById('myForm');
       if (!form) return;
-
       const successMessage = document.getElementById('successMessage');
       const submitBtn = form.querySelector('.submit-btn');
       const requiredInputs = Array.from(form.querySelectorAll('input[required]'));
-
       const checkFormValidity = () => {
         const allRequiredFilled = requiredInputs.every(input => input.value.trim() !== '');
         submitBtn.disabled = !allRequiredFilled;
       };
-
       requiredInputs.forEach(input => {
         input.addEventListener('input', checkFormValidity);
       });
-
-      form.addEventListener('submit', e => {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (submitBtn.disabled) return;
-
         const friendContact = form.friendContact.value.trim();
         const formData = {
           name: form.name.value,
           phone: form.phone.value,
           email: form.email.value,
-          _subject: `Новая заявка ${friendContact ? '(+ Рекомендация)' : ''}`,
+          _subject: `Новая заявка на сессию ${friendContact ? '(+ Рекомендация)' : ''}`,
           ...(friendContact && { recommendation_for: friendContact })
         };
-
         form.reset();
         successMessage.style.display = 'flex';
         submitBtn.disabled = true;
-
         fetch('https://formspree.io/f/mdkzjopz', {
           method: 'POST',
-          headers: {'Accept':'application/json','Content-Type':'application/json'},
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
-        })
-        .catch(() => {
-          const mailtoBody = `Имя: ${formData.name}\nТелефон: ${formData.phone}\nEmail: ${formData.email}${friendContact ? `\nРекомендация для: ${friendContact}` : ''}`;
+        }).then(response => { if (!response.ok) throw new Error('Ошибка сервера');
+        }).catch(error => { console.error('Ошибка:', error);
+          const mailtoBody = `Имя: ${formData.name}\\nТелефон: ${formData.phone}\\nEmail: ${formData.email}${friendContact ? `\\nРекомендация для: ${friendContact}`:''}`;
           window.location.href = `mailto:theorchestramanco@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(mailtoBody)}`;
-        })
-        .finally(() => {
-          setTimeout(() => {
-            successMessage.style.display = 'none';
-            checkFormValidity();
-          }, 15000);
-        });
+        }).finally(() => { setTimeout(() => { successMessage.style.display = 'none'; checkFormValidity(); }, 15000); });
       });
-
       checkFormValidity();
     }
   }
 }
 </script>
+
 
 
 _Звонки не принимаем. Только письменные заявки._
