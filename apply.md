@@ -18,6 +18,7 @@
 <br>
 
 <form id="myForm" class="custom-form">
+  <!-- Основные поля для заявки -->
   <div class="form-group">
     <label for="name">Имя:</label>
     <input type="text" id="name" name="name" class="form-input" required>
@@ -31,30 +32,46 @@
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" class="form-input" required>
-    <div class="email-hint" style="font-style: italic; color: #808080; margin-top: 5px; font-size: 0.9em;">
-      Укажите ФИО ответственного за проект и мы свяжемся для согласования 90-минутной сессии
+  </div>
+
+  <!-- Блок для профессиональной рекомендации -->
+  <div class="recommendation-section">
+    <h4>Профессиональная рекомендация</h4>
+    <div class="form-group">
+      <label for="friendContact">Telegram или телефон партнера:</label>
+      <input type="text" id="friendContact" name="friendContact" class="form-input" placeholder="@username или +7 ___ ___-__-__">
     </div>
   </div>
   
+  <!-- Согласие на обработку данных -->
   <div class="form-group checkbox-group">
     <input type="checkbox" id="consent" name="consent" required>
     <label for="consent">
       Нажимая на кнопку, вы соглашаетесь с 
-      <a href="/terms/policy" target="_blank" class="policy-link">политикой конфиденциальности</a>, 
-      <a href="/terms/privacy" target="_blank" class="policy-link">согласием на обработку персональных данных</a>
+      <a href="/terms/policy" target="_blank" class="policy-link">политикой конфиденциальности</a> и 
+      <a href="/terms/privacy" target="_blank" class="policy-link">согласием на обработку персональных данных</a>.
     </label>
   </div>
   
+  <!-- Кнопка отправки -->
   <button type="submit" class="submit-btn" disabled>
     Получить ответ →
   </button>
+
+  <!-- Пояснение к программе рекомендаций -->
+  <div class="form-hint">
+    Если вы укажете контакт партнера, после оплаты вашей сессии мы от вашего имени порекомендуем ему анализ системой «Радар».
+    <a href="/recommendation-rules" target="_blank" class="policy-link">Подробнее о программе</a>
+  </div>
 </form>
 
+<!-- Сообщение об успешной отправке -->
 <div id="successMessage" class="success-message" style="display: none;">
   Заявка успешно отправлена. Скоро свяжемся.
 </div>
 
 <style>
+/* --- ОБЩИЕ СТИЛИ ФОРМЫ --- */
 .custom-form {
   max-width: 500px;
   margin: 0;
@@ -63,44 +80,39 @@
   border-radius: 5px;
   color: #ffffff;
 }
-
 .form-group {
   margin-bottom: 15px;
 }
-
 .form-input {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  border: 1px solid #cccccc;
+  border: 1px solid #444; /* Сделал рамку чуть темнее */
   border-radius: 4px;
   font-size: 16px;
   background-color: #000000;
   color: #ffffff;
 }
-
 .checkbox-group {
   display: flex;
   align-items: flex-start;
   gap: 8px;
   margin-bottom: 20px;
 }
-
 .checkbox-group input {
   margin-top: 3px;
   width: auto;
 }
-
 .checkbox-group label {
   font-size: 14px;
   line-height: 1.4;
 }
-
 .policy-link {
   color: #4CAF50;
   text-decoration: underline;
 }
 
+/* --- СТИЛИ КНОПКИ И СООБЩЕНИЙ --- */
 .submit-btn {
   background-color: #ffffff;
   color: #000000;
@@ -113,16 +125,13 @@
   font-weight: bold;
   transition: opacity 0.3s;
 }
-
 .submit-btn:hover {
   opacity: 0.9;
 }
-
 .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .success-message {
   margin-top: 15px;
   color: white;
@@ -132,11 +141,31 @@
   align-items: center;
   gap: 8px;
 }
-
 .success-message::before {
   content: "✓";
   color: white;
   font-size: 18px;
+}
+
+/* --- СТИЛИ ДЛЯ НОВЫХ БЛОКОВ --- */
+.recommendation-section {
+  border-top: 1px solid #444;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+.recommendation-section h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-weight: 500; /* Менее жирный шрифт для подзаголовка */
+}
+.form-hint {
+  font-style: italic;
+  color: #808080;
+  margin-top: 15px;
+  font-size: 0.9em;
+  text-align: center;
+  line-height: 1.5;
 }
 </style>
 
@@ -148,7 +177,7 @@ export default {
   },
   methods: {
     initForm() {
-      // Проверка выполнения в браузере
+      // Проверка, что код выполняется в браузере, а не на сервере
       if (typeof document === 'undefined') return;
       
       const form = document.getElementById('myForm');
@@ -157,24 +186,17 @@ export default {
       const successMessage = document.getElementById('successMessage');
       const submitBtn = form.querySelector('.submit-btn');
       const requiredInputs = Array.from(form.querySelectorAll('input[required]'));
-      const checkbox = document.getElementById('consent');
       
-      // Функция проверки валидности формы
+      // Функция для проверки валидности всей формы
       const checkFormValidity = () => {
-        const nameValid = document.getElementById('name').value.trim() !== '';
-        const phoneValid = document.getElementById('phone').value.trim() !== '';
-        const emailValid = document.getElementById('email').value.trim() !== '';
-        const consentValid = checkbox.checked;
-        
-        submitBtn.disabled = !(nameValid && phoneValid && emailValid && consentValid);
+        const allRequiredFilled = requiredInputs.every(input => input.value.trim() !== '');
+        submitBtn.disabled = !allRequiredFilled;
       };
       
-      // Назначение обработчиков событий
+      // Назначаем обработчики на все обязательные поля
       requiredInputs.forEach(input => {
         input.addEventListener('input', checkFormValidity);
       });
-      
-      checkbox.addEventListener('change', checkFormValidity);
       
       // Обработка отправки формы
       form.addEventListener('submit', (e) => {
@@ -182,19 +204,25 @@ export default {
         
         if (submitBtn.disabled) return;
         
+        // Получаем контактные данные рекомендованного партнера
+        const friendContact = form.friendContact.value.trim();
+        
+        // Формируем данные для отправки
         const formData = {
           name: form.name.value,
           phone: form.phone.value,
           email: form.email.value,
-          consent: checkbox.checked ? 'Да' : 'Нет',
-          _subject: 'Новая заявка с сайта'
+          _subject: `Новая заявка на сессию ${friendContact ? '(+ Рекомендация)' : ''}`,
+          // Динамически добавляем поле, только если оно заполнено
+          ...(friendContact && { recommendation_for: friendContact })
         };
         
-        // Очищаем форму сразу
+        // Сразу показываем пользователю результат
         form.reset();
         successMessage.style.display = 'flex';
         submitBtn.disabled = true;
         
+        // Отправка данных на Formspree
         fetch('https://formspree.io/f/mdkzjopz', {
           method: 'POST',
           headers: {
@@ -207,12 +235,13 @@ export default {
           if (!response.ok) throw new Error('Ошибка сервера');
         })
         .catch(error => {
-          console.error('Error:', error);
-          const mailtoBody = `Имя: ${formData.name}%0AТелефон: ${formData.phone}%0AEmail: ${formData.email}`;
-          window.location.href = `mailto:theorchestramanco@gmail.com?subject=Заявка&body=${mailtoBody}`;
+          console.error('Ошибка при отправке через Formspree:', error);
+          // Резервный метод отправки, если fetch не сработал
+          const mailtoBody = `Имя: ${formData.name}\\nТелефон: ${formData.phone}\\nEmail: ${formData.email}${friendContact ? `\\nРекомендация для: ${friendContact}`:''}`;
+          window.location.href = `mailto:theorchestramanco@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(mailtoBody)}`;
         })
         .finally(() => {
-          // Скрываем сообщение через 15 секунд
+          // Скрываем сообщение об успехе через 15 секунд
           setTimeout(() => {
             successMessage.style.display = 'none';
             checkFormValidity();
@@ -220,11 +249,13 @@ export default {
         });
       });
       
+      // Первичная проверка валидности при загрузке страницы
       checkFormValidity();
     }
   }
 }
 </script>
+
 
 _Звонки не принимаем. Только письменные заявки._
 
