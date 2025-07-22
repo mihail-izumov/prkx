@@ -37,9 +37,15 @@
   <!-- Блок для профессиональной рекомендации -->
   <div class="recommendation-section">
     <h4>Профессиональная рекомендация</h4>
-    <div class="form-group">
+    <div class="form-group recommendation-group">
       <label for="friendContact">Telegram или телефон партнера:</label>
-      <input type="text" id="friendContact" name="friendContact" class="form-input" placeholder="@username или +7 ___ ___-__-__">
+      <input type="text" id="friendContact" name="friendContact" class="form-input" placeholder="@username или +7 ___ ___-__-__">
+    </div>
+    
+    <!-- Пояснение к программе рекомендаций, перемещено сюда -->
+    <div class="form-hint">
+      Если вы укажете контакт партнера, после оплаты вашей сессии мы от вашего имени порекомендуем ему анализ системой «Радар». 
+      <a href="/radar/invite" target="_blank" class="policy-link">Программа профессиональных рекомендаций</a>
     </div>
   </div>
   
@@ -57,15 +63,8 @@
   <button type="submit" class="submit-btn" disabled>
     Получить ответ →
   </button>
-
-  <!-- Пояснение к программе рекомендаций -->
-  <div class="form-hint">
-    Если вы укажете контакт партнера, после оплаты вашей сессии мы от вашего имени порекомендуем ему анализ системой «Радар».
-    <a href="/radar/invite" target="_blank" class="policy-link">Программа профессиональных рекомендаций</a>
-  </div>
 </form>
 
-<!-- Сообщение об успешной отправке -->
 <div id="successMessage" class="success-message" style="display: none;">
   Заявка успешно отправлена. Скоро свяжемся.
 </div>
@@ -76,9 +75,9 @@
   max-width: 500px;
   margin: 0;
   padding: 20px;
-  background-color: #000000;
+  background-color: #000;
   border-radius: 5px;
-  color: #ffffff;
+  color: #fff;
 }
 .form-group {
   margin-bottom: 15px;
@@ -87,35 +86,55 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  border: 1px solid #444; /* Сделал рамку чуть темнее */
+  border: 1px solid #444;
   border-radius: 4px;
   font-size: 16px;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #000;
+  color: #fff;
 }
-.checkbox-group {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 20px;
+
+/* Увеличенный отступ над полем рекомендации */
+.recommendation-group {
+  margin-top: 30px; /* в 2 раза больше */
 }
-.checkbox-group input {
-  margin-top: 3px;
-  width: auto;
+.recommendation-group label {
+  display: block;
+  margin-bottom: 30px; /* расстояние до input в 2 раза больше */
 }
-.checkbox-group label {
-  font-size: 14px;
-  line-height: 1.4;
+
+/* --- Разделитель и отступы --- */
+.recommendation-section {
+  border-top: 1px solid #444;
+  padding-top: 30px;   /* в 2 раза больше */
+  margin-top: 40px;    /* в 2 раза больше */
+}
+
+/* Заголовок раздела */
+.recommendation-section h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Пояснение под заголовком */
+.form-hint {
+  text-align: left;
+  font-style: normal;        /* убран наклон */
+  color: #808080;            /* серый цвет */
+  font-size: 0.8em;          /* на 2 кегля меньше */
+  margin-top: 15px;          /* в 2 раза больше между разделителем и hint */
+  margin-bottom: 30px;       /* в 2 раза больше */
 }
 .policy-link {
   color: #4CAF50;
   text-decoration: underline;
 }
 
-/* --- СТИЛИ КНОПКИ И СООБЩЕНИЙ --- */
+/* --- Стили кнопки и сообщения --- */
 .submit-btn {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #fff;
+  color: #000;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -134,8 +153,7 @@
 }
 .success-message {
   margin-top: 15px;
-  color: white;
-  font-weight: normal;
+  color: #fff;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -143,113 +161,69 @@
 }
 .success-message::before {
   content: "✓";
-  color: white;
+  color: #fff;
   font-size: 18px;
-}
-
-/* --- СТИЛИ ДЛЯ НОВЫХ БЛОКОВ --- */
-.recommendation-section {
-  border-top: 1px solid #444;
-  padding-top: 15px;
-  margin-top: 20px;
-}
-.recommendation-section h4 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #ffffff;
-  font-weight: 500; /* Менее жирный шрифт для подзаголовка */
-}
-.form-hint {
-  font-style: italic;
-  color: #808080;
-  margin-top: 15px;
-  font-size: 0.9em;
-  text-align: center;
-  line-height: 1.5;
 }
 </style>
 
 <script>
-// Используем export default для совместимости с VitePress
 export default {
   mounted() {
     this.initForm();
   },
   methods: {
     initForm() {
-      // Проверка, что код выполняется в браузере, а не на сервере
       if (typeof document === 'undefined') return;
-      
       const form = document.getElementById('myForm');
       if (!form) return;
-      
+
       const successMessage = document.getElementById('successMessage');
       const submitBtn = form.querySelector('.submit-btn');
       const requiredInputs = Array.from(form.querySelectorAll('input[required]'));
-      
-      // Функция для проверки валидности всей формы
+
       const checkFormValidity = () => {
         const allRequiredFilled = requiredInputs.every(input => input.value.trim() !== '');
         submitBtn.disabled = !allRequiredFilled;
       };
-      
-      // Назначаем обработчики на все обязательные поля
+
       requiredInputs.forEach(input => {
         input.addEventListener('input', checkFormValidity);
       });
-      
-      // Обработка отправки формы
-      form.addEventListener('submit', (e) => {
+
+      form.addEventListener('submit', e => {
         e.preventDefault();
-        
         if (submitBtn.disabled) return;
-        
-        // Получаем контактные данные рекомендованного партнера
+
         const friendContact = form.friendContact.value.trim();
-        
-        // Формируем данные для отправки
         const formData = {
           name: form.name.value,
           phone: form.phone.value,
           email: form.email.value,
-          _subject: `Новая заявка на сессию ${friendContact ? '(+ Рекомендация)' : ''}`,
-          // Динамически добавляем поле, только если оно заполнено
+          _subject: `Новая заявка ${friendContact ? '(+ Рекомендация)' : ''}`,
           ...(friendContact && { recommendation_for: friendContact })
         };
-        
-        // Сразу показываем пользователю результат
+
         form.reset();
         successMessage.style.display = 'flex';
         submitBtn.disabled = true;
-        
-        // Отправка данных на Formspree
+
         fetch('https://formspree.io/f/mdkzjopz', {
           method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
+          headers: {'Accept':'application/json','Content-Type':'application/json'},
           body: JSON.stringify(formData)
         })
-        .then(response => {
-          if (!response.ok) throw new Error('Ошибка сервера');
-        })
-        .catch(error => {
-          console.error('Ошибка при отправке через Formspree:', error);
-          // Резервный метод отправки, если fetch не сработал
-          const mailtoBody = `Имя: ${formData.name}\\nТелефон: ${formData.phone}\\nEmail: ${formData.email}${friendContact ? `\\nРекомендация для: ${friendContact}`:''}`;
+        .catch(() => {
+          const mailtoBody = `Имя: ${formData.name}\nТелефон: ${formData.phone}\nEmail: ${formData.email}${friendContact ? `\nРекомендация для: ${friendContact}` : ''}`;
           window.location.href = `mailto:theorchestramanco@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(mailtoBody)}`;
         })
         .finally(() => {
-          // Скрываем сообщение об успехе через 15 секунд
           setTimeout(() => {
             successMessage.style.display = 'none';
             checkFormValidity();
           }, 15000);
         });
       });
-      
-      // Первичная проверка валидности при загрузке страницы
+
       checkFormValidity();
     }
   }
