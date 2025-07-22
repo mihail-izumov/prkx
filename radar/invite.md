@@ -27,3 +27,33 @@
 Ваша рекомендация — это не купон на скидку, а право на наш беспристрастный взгляд и приоритетное внимание. В этом и заключается ее настоящая ценность: вы делитесь инструментом точной диагностики, зная, что ваш коллега получит честную экспертную оценку, а не попытку продать услугу.
 
 Мы верим, что лучшие возможности рождаются в кругу доверенных профессионалов. Наша цель — создать экосистему, где сильные лидеры помогают друг другу становиться еще сильнее, опираясь не на мнения, а на точные данные.
+
+<div class="button-link-container">
+  <div class="specs-button">
+    <a href="/apply">Отправить заявку →</a>
+  </div>
+  <a href="/radar/overview" class="text-link">Компании в фокусе</a>
+</div>
+
+<style>
+.button-link-container {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Расстояние между элементами */
+  margin: 1rem 0;
+}
+
+.specs-button a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #42b983;
+  color: white !important;
+  text-decoration: none !important;
+  border-radius: 4px;
+}
+
+.text-link {
+  color: var(--vp-c-brand); /* Используем переменные VitePress */
+  text-decoration: underline !important;
+}
+</style>
