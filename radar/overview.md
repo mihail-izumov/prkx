@@ -8,8 +8,8 @@
 | -------------------------------------------------------- | --------------- | -------------------- |
 | [Brooklyn Bowl](https://brooklynbowl.ru/)                | 75,6%           | Извещение отправлено |
 | [Ресторан Честных Цен](https://rchc.ru/)                 | 81,5%           | В архиве [Почему?](/radar/overview#почему-в-архиве)   |
-| [Vaffel](https://vaffel.ru/)                             | 56,2%           | В архиве (Почему?)   |
-| [Re:Imagined Villas Ubud](https://reimaginedvillas.com/) | 52,1%           | В архиве (Почему?)   |
+| [Vaffel](https://vaffel.ru/)                             | 56,2%           | В архиве [Почему?](/radar/overview#почему-в-архиве)   |
+| [Re:Imagined Villas Ubud](https://reimaginedvillas.com/) | 52,1%           | В архиве [Почему?](/radar/overview#почему-в-архиве)   |
 
 ## Анна
 
