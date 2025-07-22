@@ -313,6 +313,10 @@ export default defineConfig({
       },
       '/journal/': {
         items: sidebarJournal()
+      },
+      // ✅ ДОБАВЛЕНО: Конфигурация sidebar для раздела Радар
+      '/radar/': {
+        items: sidebarRadar()
       }
     },
 
@@ -357,15 +361,24 @@ export default defineConfig({
   }
 })
 
-// Navigation with dropdown menus
+// ✅ ИСПРАВЛЕНО: Navigation with dropdown menus - добавлен раздел "Радар"
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: 'Продукты',
       items: [
-        { text: 'Чекап', link: '/checkup/overview' },
+        { text: 'Бизнес-чекап', link: '/checkup/overview' },
         { text: 'Система роста бизнеса', link: '/system/overview' },
         { text: 'ИИ-автоматизация', link: '/technology/overview' }
+      ]
+    },
+    {
+      text: 'Радар',
+      items: [
+        { text: 'Обзор', link: '/radar/overview' },
+        { text: 'Индекс Скрытого Потенциала', link: '/radar/scale_index' },
+        { text: 'Фильтр Потенциала', link: '/radar/filter' },
+        { text: 'Кто Анна', link: '/radar/who-is-anna' }
       ]
     },
     {
@@ -487,6 +500,22 @@ function sidebarJournal(): DefaultTheme.SidebarItem[] {
         { text: 'Кейсы', link: '/journal/contents/cases' },
         { text: 'Статьи', link: '/journal/contents/articles' },
         { text: 'Экспертиза', link: '/journal/contents/expertise' }
+      ]
+    }
+  ]
+}
+
+// ✅ ДОБАВЛЕНО: Sidebar for Radar section
+function sidebarRadar(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Радар',
+      collapsed: false,
+      items: [
+        { text: 'Обзор', link: '/radar/overview' },
+        { text: 'Индекс Скрытого Потенциала', link: '/radar/scale_index' },
+        { text: 'Фильтр Потенциала', link: '/radar/filter' },
+        { text: 'Кто Анна', link: '/radar/who-is-anna' }
       ]
     }
   ]
