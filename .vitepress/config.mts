@@ -431,6 +431,22 @@ function sidebarTechnology(): DefaultTheme.SidebarItem[] {
   ]
 }
 
+// Sidebar for Radar section
+function sidebarTechnology(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Радар',
+      collapsed: false,
+      items: [
+        { text: 'Обзор', link: '/radar/overview' },
+        { text: 'Индекс Скрытого Потенциала', link: '/radar/scale_index' },
+        { text: 'Фильтр Потенциала', link: '/radar/filter' },
+        { text: 'Кто Анна', link: '/radar/who-is-anna' }
+      ]
+    }
+  ]
+}
+
 // Sidebar for Checkup section
 function sidebarCheckup(): DefaultTheme.SidebarItem[] {
   return [
