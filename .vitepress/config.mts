@@ -378,7 +378,8 @@ function nav(): DefaultTheme.NavItem[] {
         { text: 'Обзор', link: '/radar/overview' },
         { text: 'Индекс Скрытого Потенциала', link: '/radar/scale_index' },
         { text: 'Фильтр Потенциала', link: '/radar/filter' },
-        { text: 'Кто Анна', link: '/radar/who-is-anna' }
+        { text: 'Кто Анна', link: '/radar/who-is-anna' },
+        { text: 'Программа рекомендаций', link: '/radar/invite' }
       ]
     },
     {
