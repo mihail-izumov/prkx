@@ -302,7 +302,7 @@ export default defineConfig({
 }
     `]
   ],
-  base: '/ParkUDoma/',
+  base: '/prkx/',
   appearance: false,
   cleanUrls: true,
   outDir: '.vitepress/dist',
