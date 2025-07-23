@@ -29,10 +29,10 @@ jobs:
           node-version: 22
           cache: npm
       
-        - name: Setup Pages
-          uses: actions/configure-pages@v4
-          with:
-            enablement: github-actions
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          enablement: github-actions
 
       
       - name: Install dependencies
