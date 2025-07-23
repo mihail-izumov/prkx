@@ -437,10 +437,10 @@ function sidebarTechnology(): DefaultTheme.SidebarItem[] {
         { text: 'Обзор', link: '/technology/overview' },
         { text: 'Живая база знаний', link: '/technology/datahub' },
         { text: 'Глубокая бизнес-аналитика', link: '/technology/analytics-360' },
-        { text: 'Речевая аналитика', link: '/technology/wordpower' },
-        { text: 'Дистанционные стратегические сессии', link: '/technology/vision-now' },
         { text: 'ИИ-ассистент продаж', link: '/technology/anna' },
-        { text: 'Радар', link: '/technology/radar' }
+        { text: 'Речевая аналитика', link: '/technology/wordpower' },
+        { text: 'Дистанционные стратегические сессии', link: '/technology/vision-now' }
+
       ]
     }
   ]
