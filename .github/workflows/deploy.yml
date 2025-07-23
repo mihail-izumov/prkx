@@ -18,6 +18,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Clean old build
+        run: rm -rf .vitepress/dist
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
