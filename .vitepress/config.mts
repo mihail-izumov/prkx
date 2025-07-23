@@ -3,7 +3,10 @@ import pkg from '../package.json' assert { type: 'json' }
 const { version } = pkg
 
 export default defineConfig({
-  title: 'Модуль Роста® – Расти по своим правилам',
+  appearance: {
+    initialValue: 'light' as any
+  },
+  title: 'Парк за углом',
   locales: {
     '/': {
       lang: 'ru-RU',
@@ -23,17 +26,15 @@ export default defineConfig({
   },
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/prkx-icon.png' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     ['script', {}, `
     (function() {
     function createFooterContent() {
       const links = [
-        { text: 'Журнал', href: '/journal/contents/index' },
+        { text: 'Контакт', href: '89370606690' },
         { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
-        { text: 'Поддержка', href: '/support' },
-        { text: 'Условия использования', href: '/terms' },
-        { text: 'Контакт', href: '/about/contacts' }
+        { text: 'Orxaos', href: 'orxaos.sbs' }
       ];
 
       let html = '<hr style="border: 0; border-top: 1px solid var(--vp-c-divider); margin: 24px 0;">';
@@ -49,8 +50,8 @@ export default defineConfig({
       });
       html += '</div></div>';
       html += '<div style="margin-top: 24px; text-align: center;">';
-      html += '<div style="color: white; font-size: 14px;">Расти по своим правилам</div>';
-      html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© Модуль Роста® 2010 — 2025</div>';
+      html += '<div style="color: var(--vp-c-text-2); font-size: 14px;">Что то там</div>';
+      html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© Orxaos 2025</div>';
       return html;
     }
 
@@ -153,9 +154,9 @@ export default defineConfig({
 
 /* Контейнер социальных ссылок - добавляем правильный отступ слева */
 .VPNavBarSocialLinks {
-  min-width: 280px !important;
+  min-width: 4px !important;
   justify-content: flex-end !important;
-  gap: 20px !important;
+  gap: 4px !important;
   margin-left: 0px !important; /* Уменьшенный отступ от переключателя темы */
 }
 
@@ -194,7 +195,7 @@ export default defineConfig({
 
 /* Кнопка "Расти с планом" (заполненная) */
 .VPSocialLink[aria-label="apply-link"]::after {
-  content: "Получить ответ";
+  content: "Поддержать";
   font-size: 14px;
   color: white;
   padding: 6px 12px;
@@ -245,7 +246,21 @@ export default defineConfig({
 .VPFooter .copyright {
   margin-top: 2px !important;
 }
+  /* Скрыть переключатель темы */
+.VPSwitchAppearance {
+  display: none !important;
+}
 
+/* Убрать разделители между кнопками в навигации */
+.VPNavBarSocialLinks::before,
+.VPNavBarSocialLinks .divider {
+  display: none !important;
+}
+
+/* Убрать вертикальные разделители */
+.VPNavBar .divider {
+  display: none !important;
+}
 /* Мобильные стили */
 @media (max-width: 768px) {
   .VPNavBarSocialLinks {
@@ -288,35 +303,23 @@ export default defineConfig({
     `]
   ],
   base: '/',
+  appearance: false,
+  cleanUrls: true,
   outDir: '.vitepress/dist',
   description: 'Эксперты по системному росту бизнеса. Помогаем владельцам компаний находить скрытые резервы прибыли через data-driven подход и глубокую диагностику процессов.',
   themeConfig: {
-    logo: '/favicon.svg',
-    siteTitle: "Модуль Роста",
-
+    logo: '/prkx-favicon.png',
+    siteTitle: "Парк за углом",
     // Sidebar configuration для связанных страниц
     sidebar: {
-      '/about/': {
-        items: sidebarAbout()
+      '/Parks/': {
+        items: sidebarParki()
       },
-      '/method/': {
-        items: sidebarMethod()
+      '/Мастерплан/': {
+        items: sidebarMasterplan()
       },
-      '/technology/': {
-        items: sidebarTechnology()
-      },
-      '/checkup/': {
-        items: sidebarCheckup()
-      },
-      '/system/': {
-        items: sidebarSystem()
-      },
-      '/journal/': {
-        items: sidebarJournal()
-      },
-      // ✅ ДОБАВЛЕНО: Конфигурация sidebar для раздела Радар
-      '/radar/': {
-        items: sidebarRadar()
+      '/Почему_Парк/': {
+        items: sidebarWhyPark()
       }
     },
 
@@ -365,160 +368,78 @@ export default defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
-      text: 'Продукты',
+      text: 'Парки',
       items: [
-        { text: 'Чекап', link: '/checkup/overview' },
-        { text: 'Система роста бизнеса', link: '/system/overview' },
-        { text: 'ИИ-автоматизация', link: '/technology/overview' }
+        { text: 'Самара, Конноармейская 6', link: '/Parks/Samara/konnoarmeiskaya_6/Обзор.md' }
       ]
     },
     {
-      text: 'Радар',
+      text: 'Мастерплан',
       items: [
-        { text: 'Обзор', link: '/radar/overview' },
-        { text: 'Индекс Скрытого Потенциала', link: '/radar/scale_index' },
-        { text: 'Фильтр Потенциала', link: '/radar/filter' },
-        { text: 'Кто Анна', link: '/radar/who-is-anna' },
-        { text: 'Программа рекомендаций', link: '/radar/invite' }
+        { text: 'Кто мы', link: '/Мастерплан/Кто_мы.md' },
+        { text: 'Чего хотим', link: '/Мастерплан/Чего_хотим.md' },
+        { text: 'В чем план', link: '/Мастерплан/В_чем_план.md' },
+        { text: 'Прогресс', link: '/Мастерплан/Прогресс.md' },
+        { text: 'Нас поддерживают', link: '/Мастерплан/Нас_поддерживают.md' }
       ]
     },
     {
-      text: 'Компания',
+      text: 'Почему Парк',
       items: [
-        { text: 'О нас', link: '/about/overview' },
-        { text: 'Метод', link: '/method/overview' },
-        { text: 'Технологии', link: '/technology/overview' },
-        { text: 'Клиенты и кейсы', link: '/about/clients' }
+        { text: 'Идея', link: '/Почему_Парк/Идея.md' },
+        { text: 'Как это работает', link: '/Почему_Парк/Как_это_работает.md' },
+        { text: 'Комфорт+', link: '/Почему_Парк/Комфорт+.md' },
       ]
     }
   ]
 }
 
 // Sidebar for About section
-function sidebarAbout(): DefaultTheme.SidebarItem[] {
+function sidebarParki(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Компания',
+      text: 'Самара, Конноармейская 6',
       collapsed: false,
       items: [
-        { text: 'О нас', link: '/about/overview' },
-        { text: 'Мы, Растем', link: '/about/mission' },
-        { text: 'Клиенты', link: '/about/clients' },
-        { text: 'Контакт', link: '/about/contacts' }
+        { text: 'Обзор', link: '/Parks/Samara/konnoarmeiskaya_6/Обзор.md' },
+        { text: 'Исходная ситуация', link: '/Parks/Samara/konnoarmeiskaya_6/Исходная_ситуация.md' },
+        { text: 'Инициатива', link: '/Parks/Samara/konnoarmeiskaya_6/Инициатива.md' },
+        { text: 'Прогресс', link: '/Parks/Samara/konnoarmeiskaya_6/Прогресс.md' },
+        { text: 'Цифры и факты', link: '/Parks/Samara/konnoarmeiskaya_6/Цифры_и_факты.md' },
+        { text: 'Публикации в СМИ', link: '/Parks/Samara/konnoarmeiskaya_6/Публикации_в_СМИ.md' },
+        { text: 'Вопросы и ответы', link: '/Parks/Samara/konnoarmeiskaya_6/Вопросы_и_ответы.md' }
       ]
     }
   ]
 }
 
 // Sidebar for Method section
-function sidebarMethod(): DefaultTheme.SidebarItem[] {
+function sidebarMasterplan(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Метод',
+      text: 'Мастерплан',
       collapsed: false,
       items: [
-        { text: 'Обзор', link: '/method/overview' },
-        { text: '3 принципа здоровой аналитики', link: '/method/different' },
-        { text: 'Метод эффективной трансформации', link: '/method/transform' },
-        { text: 'Фрейм-менеджмент', link: '/method/frames' },
-        { text: 'Сравнить', link: '/method/pro-et-contra' }
+        { text: 'Кто мы', link: '/Мастерплан/Кто_мы.md' },
+        { text: 'Чего хотим', link: '/Мастерплан/Чего_хотим.md' },
+        { text: 'В чем план', link: '/Мастерплан/В_чем_план.md' },
+        { text: 'Прогресс', link: '/Мастерплан/Прогресс.md' },
+        { text: 'Нас поддерживают', link: '/Мастерплан/Нас_поддерживают.md' }
       ]
     }
   ]
 }
 
 // Sidebar for Technology section
-function sidebarTechnology(): DefaultTheme.SidebarItem[] {
+function sidebarWhyPark(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: 'Технологии',
       collapsed: false,
       items: [
-        { text: 'Обзор', link: '/technology/overview' },
-        { text: 'Живая база знаний', link: '/technology/datahub' },
-        { text: 'Глубокая бизнес-аналитика', link: '/technology/analytics-360' },
-        { text: 'ИИ-ассистент продаж', link: '/technology/anna' },
-        { text: 'Речевая аналитика', link: '/technology/wordpower' },
-        { text: 'Дистанционные стратегические сессии', link: '/technology/vision-now' }
-
-      ]
-    }
-  ]
-}
-
-// Sidebar for Checkup section
-function sidebarCheckup(): DefaultTheme.SidebarItem[] {
-  return [
-    {
-      text: 'Бизнес-чекап',
-      collapsed: false,
-      items: [
-        { text: 'Обзор', link: '/checkup/overview' },
-        { text: 'Детали чекапа', link: '/checkup/specs' },
-        { text: 'Глубокий чекап', link: '/checkup/deep' },
-        { text: 'Платите за движение', link: '/checkup/pay-as-you-go' },
-        { text: 'Чек-лист готовности', link: '/checkup/checklist' }
-      ]
-    },
-{
-      text: 'Подготовка к чекапу',
-      collapsed: false,
-      items: [
-        { text: 'Обзор', link: '/checkup/prep/overview' },        
-        { text: '1 - Скрытые проблемы, которые блокируют рост', link: '/checkup/prep/01-hidden-problems-blocking-growth' },
-        { text: '2 - Почему мы запрашиваем готовые отчёты, а не доступы к системам', link: '/checkup/prep/02-why-we-request-ready-reports-not-system-access' },
-        { text: '3 - Почему важно смотреть на весь бизнес, а не на «локальные проблемы»', link: '/checkup/prep/03-system-diagnostics-vs-one-time-solutions' },
-        { text: '4 - Чекап как первый шаг к фрейм-менеджменту', link: '/checkup/prep/04-checkup-for-data-driven-decisions' },
-        { text: '5 - ИИ-аналитика в модели RAG: как живая база знаний меняет подход', link: '/checkup/prep/05-ai-analytics-rag-management' },
-        { text: '6 - 10 разделов аналитики: анатомия вашего бизнеса', link: '/checkup/prep/06-10-diagnostic-sections' },
-        { text: '7 - Три принципа здоровой аналитики на практике', link: '/checkup/prep/07-three-reliable-analytics-principles' },
-        { text: '8 - Как превратить аналитику в ресурс роста – Итоги серии', link: '/checkup/prep/08-analytics-transparent-management' }
-      ]
-    }
-  ]
-}
-
-// Sidebar for System section
-function sidebarSystem(): DefaultTheme.SidebarItem[] {
-  return [
-    {
-      text: 'Система роста бизнеса',
-      collapsed: false,
-      items: [
-        { text: 'Обзор', link: '/system/overview' },
-        { text: '12-нед. интенсив', link: '/system/12-weeks' }
-      ]
-    }
-  ]
-}
-
-function sidebarJournal(): DefaultTheme.SidebarItem[] {
-  return [
-    {
-      text: 'Журнал',
-      collapsed: false,
-      items: [
-        { text: 'Содержание', link: '/journal/contents/index' },        
-        { text: 'Кейсы', link: '/journal/contents/cases' },
-        { text: 'Статьи', link: '/journal/contents/articles' },
-        { text: 'Экспертиза', link: '/journal/contents/expertise' }
-      ]
-    }
-  ]
-}
-
-// ✅ ДОБАВЛЕНО: Sidebar for Radar section
-function sidebarRadar(): DefaultTheme.SidebarItem[] {
-  return [
-    {
-      text: 'Радар',
-      collapsed: false,
-      items: [
-        { text: 'Обзор', link: '/radar/overview' },
-        { text: 'Индекс Скрытого Потенциала', link: '/radar/scale_index' },
-        { text: 'Фильтр Потенциала', link: '/radar/filter' },
-        { text: 'Кто Анна', link: '/radar/who-is-anna' },
-        { text: 'Программа рекомендаций', link: '/radar/invite' }
+        { text: 'Идея', link: '/Почему_Парк/Идея.md' },
+        { text: 'Как это работает', link: '/Почему_Парк/Как_это_работает.md' },
+        { text: 'Комфорт+', link: '/Почему_Парк/Комфорт+.md' },
       ]
     }
   ]

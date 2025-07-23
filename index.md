@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Расти по своим правилам."
-  tagline: Находим то, что другие упускают.
+  name: "Парк за углом."
+  tagline: Внеси свой вклад в развитие окружения.
   actions:
     - theme: brand
       text: Радар
@@ -14,16 +14,16 @@ hero:
       link: /apply
 
 features:
-  - title: Чекап
-    details: Находим скрытые разрывы в процессах, которые тормозят рост. Превращаем их в 3 конкретных улучшения за 30 дней.
+  - title: Фишка 1
+    details:
     link: /checkup/overview
-    linkText: Запустить улучшения
-  - title: Система роста бизнеса
-    details: 12 нед. непрерывный мониторинг по DMAIC, 90-мин трекинг-сессии каждую неделю.
+    linkText: Ссылочка
+  - title: Фишка 2
+    details:
     link: /system/overview
-    linkText: Как строим
-  - title: ИИ-автоматизация бизнеса
-    details: Повышаем эффективность бизнеса с решениями Модуля Роста®.
+    linkText: Ссылочка
+  - title: Фишка 3
+    details:
     link: /technology/overview
-    linkText: Технология роста
+    linkText: Ссылочка
 ---
