@@ -387,7 +387,7 @@ function nav(): DefaultTheme.NavItem[] {
       items: [
         { text: 'О нас', link: '/about/overview' },
         { text: 'Метод', link: '/method/overview' },
-        { text: 'Технология', link: '/technology/overview' },
+        { text: 'Технологии', link: '/technology/overview' },
         { text: 'Клиенты и кейсы', link: '/about/clients' }
       ]
     }
