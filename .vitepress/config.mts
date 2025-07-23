@@ -302,7 +302,7 @@ export default defineConfig({
 }
     `]
   ],
-  base: '/prkx/',
+  base: '/',
   appearance: false,
   cleanUrls: true,
   outDir: '.vitepress/dist',
