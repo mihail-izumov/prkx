@@ -14,7 +14,7 @@ hero:
       link: /masterplan/not-alone
 
 features:
-  - title: 🌲 Новый Парк за углом
+  - title: Новый 🌲 Парк за углом
     details: Самара, Конноармейская, 6а
     link: /Parks/Samara/konnoarmeiskaya_6/overview
     linkText: Запустить улучшения
