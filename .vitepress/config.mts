@@ -177,7 +177,7 @@ export default defineConfig({
 
 /* Кнопка "Войти" (прозрачная) */
 .VPSocialLink[aria-label="login-link"]::after {
-  content: "Войти";
+  content: "Сообщество";
   font-size: 14px;
   color: var(--vp-c-text-1);
   padding: 6px 12px;
@@ -353,7 +353,7 @@ export default defineConfig({
 
     // Social links (header buttons)
     socialLinks: [
-      { icon: 'github', link: 'https://app.mplan.sbs', ariaLabel: 'login-link' },
+      { icon: 'github', link: '/community', ariaLabel: 'login-link', target: '_self' },
       { icon: 'github', link: '/run-prkx', ariaLabel: 'apply-link', target: '_self'  }
     ],
 
