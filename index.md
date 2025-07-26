@@ -14,9 +14,9 @@ hero:
       link: /masterplan/not-alone
 
 features:
-  - title: Чекап
-    details: Находим скрытые разрывы в процессах, которые тормозят рост. Превращаем их в 3 конкретных улучшения за 30 дней.
-    link: /checkup/overview
+  - title: Новый Парк за углом
+    details: Самара, Конноармейская, 6а
+    link: /Parks/Samara/konnoarmeiskaya_6/overview
     linkText: Запустить улучшения
   - title: Система роста бизнеса
     details: 12 нед. непрерывный мониторинг по DMAIC, 90-мин трекинг-сессии каждую неделю.
