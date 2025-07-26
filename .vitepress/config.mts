@@ -316,10 +316,10 @@ export default defineConfig({
       '/Parks/': {
         items: sidebarParki()
       },
-      '/Мастерплан/': {
+      '/masterplan/': {
         items: sidebarMasterplan()
       },
-      '/Почему_Парк/': {
+      '/about/': {
         items: sidebarWhyPark()
       }
     },
