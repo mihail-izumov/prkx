@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Парк за углом"
-  tagline: Парк вместо мусорки.
+  tagline: Умные парки для детей и их родителей.
   actions:
     - theme: brand
       text: Поддержать
