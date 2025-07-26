@@ -385,11 +385,12 @@ function nav(): DefaultTheme.NavItem[] {
       ]
     },
     {
-      text: 'Почему Парк',
+      text: 'О Нас',
       items: [
-        { text: 'Идея', link: '/Почему_Парк/Идея.md' },
-        { text: 'Как это работает', link: '/Почему_Парк/Как_это_работает.md' },
-        { text: 'Комфорт+', link: '/Почему_Парк/Комфорт+.md' },
+        { text: 'Инициатива', link: '/about/origin' },
+        { text: 'Миссия', link: '/about/mission' },
+        { text: 'Видение', link: '/about/vision' },
+        { text: 'Ценности', link: '/about/values' }
       ]
     },
     {
