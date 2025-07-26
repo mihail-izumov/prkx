@@ -10,8 +10,8 @@ hero:
       text: Поддержать
       link: /run-prkx
     - theme: alt
-      text: Нас поддерживают
-      link: /masterplan/not-alone
+      text: Сообщество
+      link: /community
 
 features:
   - title: Новый 🌲 Парк за углом
@@ -19,11 +19,11 @@ features:
     link: /Parks/Samara/konnoarmeiskaya_6/progress
     linkText: Движение по проекту
   - title: Мастерплан
-    details: 12 нед. непрерывный мониторинг по DMAIC, 90-мин трекинг-сессии каждую неделю.
-    link: /masterplan/about
+    details: 123
+    link: /masterplan/overview
     linkText: В чем план
-  - title: Почему Парк
-    details: Повышаем эффективность бизнеса с решениями Модуля Роста®.
-    link: /why-park/idee-fixe
-    linkText: Больше Парков
+  - title: Культура Парков
+    details: 123
+    link: /culture/park
+    linkText: Узнать Больше
 ---
