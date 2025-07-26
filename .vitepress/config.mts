@@ -10,8 +10,8 @@ export default defineConfig({
   locales: {
     '/': {
       lang: 'ru-RU',
-      title: 'Модуль Роста® – Расти по своим правилам',
-      description: 'Расти по своим правилам с Модуль Роста®',
+      title: 'Парк за углом',
+      description: 'Умные парки для детей и их родителей',
     },
   },
 
@@ -348,7 +348,7 @@ export default defineConfig({
       }
     },
 
-    // Navigation with dropdowns
+    // Navigation with dropdowns, добавлен "Культура"
     nav: nav(),
 
     // Social links (header buttons)
@@ -365,7 +365,7 @@ export default defineConfig({
   }
 })
 
-// ✅ ИСПРАВЛЕНО: Navigation with dropdown menus - добавлен раздел "Радар"
+// ✅ Navigation with dropdown menus - добавлен раздел "Культура"
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
@@ -391,11 +391,17 @@ function nav(): DefaultTheme.NavItem[] {
         { text: 'Как это работает', link: '/Почему_Парк/Как_это_работает.md' },
         { text: 'Комфорт+', link: '/Почему_Парк/Комфорт+.md' },
       ]
+    },
+    {
+      text: 'Культура',
+      items: [
+        { text: 'Культура парков', link: '/culture/park' },
+        { text: 'Примеры', link: '/culture/references' }
+      ]
     }
   ]
 }
 
-// Sidebar for About section
 function sidebarParki(): DefaultTheme.SidebarItem[] {
   return [
     {
@@ -414,7 +420,6 @@ function sidebarParki(): DefaultTheme.SidebarItem[] {
   ]
 }
 
-// Sidebar for Method section
 function sidebarMasterplan(): DefaultTheme.SidebarItem[] {
   return [
     {
@@ -431,7 +436,6 @@ function sidebarMasterplan(): DefaultTheme.SidebarItem[] {
   ]
 }
 
-// Sidebar for Technology section
 function sidebarWhyPark(): DefaultTheme.SidebarItem[] {
   return [
     {
