@@ -402,7 +402,7 @@ function sidebarParki(): DefaultTheme.SidebarItem[] {
       text: 'Самара, Конноармейская 6',
       collapsed: false,
       items: [
-        { text: 'Новый парк в Самаре', link: '/Parks/Samara/konnoarmeiskaya_6/overview.md' },
+        { text: 'Обзор проекта', link: '/Parks/Samara/konnoarmeiskaya_6/overview.md' },
         { text: 'Хронология событий', link: '/Parks/Samara/konnoarmeiskaya_6/timeline.md' },
         { text: 'Инициатива', link: '/Parks/Samara/konnoarmeiskaya_6/initiative.md' },
         { text: 'Прогресс по проекту', link: '/Parks/Samara/konnoarmeiskaya_6/progress.md' },
