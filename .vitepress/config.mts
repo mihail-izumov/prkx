@@ -377,11 +377,10 @@ function nav(): DefaultTheme.NavItem[] {
     {
       text: 'Мастерплан',
       items: [
-        { text: 'Кто мы', link: '/Мастерплан/Кто_мы.md' },
-        { text: 'Чего хотим', link: '/Мастерплан/Чего_хотим.md' },
-        { text: 'В чем план', link: '/Мастерплан/В_чем_план.md' },
-        { text: 'Прогресс', link: '/Мастерплан/Прогресс.md' },
-        { text: 'Нас поддерживают', link: '/Мастерплан/Нас_поддерживают.md' }
+        { text: 'Обзор', link: '/masterplan/overview' },
+        { text: 'В чем план', link: '/masterplan/the-plan' },
+        { text: 'Прогресс', link: '/masterplan/progress' },
+        { text: 'Нас поддерживают', link: '/masterplan/not-alone' }
       ]
     },
     {
