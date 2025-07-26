@@ -379,7 +379,7 @@ function nav(): DefaultTheme.NavItem[] {
       items: [
         { text: 'Обзор', link: '/masterplan/overview' },
         { text: 'В чем план', link: '/masterplan/the-plan' },
-        { text: 'Прогресс', link: '/masterplan/progress' },
+        { text: 'Прогресс', link: '/masterplan/roadmap' },
         { text: 'Нас поддерживают', link: '/masterplan/not-alone' }
       ]
     },
