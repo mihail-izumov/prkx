@@ -14,10 +14,10 @@ hero:
       link: /apply
 
 features:
-  - title: Фишка 1
-    details:
+  - title: Новый Парк за углом
+    details: Самара, Конноармейская, 6а
     link: /checkup/overview
-    linkText: Ссылочка
+    linkText: Детали проекта
   - title: Фишка 2
     details:
     link: /system/overview
