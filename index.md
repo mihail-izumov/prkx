@@ -3,15 +3,15 @@
 layout: home
 
 hero:
-  name: "Расти по своим правилам."
-  tagline: Находим то, что другие упускают.
+  name: "Парк за углом"
+  tagline: Парк вместо мусорки.
   actions:
     - theme: brand
-      text: Получить ответ
-      link: /apply
+      text: Поддержать
+      link: /run-prkx
     - theme: alt
-      text: Старт за 5 дней
-      link: /checkup/prep/overview
+      text: Нас поддерживают
+      link: /masterplan/not-alone
 
 features:
   - title: Чекап
