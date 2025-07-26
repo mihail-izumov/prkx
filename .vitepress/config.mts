@@ -52,7 +52,7 @@ export default defineConfig({
       html += '</div></div>';
       html += '<div style="margin-top: 24px; text-align: center;">';
       html += '<div style="color: var(--vp-c-text-2); font-size: 14px;">Что то там</div>';
-      html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© Orxaos 2025</div>';
+      html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© Orxaos | Михаил Изюмов 2025</div>';
       return html;
     }
 
