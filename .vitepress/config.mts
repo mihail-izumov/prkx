@@ -404,6 +404,7 @@ function sidebarParki(): DefaultTheme.SidebarItem[] {
       items: [
         { text: 'Обзор', link: '/Parks/Samara/konnoarmeiskaya_6/Обзор.md' },
         { text: 'Исходная ситуация', link: '/Parks/Samara/konnoarmeiskaya_6/Исходная_ситуация.md' },
+        { text: 'Хронология событий', link: '/Parks/Samara/konnoarmeiskaya_6/timeline.md' },
         { text: 'Инициатива', link: '/Parks/Samara/konnoarmeiskaya_6/Инициатива.md' },
         { text: 'Прогресс', link: '/Parks/Samara/konnoarmeiskaya_6/Прогресс.md' },
         { text: 'Цифры и факты', link: '/Parks/Samara/konnoarmeiskaya_6/Цифры_и_факты.md' },
