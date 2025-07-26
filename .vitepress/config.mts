@@ -81,13 +81,13 @@ export default defineConfig({
     function updateApplyLinkTarget() {
       const applyLinks = document.querySelectorAll('.VPSocialLink[aria-label="apply-link"]');
       applyLinks.forEach(applyLink => {
-        applyLink.href = '/apply';
+        applyLink.href = '/run-prkx';
         applyLink.setAttribute('target', '_self');
         applyLink.removeAttribute('rel');
 
         // Создаем новую ссылку для замены
         const newLink = document.createElement('a');
-        newLink.href = '/apply';
+        newLink.href = '/run-prkx';
         newLink.className = applyLink.className;
         newLink.setAttribute('aria-label', 'apply-link');
         newLink.setAttribute('target', '_self');
