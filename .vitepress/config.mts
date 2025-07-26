@@ -405,15 +405,13 @@ function nav(): DefaultTheme.NavItem[] {
 function sidebarParki(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Самара, Конноармейская 6',
+      text: 'Самара, Конноармейская, 6а',
       collapsed: false,
       items: [
         { text: 'Обзор проекта', link: '/Parks/Samara/konnoarmeiskaya_6/overview.md' },
-        { text: 'Хронология событий', link: '/Parks/Samara/konnoarmeiskaya_6/timeline.md' },
-        { text: 'Инициатива', link: '/Parks/Samara/konnoarmeiskaya_6/initiative.md' },
         { text: 'Прогресс по проекту', link: '/Parks/Samara/konnoarmeiskaya_6/progress.md' },
         { text: 'Цифры и факты', link: '/Parks/Samara/konnoarmeiskaya_6/facts-and-figures.md' },
-        { text: 'СМИ о нас', link: '/Parks/Samara/konnoarmeiskaya_6/media.md' },
+        { text: 'СМИ о парке', link: '/Parks/Samara/konnoarmeiskaya_6/media.md' },
         { text: 'Вопросы и ответы', link: '/Parks/Samara/konnoarmeiskaya_6/faq.md' }
       ]
     }
@@ -426,11 +424,14 @@ function sidebarMasterplan(): DefaultTheme.SidebarItem[] {
       text: 'Мастерплан',
       collapsed: false,
       items: [
-        { text: 'Кто мы', link: '/Мастерплан/Кто_мы.md' },
-        { text: 'Чего хотим', link: '/Мастерплан/Чего_хотим.md' },
-        { text: 'В чем план', link: '/Мастерплан/В_чем_план.md' },
-        { text: 'Прогресс', link: '/Мастерплан/Прогресс.md' },
-        { text: 'Нас поддерживают', link: '/Мастерплан/Нас_поддерживают.md' }
+        { text: 'Обзор', link: '/masterplan/overview' },
+        { text: 'Сегодня', link: '/masterplan/the-present' },
+        { text: 'Возможности', link: '/masterplan/the-possibility' },
+        { text: 'Решение', link: '/masterplan/the-solution' },
+        { text: 'В чем план', link: '/masterplan/the-plan' },
+        { text: 'Как мы это сделаем', link: '/masterplan/how-we-can-do-it' },
+        { text: 'Прогресс', link: '/masterplan/roadmap' },
+        { text: 'Нас поддерживают', link: '/masterplan/not-alone' }
       ]
     }
   ]
