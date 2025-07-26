@@ -35,7 +35,7 @@ export default defineConfig({
       const links = [
         { text: 'Контакт', href: '89370606690' },
         { text: 'Телеграм-канал', href: 'https://t.me/runprkx', target: '_blank' },
-        { text: 'Orxaos', href: 'orxaos.sbs', target: '_blank' }
+        { text: 'Orxaos', href: 'https://orxaos.sbs', target: '_blank' }
       ];
 
       let html = '<hr style="border: 0; border-top: 1px solid var(--vp-c-divider); margin: 24px 0;">';
