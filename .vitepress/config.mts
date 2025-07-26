@@ -302,7 +302,7 @@ export default defineConfig({
   cleanUrls: true,
   appearance: false,
   outDir: '.vitepress/dist',
-  description: 'Парк вместо мусорки.',
+  description: 'Умные парки для детей и их родителей.',
   themeConfig: {
     logo: '/prkx-favicon.png',
     siteTitle: "Парк за углом",
