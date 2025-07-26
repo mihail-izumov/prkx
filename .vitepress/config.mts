@@ -34,7 +34,7 @@ export default defineConfig({
     function createFooterContent() {
       const links = [
         { text: 'Контакт', href: '89370606690' },
-        { text: 'Телеграм-канал', href: 'https://t.me/runscale', target: '_blank' },
+        { text: 'Телеграм-канал', href: 'https://t.me/runprkx', target: '_blank' },
         { text: 'Orxaos', href: 'orxaos.sbs' }
       ];
 
