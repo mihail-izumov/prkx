@@ -20,10 +20,10 @@ features:
     linkText: Движение проекта
   - title: Мастерплан
     details: "Парк за углом" – это инициатива жителей Самары, которые сказали ДА новому парку с детской плоащадкой и НЕТ мусорной плоащадке.
-    link: /system/overview
+    link: /masterplan/about
     linkText: Ссылочка
   - title: Почему Парк
     details: Парк делает жизнь комфортной и безопасной.
-    link: /technology/overview
-    linkText: Ссылочка
+    link: /why-park/idee-fixe
+    linkText: Узнать больше
 ---
