@@ -305,6 +305,7 @@ export default defineConfig({
   ],
   base: '/',
   cleanUrls: true,
+  appearance: false,
   outDir: '.vitepress/dist',
   description: 'Эксперты по системному росту бизнеса. Помогаем владельцам компаний находить скрытые резервы прибыли через data-driven подход и глубокую диагностику процессов.',
   themeConfig: {
