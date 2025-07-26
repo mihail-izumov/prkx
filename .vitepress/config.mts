@@ -307,7 +307,7 @@ export default defineConfig({
   cleanUrls: true,
   appearance: false,
   outDir: '.vitepress/dist',
-  description: 'Эксперты по системному росту бизнеса. Помогаем владельцам компаний находить скрытые резервы прибыли через data-driven подход и глубокую диагностику процессов.',
+  description: 'Парк вместо мусорки.',
   themeConfig: {
     logo: '/prkx-favicon.png',
     siteTitle: "Парк за углом",
@@ -402,14 +402,13 @@ function sidebarParki(): DefaultTheme.SidebarItem[] {
       text: 'Самара, Конноармейская 6',
       collapsed: false,
       items: [
-        { text: 'Обзор', link: '/Parks/Samara/konnoarmeiskaya_6/Обзор.md' },
-        { text: 'Исходная ситуация', link: '/Parks/Samara/konnoarmeiskaya_6/Исходная_ситуация.md' },
+        { text: 'Новый парк в Самаре', link: '/Parks/Samara/konnoarmeiskaya_6/overview.md' },
         { text: 'Хронология событий', link: '/Parks/Samara/konnoarmeiskaya_6/timeline.md' },
-        { text: 'Инициатива', link: '/Parks/Samara/konnoarmeiskaya_6/Инициатива.md' },
-        { text: 'Прогресс', link: '/Parks/Samara/konnoarmeiskaya_6/Прогресс.md' },
-        { text: 'Цифры и факты', link: '/Parks/Samara/konnoarmeiskaya_6/Цифры_и_факты.md' },
-        { text: 'Публикации в СМИ', link: '/Parks/Samara/konnoarmeiskaya_6/Публикации_в_СМИ.md' },
-        { text: 'Вопросы и ответы', link: '/Parks/Samara/konnoarmeiskaya_6/Вопросы_и_ответы.md' }
+        { text: 'Инициатива', link: '/Parks/Samara/konnoarmeiskaya_6/initiative.md' },
+        { text: 'Прогресс по проекту', link: '/Parks/Samara/konnoarmeiskaya_6/progress.md' },
+        { text: 'Цифры и факты', link: '/Parks/Samara/konnoarmeiskaya_6/facts-and-figuresw.md' },
+        { text: 'СМИ о нас', link: '/Parks/Samara/konnoarmeiskaya_6/media.md' },
+        { text: 'Вопросы и ответы', link: '/Parks/Samara/konnoarmeiskaya_6/faq.md' }
       ]
     }
   ]
