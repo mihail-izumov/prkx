@@ -354,7 +354,7 @@ export default defineConfig({
     // Social links (header buttons)
     socialLinks: [
       { icon: 'github', link: 'https://app.mplan.sbs', ariaLabel: 'login-link' },
-      { icon: 'github', link: '/apply', ariaLabel: 'apply-link', target: '_self'  }
+      { icon: 'github', link: '/run-prkx', ariaLabel: 'apply-link', target: '_self'  }
     ],
 
     // Footer configuration - простой текст для production
