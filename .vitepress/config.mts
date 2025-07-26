@@ -53,6 +53,7 @@ export default defineConfig({
       html += '<div style="margin-top: 24px; text-align: center;">';
       html += '<div style="color: var(--vp-c-text-2); font-size: 14px;">Что то там</div>';
 html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© <a href="https://orxaos.sbs" target="_blank" rel="noopener noreferrer" style="color: var(--vp-c-text-2); text-decoration: none;">Orxaos</a> | Михаил Изюмов 2025</div>';
+  return html;
     }
 
     function replaceFooter() {
