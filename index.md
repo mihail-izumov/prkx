@@ -18,12 +18,12 @@ features:
     details: Самара, Конноармейская, 6а
     link: /Parks/Samara/konnoarmeiskaya_6/overview
     linkText: Запустить улучшения
-  - title: Система роста бизнеса
+  - title: Мастерплан
     details: 12 нед. непрерывный мониторинг по DMAIC, 90-мин трекинг-сессии каждую неделю.
-    link: /system/overview
+    link: /masterplan/about
     linkText: Как строим
-  - title: ИИ-автоматизация бизнеса
+  - title: Почему Парк
     details: Повышаем эффективность бизнеса с решениями Модуля Роста®.
-    link: /technology/overview
-    linkText: Технология роста
+    link: /why-park/idee-fixe
+    linkText: Узнать больше
 ---
