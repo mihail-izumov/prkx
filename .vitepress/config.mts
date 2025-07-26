@@ -371,7 +371,7 @@ function nav(): DefaultTheme.NavItem[] {
     {
       text: 'Парки',
       items: [
-        { text: 'Самара, Конноармейская 6а', link: '/Parks/Samara/konnoarmeiskaya_6/Обзор.md' }
+        { text: 'Самара, Конноармейская 6а', link: '/Parks/Samara/konnoarmeiskaya_6/overview.md' }
       ]
     },
     {
