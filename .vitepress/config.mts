@@ -304,7 +304,6 @@ export default defineConfig({
     `]
   ],
   base: '/prkx/',
-  appearance: false,
   cleanUrls: true,
   outDir: '.vitepress/dist',
   description: 'Эксперты по системному росту бизнеса. Помогаем владельцам компаний находить скрытые резервы прибыли через data-driven подход и глубокую диагностику процессов.',
