@@ -52,8 +52,7 @@ export default defineConfig({
       html += '</div></div>';
       html += '<div style="margin-top: 24px; text-align: center;">';
       html += '<div style="color: var(--vp-c-text-2); font-size: 14px;">Что то там</div>';
-      html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© Orxaos | Михаил Изюмов 2025</div>';
-      return html;
+html += '<div style="color: var(--vp-c-text-2); margin-top: 4px; font-size: 14px; text-align: center;">© <a href="https://orxaos.sbs" target="_blank" rel="noopener noreferrer" style="color: var(--vp-c-text-2); text-decoration: none;">Orxaos</a> | Михаил Изюмов 2025</div>';
     }
 
     function replaceFooter() {
@@ -379,8 +378,7 @@ function nav(): DefaultTheme.NavItem[] {
       items: [
         { text: 'Обзор', link: '/masterplan/overview' },
         { text: 'В чем план', link: '/masterplan/the-plan' },
-        { text: 'Прогресс', link: '/masterplan/roadmap' },
-        { text: 'Нас поддерживают', link: '/masterplan/not-alone' }
+        { text: 'Прогресс', link: '/masterplan/roadmap' }
       ]
     },
     {
@@ -430,8 +428,7 @@ function sidebarMasterplan(): DefaultTheme.SidebarItem[] {
         { text: 'Решение', link: '/masterplan/the-solution' },
         { text: 'В чем план', link: '/masterplan/the-plan' },
         { text: 'Как мы это сделаем', link: '/masterplan/how-we-can-do-it' },
-        { text: 'Прогресс', link: '/masterplan/roadmap' },
-        { text: 'Нас поддерживают', link: '/masterplan/not-alone' }
+        { text: 'Прогресс', link: '/masterplan/roadmap' }
       ]
     }
   ]
